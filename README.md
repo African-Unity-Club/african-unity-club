@@ -19,7 +19,7 @@
 
 </center>
 
-creation d'un réseau de communication entre intellectuel Africain a travers le monde pour la valorisation du continent Africain, ces diversités, ces valeurs , cultures et son immense potentiel inexploités par le biais du partage , de la découverte visant a connaitre son continent sa puissance son histoire et sa place dans le futur de l'humanité
+creation of a communication network between African intellectuals throughout the world for the valorisation of the African continent, its diversities, its values, its cultures and its immense unexploited potential by means of sharing, of discovery aiming at knowing its continent its power its history and its place in the future of humanity.
 
 <center>
 
@@ -29,10 +29,10 @@ creation d'un réseau de communication entre intellectuel Africain a travers le 
 
 </center>
 
-# Executer le projet
+# Run project
 
 
-# Fonctionnalités
+# Features
 
 
 # Technologies
@@ -49,5 +49,5 @@ creation d'un réseau de communication entre intellectuel Africain a travers le 
 # Deployement
 
 
-# Comment contribuer
+# How to contibute
 
