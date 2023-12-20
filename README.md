@@ -4,7 +4,11 @@
 
 ![](asc.png)
 
-<h1 style="font-size: 150px; color: aliceblue">African Unity Club<h1>
+<h1 style="font-size:xxx-large;">
+<font color="aliceblue">
+African Unity Club
+</font>
+<h1>
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![GitHub contributors](https://img.shields.io/github/contributors/African-Unity-Club/african-unity-club.svg)](https://github.com/African-Unity-Club/african-unity-club/graphs/contributors)
@@ -21,13 +25,9 @@
 
 creation of a communication network between African intellectuals throughout the world for the valorisation of the African continent, its diversities, its values, its cultures and its immense unexploited potential by means of sharing, of discovery aiming at knowing its continent its power its history and its place in the future of humanity.
 
-<center>
-
 [Project Design](https://www.figma.com/file/xOZSamTWQ1080dHkTV4Bru/African-Student-Club?type=design&node-id=0-1&mode=design&t=GDicutDVTz5uIHg8-0)
 
 ![](design.png)
-
-</center>
 
 # Run project
 
