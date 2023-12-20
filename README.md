@@ -1,6 +1,6 @@
 # African-Unity-Club
 
-<div style="text-align: center;">
+<div align="center">
 
 ![](asc.png)
 
