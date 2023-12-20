@@ -1,13 +1,12 @@
-# African-Unity-Club
 
 <div align="center">
 
 ![](asc.png)
 
 <h1 style="font-size:xxx-large;">
-<font color="aliceblue">
-African Unity Club
-</font>
+  <font color="aliceblue">
+    African Unity Club
+  </font>
 <h1>
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
@@ -29,20 +28,34 @@ creation of a communication network between African intellectuals throughout the
 
 ![](design.png)
 
-# Run project
+## Run project
 
 1- clone
 
-```
+```bash
 $ git clone https://github.com/African-Unity-Club/african-unity-club.git
 ```
 
 2- install requirements and dependencies
 
-```
+```bash
 $ cd african-unity-club
-african-unity-club$ python -m venv .venv
+```
+
+- in Unix
+
+```bash
+african-unity-club$ sudo apt install virtualenv
+african-unity-club$ virtualenv .venv
 african-unity-club$ . .venv/bin/activate
+african-unity-club$ python3 -m pip install -r requirements.txt
+```
+
+- in Windows
+
+```bash
+african-unity-club$ python -m venv .venv
+african-unity-club$ .venv\Scripts\activate
 african-unity-club$ python -m pip install -r requirements.txt
 ```
 
@@ -50,37 +63,41 @@ african-unity-club$ python -m pip install -r requirements.txt
 
 - launch profile
 
-```
+```bash
 african-unity-club$ cd profile
 african-unity-club/profile$ flask --app wsgi run --debug
 ```
 
-# Features
+## Features
 
 the various functions to be implemented
 
-## Authentication by token
+### Authentication by token
 
-- signup
-- otp
-- signin
-- 2 factor authenticate
-- signout
-- forgot password
+- signup (register)
+- otp (email verify)
+- signin (login)
+- 2 factor authenticate (security)
+- signout (logout)
+- forgot password (password reset)
 
-## Dashboard
+### Dashboard
 
-- stats with jauge and curve
+contains global and individual user activity statistics in diagrams, gauges and curves.<br>
+it's a complete summary
 
-## Profile manager
+don't hesitate to add useful features, but also to share them for better coordination
 
-- account management
+### Profile manager
 
-## Social
+account management <br>
+it contains everything that concerns the user personally 
+
+### Social
 
 - post your experience, life ...
 
-## Culture
+### Culture
 
 - presentation of your culture, traditions, rites and customs
 - your country, its archipelago, its riches, its wonders, its special features
