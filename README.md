@@ -40,6 +40,7 @@ creation d'un réseau de communication entre intellectuel Africain a travers le 
 - API RESTful python
   - Flask
   - Django rest framework
+  - Nodejs
 - HTML - CSS - JAVASCRIPT
   - Tailwind
   - Bootstrap
