@@ -1,7 +1,7 @@
 # BACKEND DEVELOPERS
 
 hi backend developer, I'm glad to have you with me on this project and to learn a lot from you.
-a models.yaml file exists in this directory.
+a [models.yaml](.models.yaml) file exists in this directory.
 
 - choose a model for your work
 - create a new directory in backend
