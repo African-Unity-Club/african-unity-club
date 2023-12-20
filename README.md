@@ -1,10 +1,10 @@
 # African-Unity-Club
 
-<center>
+<div style="text-align: center;">
 
 ![](asc.png)
 
-<h1 style="font-size: 500%; color: aliceblue">African Unity Club<h1>
+<h1 style="font-size: 150px; color: aliceblue">African Unity Club<h1>
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![GitHub contributors](https://img.shields.io/github/contributors/African-Unity-Club/african-unity-club.svg)](https://github.com/African-Unity-Club/african-unity-club/graphs/contributors)
@@ -17,7 +17,7 @@
 [![Facebook](https://img.shields.io/badge/Facebook-Share-blue)](https://www.facebook.com/sharer/sharer.php?u=https://github.com/African-Unity-Club/african-unity-club.git)
 
 
-</center>
+</div>
 
 creation of a communication network between African intellectuals throughout the world for the valorisation of the African continent, its diversities, its values, its cultures and its immense unexploited potential by means of sharing, of discovery aiming at knowing its continent its power its history and its place in the future of humanity.
 
