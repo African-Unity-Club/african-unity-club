@@ -31,9 +31,100 @@ creation of a communication network between African intellectuals throughout the
 
 # Run project
 
+1- clone
+
+```
+$ git clone https://github.com/African-Unity-Club/african-unity-club.git
+```
+
+2- install requirements and dependencies
+
+```
+$ cd african-unity-club
+african-unity-club$ python -m venv .venv
+african-unity-club$ . .venv/bin/activate
+african-unity-club$ python -m pip install -r requirements.txt
+```
+
+3- run
+
+- launch profile
+
+```
+african-unity-club$ cd profile
+african-unity-club/profile$ flask --app wsgi run --debug
+```
 
 # Features
 
+the various functions to be implemented
+
+## Authentication by token
+
+- signup
+- otp
+- signin
+- 2 factor authenticate
+- signout
+- forgot password
+
+## Dashboard
+
+- stats with jauge and curve
+
+## Profile manager
+
+- account management
+
+## Social
+
+- post your experience, life ...
+
+## Culture
+
+- presentation of your culture, traditions, rites and customs
+- your country, its archipelago, its riches, its wonders, its special features
+
+## Talents
+
+- your know-how, your ingenuity, your skills
+
+## Stories
+
+- your history, that of your country and your people, its past glory, its suffering, its struggles, its vision, its hopes
+
+## Jobs
+
+- your country's job offers and opportunities, its benevolence towards its African neighbors.
+
+## Community
+
+- community based on values, visions, fraternity, job opportunities, ...
+
+## News
+
+- african news
+
+## Planning task
+
+- planning and automation of one-off or recursive tasks,
+meet course planning, ...
+
+## Notifications
+
+- notification system
+
+## Chats
+
+- text messages, short video, audio ...
+
+## Friendship
+
+- creating bonds of friendship and unity
+
+## Settings
+
+- account configurations for personal life respects
 
 # Technologies
 
@@ -51,3 +142,4 @@ creation of a communication network between African intellectuals throughout the
 
 # How to contibute
 
+see [how to contribute file](CONTRIBUTING.md)
