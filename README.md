@@ -102,48 +102,48 @@ it contains everything that concerns the user personally
 - presentation of your culture, traditions, rites and customs
 - your country, its archipelago, its riches, its wonders, its special features
 
-## Talents
+### Talents
 
 - your know-how, your ingenuity, your skills
 
-## Stories
+### Stories
 
 - your history, that of your country and your people, its past glory, its suffering, its struggles, its vision, its hopes
 
-## Jobs
+### Jobs
 
 - your country's job offers and opportunities, its benevolence towards its African neighbors.
 
-## Community
+### Community
 
 - community based on values, visions, fraternity, job opportunities, ...
 
-## News
+### News
 
 - african news
 
-## Planning task
+### Planning task
 
 - planning and automation of one-off or recursive tasks,
 meet course planning, ...
 
-## Notifications
+### Notifications
 
 - notification system
 
-## Chats
+### Chats
 
 - text messages, short video, audio ...
 
-## Friendship
+### Friendship
 
 - creating bonds of friendship and unity
 
-## Settings
+### Settings
 
 - account configurations for personal life respects
 
-# Technologies
+## Technologies
 
 - API RESTful python
   - Flask
@@ -154,9 +154,12 @@ meet course planning, ...
   - Bootstrap
   - React
 
-# Deployement
+## Deployement
 
+```bash
+not yet available
+```
 
-# How to contibute
+## How to contibute
 
 see [how to contribute file](CONTRIBUTING.md)
