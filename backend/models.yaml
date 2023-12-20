@@ -1,1 +1,1201 @@
 # all models for the African unity club project
+basic model:
+  
+  id:
+    type: string
+    format: uuid or ObjectId
+    validation:
+      - required: true
+      - unique: true
+    description: unique identifier
+    readOnly: true
+  
+  created_at:
+    type: string
+    format: date-time
+    description: date and time of creation
+    readOnly: true
+  
+  updated_at:
+    type: string
+    format: date-time
+    description: date and time of last update
+    readOnly: false
+
+user model:
+
+  username:
+    type: string
+    validation:
+      - required: true
+      - unique: true
+    description: username of the user
+    readOnly: false
+  
+  first_name:
+    type: string
+    validation:
+      - required: false
+    description: first name of the user
+    readOnly: false
+  
+  last_name:
+    type: string
+    validation:
+      - required: false
+    description: last name of the user
+    readOnly: false
+  
+  birth:
+    type: string
+    format: date
+    validation:
+      - required: false
+    description: date of birth of the user
+    readOnly: false
+  
+  email:
+    type: string
+    format: email
+    validation:
+      - required: true
+      - unique: true
+    description: email of the user
+    readOnly: false
+  
+  phone:
+    type: string
+    validation:
+      - required: false
+    description: phone number of the user
+    readOnly: false
+  
+  avatar:
+    type: string
+    validation:
+      - required: false
+    description: avatar of the user
+    readOnly: false
+  
+  country:
+    type: string
+    validation:
+      - required: false
+    description: country of the user
+    readOnly: false
+  
+  state:
+    type: string
+    validation:
+      - required: false
+    description: state of the user
+    readOnly: false
+  
+  city:
+    type: string
+    validation:
+      - required: false
+    description: city of the user
+    readOnly: false
+  
+  street:
+    type: string
+    validation:
+      - required: false
+    description: street of the user
+    readOnly: false
+  
+  about:
+    type: string
+    validation:
+      - required: false
+    description: about of the user
+    readOnly: false
+  
+  is_active:
+    type: boolean
+    validation:
+      - required: false
+    description: is the user active
+    readOnly: false
+  
+  role:
+    type: string
+    validation:
+      - required: false
+    description: role of the user
+    readOnly: false
+  
+  last_login:
+    type: string
+    format: date-time
+    validation:
+      - required: false
+    description: last login of the user
+    readOnly: false
+  
+  status:
+    type: string
+    validation:
+      - required: false
+    description: status of the user
+    readOnly: false
+
+
+softs skills model:
+
+  name:
+    type: string
+    validation:
+      - required: true
+    description: soft skill
+    readOnly: false
+  
+  description:
+    type: string
+    validation:
+      - required: false
+    description: description of the soft skill
+    readOnly: false
+  
+  domain:
+    type: string
+    validation:
+      - required: false
+    description: domain of the soft skill
+    readOnly: false
+  
+  user:
+    type: string
+    validation:
+      - required: true
+    description: user of the soft skill
+    readOnly: false
+
+
+experiences model:
+
+  name:
+    type: string
+    validation:
+      - required: true
+    description: experience
+    readOnly: false
+  
+  description:
+    type: string
+    validation:
+      - required: false
+    description: description of the experience
+    readOnly: false
+  
+  institution:
+    type: string
+    validation:
+      - required: false
+    description: institution of the experience
+    readOnly: false
+
+  start_date:
+    type: string
+    format: date
+    validation:
+      - required: false
+    description: start date of the experience
+    readOnly: false
+
+  end_date:
+    type: string
+    format: date
+    validation:
+      - required: false
+    description: end date of the experience
+    readOnly: false
+  
+  user:
+    type: string
+    validation:
+      - required: true
+    description: user of the soft skill
+    readOnly: false
+
+
+education model:
+
+  name:
+    type: string
+    validation:
+      - required: true
+    description: education
+    readOnly: false
+  
+  description:
+    type: string
+    validation:
+      - required: false
+    description: description of the education
+    readOnly: false
+  
+  institution:
+    type: string
+    validation:
+      - required: false
+    description: institution of the education
+    readOnly: false
+
+  start_date:
+    type: string
+    format: date
+    validation:
+      - required: false
+    description: start date of the education
+    readOnly: false
+
+  end_date:
+    type: string
+    format: date
+    validation:
+      - required: false
+    description: end date of the education
+    readOnly: false
+
+  user:
+    type: string
+    validation:
+      - required: true
+    description: user of the soft skill
+    readOnly: false
+
+
+awards model:
+
+  name:
+    type: string
+    validation:
+      - required: true
+    description: award
+    readOnly: false
+  
+  description:
+    type: string
+    validation:
+      - required: false
+    description: description of the award
+    readOnly: false
+  
+  institution:
+    type: string
+    validation:
+      - required: false
+    description: institution of the award
+    readOnly: false
+
+  date:
+    type: string
+    format: date
+    validation:
+      - required: false
+    description: date of the award
+    readOnly: false
+
+  user:
+    type: string
+    validation:
+      - required: true
+    description: user of the soft skill
+    readOnly: false
+
+
+social model:
+
+  name:
+    type: string
+    validation:
+      - required: true
+    description: social
+    readOnly: false
+  
+  link:
+    type: string
+    validation:
+      - required: false
+    description: link of the social
+    readOnly: false
+
+  user:
+    type: string
+    validation:
+      - required: true
+    description: user of the soft skill
+    readOnly: false
+
+
+publications model:
+
+  content:
+    type: string
+    validation:
+      - required: true
+    description: publication
+    readOnly: false
+  
+  publish:
+    type: string
+    format: date
+    validation:
+      - required: false
+    description: date of the publication
+    readOnly: false
+  
+  reference:
+    type: string
+    validation:
+      - required: true
+    description: reference of the publication (social, culture, talents, histoire, emplois, actualités, etc.)
+    readOnly: false
+
+  user:
+    type: string
+    validation:
+      - required: true
+    description: user of the soft skill
+    readOnly: false
+
+
+like model:
+
+  is_like:
+    type: boolean
+    validation:
+      - required: true
+    description: is the like
+    readOnly: false
+  
+  user:
+    type: string
+    validation:
+      - required: true
+    description: user of the soft skill
+    readOnly: false
+  
+  publication:
+    type: string
+    validation:
+      - required: true
+    description: publication of the soft skill
+    readOnly: false
+
+share model:
+  
+    is_share:
+      type: boolean
+      validation:
+        - required: true
+      description: is the share
+      readOnly: false
+    
+    user:
+      type: string
+      validation:
+        - required: true
+      description: user of the soft skill
+      readOnly: false
+    
+    publication:
+      type: string
+      validation:
+        - required: true
+      description: publication of the soft skill
+      readOnly: false
+
+
+comment model:
+  
+    content:
+      type: string
+      validation:
+        - required: true
+      description: comment
+      readOnly: false
+    
+    user:
+      type: string
+      validation:
+        - required: true
+      description: user of the soft skill
+      readOnly: false
+    
+    publication:
+      type: string
+      validation:
+        - required: true
+      description: publication of the soft skill
+      readOnly: false
+    
+    is_comment_reply:
+      type: boolean
+      validation:
+        - required: true
+      description: is the reply
+      readOnly: false
+    
+    comment_ref:
+      type: string
+      validation:
+        - required: false
+      description: comment reference
+      readOnly: false
+
+
+job alert model:
+    
+  domain:
+    type: string
+    validation:
+      - required: true
+    description: domain of the job alert
+    readOnly: false    
+
+  country:
+    type: string
+    validation:
+      - required: true
+    description: country of the job alert
+    readOnly: false
+
+  position:
+    type: string
+    validation:
+      - required: true
+    description: position of the job alert
+    readOnly: false
+  
+  contract:
+    type: string
+    validation:
+      - required: true
+    description: contract of the job alert
+    readOnly: false
+
+
+community model:
+      
+  name:
+    type: string
+    validation:
+      - required: true
+      - unique: true
+    description: name of the community
+    readOnly: false
+
+  owner:
+    type: string
+    validation:
+      - required: true
+    description: owner of the community
+    readOnly: false
+
+  members:
+    type: string
+    validation:
+      - required: true
+    description: members of the community
+    readOnly: false
+  
+  admins:
+    type: string
+    validation:
+      - required: true
+    description: admins of the community
+    readOnly: false
+
+  moderators:
+    type: string
+    validation:
+      - required: true
+    description: moderators of the community
+    readOnly: false  
+  
+  managers:
+    type: string
+    validation:
+      - required: true
+    description: managers of the community
+    readOnly: false
+
+  description:
+    type: string
+    validation:
+      - required: true
+    description: description of the community
+    readOnly: false
+  
+  avatar:
+    type: string
+    validation:
+      - required: false
+    description: avatar of the community
+    readOnly: false
+    
+  cover:
+    type: string
+    validation:
+      - required: false
+    description: cover of the community
+    readOnly: false
+  
+  country:
+    type: string
+    validation:
+      - required: true
+    description: country of the community
+    readOnly: false
+  
+  state:
+    type: string
+    validation:
+      - required: true
+    description: state of the community
+    readOnly: false
+  
+  city:
+    type: string
+    validation:
+      - required: true
+    description: city of the community
+    readOnly: false
+  
+  street:
+    type: string
+    validation:
+      - required: true
+    description: street of the community
+    readOnly: false
+  
+  status:
+    type: string
+    validation:
+      - required: true
+    description: status of the community (active, verified, blocked, deleted)
+    readOnly: false
+  
+  visibility:
+    type: string
+    validation:
+      - required: true
+    description: visibility of the community (public, private)
+    readOnly: false
+
+
+friends models:
+  
+  user:
+    type: string
+    validation:
+      - required: true
+    description: user of the friends
+    readOnly: false
+  
+  friend:
+    type: string
+    validation:
+      - required: true
+    description: friend of the friends
+    readOnly: false
+  
+  status:
+    type: string
+    validation:
+      - required: true
+    description: status of the friends (pending, accepted, blocked, deleted, rejected, unfriend)
+    readOnly: false
+
+  is_follow:
+    type: boolean
+    validation:
+      - required: true
+    description: is the follow
+    readOnly: false
+
+  is_favorite:
+    type: boolean
+    validation:
+      - required: true
+    description: is the favorite
+    readOnly: false
+  
+  is_mute:
+    type: boolean
+    validation:
+      - required: true
+    description: is the mute
+    readOnly: false
+  
+  is_notification:
+    type: boolean
+    validation:
+      - required: true
+    description: is the notification
+    readOnly: false
+  
+  is_message:
+    type: boolean
+    validation:
+      - required: true
+    description: is the message
+    readOnly: false
+  
+  is_call:
+    type: boolean
+    validation:
+      - required: true
+    description: is the call
+    readOnly: false
+  
+  is_video_call:
+    type: boolean
+    validation:
+      - required: true
+    description: is the video call
+    readOnly: false
+  
+  is_group:
+    type: boolean
+    validation:
+      - required: true
+    description: is the group
+    readOnly: false
+
+
+status model:
+
+  user:
+    type: string
+    validation:
+      - required: true
+    description: user of the status
+    readOnly: false
+
+  content:
+    type: string
+    validation:
+      - required: true
+    description: content of the status
+    readOnly: false
+  
+  visibility:
+    type: string
+    validation:
+      - required: true
+    description: visibility of the status (public, private, friends, community)
+    readOnly: false
+  
+  is_comment:
+    type: boolean
+    validation:
+      - required: true
+    description: is the comment
+    readOnly: false
+
+  is_like:
+    type: boolean
+    validation:
+      - required: true
+    description: is the like
+    readOnly: false
+  
+  is_share:
+    type: boolean
+    validation:
+      - required: true
+    description: is the share
+    readOnly: false
+  
+  period:
+    type: string
+    validation:
+      - required: true
+    description: period of the status (1h, 1d, 1w, 1m, 1y)
+    readOnly: false
+
+
+message model:
+  
+    user:
+      type: string
+      validation:
+        - required: true
+      description: user of the message
+      readOnly: false
+  
+    content:
+      type: string
+      validation:
+        - required: true
+      description: content of the message
+      readOnly: false
+    
+    is_read:
+      type: boolean
+      validation:
+        - required: true
+      description: is the read
+      readOnly: false
+    
+    is_message_reply:
+      type: boolean
+      validation:
+        - required: true
+      description: is the reply
+      readOnly: false
+    
+    message_ref:
+      type: string
+      validation:
+        - required: false
+      description: message reference
+      readOnly: false
+
+    is_favorite:
+      type: boolean
+      validation:
+        - required: true
+      description: is the favorite
+      readOnly: false
+
+    is_message:
+      type: boolean
+      validation:
+        - required: true
+      description: is the message
+      readOnly: false
+
+    is_audio_message:
+      type: boolean
+      validation:
+        - required: true
+      description: is the audio message
+      readOnly: false
+    
+    is_video_message:
+      type: boolean
+      validation:
+        - required: true
+      description: is the video message
+      readOnly: false
+    
+    is_call:
+      type: boolean
+      validation:
+        - required: true
+      description: is the call
+      readOnly: false
+    
+    is_video_call:
+      type: boolean
+      validation:
+        - required: true
+      description: is the video call
+      readOnly: false
+    
+    is_community:
+      type: boolean
+      validation:
+        - required: true
+      description: is the group
+      readOnly: false
+    
+    community_ref:
+      type: string
+      validation:
+        - required: false
+      description: community of the message
+      readOnly: false
+    
+    interlocutor:
+      type: string
+      validation:
+        - required: true
+      description: interlocutor of the message
+      readOnly: false
+
+
+notification model:
+
+  source:
+    type: string
+    validation:
+      - required: true
+    description: source of the notification
+    readOnly: false
+  
+  destination:
+    type: string
+    validation:
+      - required: true
+    description: destination of the notification
+    readOnly: false
+  
+  is_read:
+    type: boolean
+    validation:
+      - required: true
+    description: is the read
+    readOnly: false
+  
+  content:
+    type: string
+    validation:
+      - required: true
+    description: content of the notification
+    readOnly: false
+
+
+task model:
+
+  name:
+    type: string
+    validation:
+      - required: true
+    description: name of the task
+    readOnly: false
+  
+  description:
+    type: string
+    validation:
+      - required: false
+    description: description of the task
+    readOnly: false
+  
+  start_date:
+    type: string
+    format: date
+    validation:
+      - required: false
+    description: start date of the task
+    readOnly: false
+  
+  end_date:
+    type: string
+    format: date
+    validation:
+      - required: false
+    description: end date of the task
+    readOnly: false
+  
+  onwer:
+    type: string
+    validation:
+      - required: true
+    description: user of the task
+    readOnly: false
+  
+  guests:
+    type: string
+    validation:
+      - required: true
+    description: guests of the task
+    readOnly: false
+  
+  status:
+    type: string
+    validation:
+      - required: true
+    description: status of the task
+    readOnly: false
+  
+  priority:
+    type: string
+    validation:
+      - required: true
+    description: priority of the task
+    readOnly: false
+  
+  is_reminder:
+    type: boolean
+    validation:
+      - required: true
+    description: is the reminder
+    readOnly: false
+  
+  is_repeat:
+    type: boolean
+    validation:
+      - required: true
+    description: is the repeat
+    readOnly: false
+  
+  is_meeting:
+    type: boolean
+    validation:
+      - required: true
+    description: is the meeting
+    readOnly: false
+  
+  is_recurrence:
+    type: boolean
+    validation:
+      - required: true
+    description: is the recurrence
+    readOnly: false
+  
+  status:
+    type: string
+    validation:
+      - required: true
+    description: status of the task
+    readOnly: false
+
+  
+ timestamp:
+
+    start_time:
+      type: string
+      format: date-time
+      validation:
+        - required: false
+      description: start time of the task
+      readOnly: false
+    
+    end_time:
+      type: string
+      format: date-time
+      validation:
+        - required: false
+      description: end time of the task
+      readOnly: false
+    
+    reference:
+      type: string
+      validation:
+        - required: false
+      description: reference of the task
+      readOnly: false
+  
+
+session model:
+  
+    name:
+      type: string
+      validation:
+        - required: true
+      description: name of the session
+      readOnly: false
+    
+    description:
+      type: string
+      validation:
+        - required: false
+      description: description of the session
+      readOnly: false
+    
+    start_date:
+      type: string
+      format: date
+      validation:
+        - required: false
+      description: start date of the session
+      readOnly: false
+    
+    end_date:
+      type: string
+      format: date
+      validation:
+        - required: false
+      description: end date of the session
+      readOnly: false
+    
+    onwer:
+      type: string
+      validation:
+        - required: true
+      description: user of the session
+      readOnly: false
+    
+    guests:
+      type: string
+      validation:
+        - required: true
+      description: guests of the session
+      readOnly: false
+    
+    status:
+      type: string
+      validation:
+        - required: true
+      description: status of the session
+      readOnly: false
+    
+    priority:
+      type: string
+      validation:
+        - required: true
+      description: priority of the session
+      readOnly: false
+    
+    is_reminder:
+      type: boolean
+      validation:
+        - required: true
+      description: is the reminder
+      readOnly: false
+    
+    is_repeat:
+      type: boolean
+      validation:
+        - required: true
+      description: is the repeat
+      readOnly: false
+    
+    is_meeting:
+      type: boolean
+      validation:
+        - required: true
+      description: is the meeting
+      readOnly: false
+    
+    is_online:
+      type: boolean
+      validation:
+        - required: true
+      description: is the online
+      readOnly: false
+    
+    is_offline:
+      type: boolean
+      validation:
+        - required: true
+      description: is the offline
+      readOnly: false
+    
+    is_video:
+      type: boolean
+      validation:
+        - required: true
+      description: is the video
+      readOnly: false
+    
+    is_audio:
+      type: boolean
+      validation:
+        - required: true
+      description: is the audio
+      readOnly: false
+    
+    is_chat:
+      type: boolean
+      validation:
+        - required: true
+      description: is the chat
+      readOnly: false
+
+settings model:
+        
+    user:
+      type: string
+      validation:
+        - required: true
+      description: user of the settings
+      readOnly: false
+  
+    community:
+      type: string
+      validation:
+        - required: true
+      description: community of the settings
+      readOnly: false
+  
+    language:
+      type: string
+      validation:
+        - required: true
+      description: language of the settings
+      readOnly: false
+  
+    theme:
+      type: string
+      validation:
+        - required: true
+      description: theme of the settings
+      readOnly: false
+  
+    notification:
+      type: string
+      validation:
+        - required: true
+      description: notification of the settings
+      readOnly: false
+  
+    privacy:
+      type: string
+      validation:
+        - required: true
+      description: privacy of the settings
+      readOnly: false
+  
+    security:
+      type: string
+      validation:
+        - required: true
+      description: security of the settings
+      readOnly: false
+  
+    email:
+      type: string
+      validation:
+        - required: true
+      description: email of the settings
+      readOnly: false
+  
+    phone:
+      type: string
+      validation:
+        - required: true
+      description: phone of the settings
+      readOnly: false
+  
+    password:
+      type: string
+      validation:
+        - required: true
+      description: password of the settings
+      readOnly: false
+  
+    account:
+      type: string
+      validation:
+        - required: true
+      description: account of the settings
+      readOnly: false
+  
+    community:
+      type: string
+      validation:
+        - required: true
+      description: community of the settings
+      readOnly: false
+  
+    social:
+      type: string
+      validation:
+        - required: true
+      description: social of the settings
+      readOnly: false
+  
+    payment:
+      type: string
+      validation:
+        - required: true
+      description: payment of the settings
+      readOnly: false
+  
+    other:
+      type: string
+      validation:
+        - required: true
+      description: other of the settings
+      readOnly: false
+
+
+
+
