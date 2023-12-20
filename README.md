@@ -30,6 +30,10 @@ creation of a communication network between African intellectuals throughout the
 
 ## Run project
 
+there are several microservices communicating via http, so for a local launch you'll need to launch all the microservices individually, and certainly in a particular order depending on dependencies.
+
+which we'll look at later
+
 1- clone
 
 ```bash
@@ -61,12 +65,6 @@ african-unity-club$ python -m pip install -r requirements.txt
 
 3- run
 
-- launch profile
-
-```bash
-african-unity-club$ cd profile
-african-unity-club/profile$ flask --app wsgi run --debug
-```
 
 ## Features
 
@@ -149,12 +147,29 @@ meet course planning, ...
   - Flask
   - Django rest framework
   - Nodejs
+  - MySQL
+  - PostgreSQl
+  - Mongodb
+  - Redis
+  - Sqlite3
+  - ...
 - Front end
   - HTML/CSS
   - Javascript
   - Tailwind
   - Bootstrap
   - React
+  - Redis
+  - Sqlite3
+  - ...
+
+## environment
+
+- vscode, pycharm, spyder
+- insomnia
+- pgAdmin
+- MongoDBCompass
+- docker
 
 ## Deployement
 
