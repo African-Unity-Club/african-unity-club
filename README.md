@@ -19,7 +19,6 @@
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Share-blue)](https://www.linkedin.com/sharing/share-offsite/?url=https://github.com/African-Unity-Club/african-unity-club.git)
 [![Facebook](https://img.shields.io/badge/Facebook-Share-blue)](https://www.facebook.com/sharer/sharer.php?u=https://github.com/African-Unity-Club/african-unity-club.git)
 
-
 </div>
 
 creation of a communication network between African intellectuals throughout the world for the valorisation of the African continent, its diversities, its values, its cultures and its immense unexploited potential by means of sharing, of discovery aiming at knowing its continent its power its history and its place in the future of humanity.
