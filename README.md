@@ -145,11 +145,13 @@ meet course planning, ...
 
 ## Technologies
 
-- API RESTful python
+- Back end (API RESTful)
   - Flask
   - Django rest framework
   - Nodejs
-- HTML - CSS - JAVASCRIPT
+- Front end
+  - HTML/CSS
+  - Javascript
   - Tailwind
   - Bootstrap
   - React
