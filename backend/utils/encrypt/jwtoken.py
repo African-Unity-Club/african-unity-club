@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
 """jwt class"""
 import jwt
+from dotenv import load_dotenv
+
+import os
 from datetime import datetime, timedelta
 from typing import Optional, Dict, Union
-from dotenv import load_dotenv
+
 
 
 load_dotenv()
@@ -13,7 +16,6 @@ load_dotenv()
 class MpiJWT:
 
     algorithms = 'HS256'
-    expired = datetime.utcnow() + timedelta(days=30)
     error = ''
 
     def __init__(self, SECRET_KEY):
@@ -26,9 +28,9 @@ class MpiJWT:
         """
 
         if exp:
-            self.expired = datetime.utcnow() + timedelta(days=exp)
+            exp = (datetime.now() + timedelta(days=exp)).timestamp()
         
-        payload['exp'] = self.expired
+        payload['exp'] = exp or (datetime.now() + timedelta(days=30)).timestamp()
         return jwt.encode(payload, self.__secretkey, algorithm=self.algorithms)
     
     def analyze(self, token: Union[str, bytes]):

@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """MongoDB database for profile"""
-from backend.mongo import MongoConfig
-from backend.common import UPLOAD_FOLDER
-from backend.models import BaseModel, Base
+from ..utils.mongo import MongoConfig
+from ..utils.common import IMAGES_UPLOAD_FOLDER as UPLOAD_FOLDER
+from ..utils.base import BaseModel, Base
 
 from bson import ObjectId
 from dotenv import load_dotenv
@@ -101,7 +101,7 @@ class User(Base):
     
     def find(self, dict: Dict):
 
-        return list(self.datatable.find_one(dict))
+        return list(self.datatable.find(dict))
     
     def get(self, id: str):
         

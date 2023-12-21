@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """ token required file """
 from flask import request, abort
-from utils.encrypt.encrypt import MPIEncryptor as Encrypt
+from .encrypt.encrypt import MPIEncryptor as Encrypt
 
 from functools import wraps
 
-from users.models import User
+from ..users.models import User
 
 
 
@@ -32,7 +32,7 @@ def required_token(f):
         if User.get(payload['user_id'])['status'] == 'inactive':
             abort(401, 'user is inactive')
 
-        return f(*args, user_id=payload['user_id'], **kwargs)
+        return f(*args, sync=payload, **kwargs)
 
     return decorated
 
