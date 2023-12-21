@@ -69,7 +69,7 @@ african-unity-club$ python -m pip install -r requirements.txt
 
 the various functions to be implemented
 
-### Authentication by token
+### Authentication by token (backend side is ok, )
 
 - signup (register)
 - otp (email verify)
