@@ -2,10 +2,11 @@
 """MongoDB database for profile"""
 from backend.mongo import MongoConfig
 from backend.common import UPLOAD_FOLDER
-from backend.models import BaseModel
+from backend.models import BaseModel, Base
 
 from bson import ObjectId
 from dotenv import load_dotenv
+import pymongo
 
 from datetime import datetime
 from typing import Dict, List
@@ -39,7 +40,8 @@ attrs = ProfileModel
 
 
 
-class User:
+
+class User(Base):
 
     """
     User Model
@@ -64,15 +66,22 @@ class User:
     + role
     + last_login
     + status
+
+    example
+    =======
+    
+    ```
+    >>> user = User.create({'username': 'myname', 'password': 'mypassword'})
+    >>> print(user)
+    ```
     """
 
     def __init__(self):
         """Initialize User Model"""
-        self.__db = MongoConfig.client['profile']
-        self.__users = self.__db['users']
+        self.datatable: pymongo.collection.Collection = self.database[self.__class__.__name__]
 
-    def create(self, user: Dict) -> Dict:
-        """Create new user"""
+    def create(self, user: Dict):
+
         for key, value in user.items():
             if key not in attrs.keys():
                 raise KeyError(f"Invalid key: {key}")
@@ -83,23 +92,23 @@ class User:
         attrs['_id'] = str(ObjectId())
         attrs['created_at'] = attrs['updated_at'] = datetime.utcnow().isoformat()
         
-        user = self.__users.insert_one(attrs)
-        return self.__users.find_one({'_id': user.inserted_id})
+        user = self.datatable.insert_one(attrs)
+        return self.datatable.find_one({'_id': user.inserted_id})
     
-    def all(self) -> List[Dict]:
-        """Get all users"""
-        return list(self.__users.find({}))
+    def all(self):
+
+        return list(self.datatable.find({}))
     
-    def find(self, dict: Dict) -> List[Dict]:
-        """Get user by id"""
-        return list(self.__users.find_one(dict))
+    def find(self, dict: Dict):
+
+        return list(self.datatable.find_one(dict))
     
-    def get(self, id: str) -> Dict:
-        """Get user by id"""
-        return self.__users.find_one({'_id': id})
+    def get(self, id: str):
+        
+        return self.datatable.find_one({'_id': id})
     
-    def update(self, id: str, user: Dict) -> Dict:
-        """Update user"""
+    def update(self, id: str, user: Dict):
+        
         for key, value in user.items():
             if key not in attrs.keys():
                 raise KeyError(f"Invalid key: {key}")
@@ -118,32 +127,37 @@ class User:
         
         user['updated_at'] = datetime.utcnow().isoformat()
         
-        usr = self.__users.update_one({'_id': id}, {'$set': user})
-        return self.__users.find_one({'_id': usr.upserted_id})
+        usr = self.datatable.update_one({'_id': id}, {'$set': user})
+        return self.datatable.find_one({'_id': usr.upserted_id})
     
     def update_password(self, id: str, password: str) -> Dict:
         """Update user password"""
-        user = self.__users.update_one({'_id': id}, {'$set': {'password': password}})
-        return self.__users.find_one({'_id': user.upserted_id})
+        user = self.datatable.update_one({'_id': id}, {'$set': {'password': password}})
+        return self.datatable.find_one({'_id': user.upserted_id})
     
     def update_avatar(self, id: str, avatar: str) -> Dict:
         """Update user avatar"""
-        user = self.__users.update_one({'_id': id}, {'$set': {'avatar': avatar}})
-        return self.__users.find_one({'_id': user.upserted_id})
+        user = self.datatable.update_one({'_id': id}, {'$set': {'avatar': avatar}})
+        return self.datatable.find_one({'_id': user.upserted_id})
     
     def update_role(self, id: str, role: str) -> Dict:
         """Update user role"""
-        user = self.__users.update_one({'_id': id}, {'$set': {'role': role}})
-        return self.__users.find_one({'_id': user.upserted_id})
+        user = self.datatable.update_one({'_id': id}, {'$set': {'role': role}})
+        return self.datatable.find_one({'_id': user.upserted_id})
     
     def update_status(self, id: str, status: str) -> Dict:
         """Update user status"""
-        user = self.__users.update_one({'_id': id}, {'$set': {'status': status}})
-        return self.__users.find_one({'_id': user.upserted_id})
+        user = self.datatable.update_one({'_id': id}, {'$set': {'status': status}})
+        return self.datatable.find_one({'_id': user.upserted_id})
+    
+    def update_last_login(self, id: str, last_login: str) -> Dict:
+        """Update user last login"""
+        user = self.datatable.update_one({'_id': id}, {'$set': {'last_login': last_login}})
+        return self.datatable.find_one({'_id': user.upserted_id})
     
     def count(self) -> int:
         """Count all users"""
-        return self.__users.count_documents({})
+        return self.datatable.count_documents({})
 
 
 User = User()
