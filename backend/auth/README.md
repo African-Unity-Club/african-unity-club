@@ -14,6 +14,9 @@ african-unity-club$ . .venv/bin/activate
 2- signup
 
 ```javascript
+
+endpoint = /signup
+
 /* data */
 {
     "username": "victor",
@@ -55,12 +58,18 @@ african-unity-club$ . .venv/bin/activate
 3- signout
 
 ```javascript
+
+endpoint = /signout
+
 Authorization --AUC-- eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjU4NDNiM2ZkOGVjOTI4ZWI0YWE5ZmE2IiwiZXhwIjoxNzA1NzU2NzM1Ljk1MzQ4NX0.c3dn2X6oukSKXjKKkhJK5_eFnWWaBal_K5JwhykJnkM
 ```
 
 4- signin
 
 ```javascript
+
+endpoint = /signin
+
 /*data*/
 {
 	"username": "victor",
