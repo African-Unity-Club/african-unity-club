@@ -1,5 +1,12 @@
 # AUTHENTICATION
 
+- Sign Up
+
+- Sign In
+
+- Sign Out
+
+
 1- run authenticate microservice
 
 ```bash

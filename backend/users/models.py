@@ -78,7 +78,7 @@ class User(Base):
 
     def __init__(self):
         """Initialize User Model"""
-        self.datatable: pymongo.collection.Collection = self.database[self.__class__.__name__]
+        self.collection: pymongo.collection.Collection = self.database[self.__class__.__name__]
 
     def create(self, user: Dict):
 
@@ -92,20 +92,20 @@ class User(Base):
         attrs['_id'] = str(ObjectId())
         attrs['created_at'] = attrs['updated_at'] = datetime.utcnow().isoformat()
         
-        user = self.datatable.insert_one(attrs)
-        return self.datatable.find_one({'_id': user.inserted_id})
+        user = self.collection.insert_one(attrs)
+        return self.collection.find_one({'_id': user.inserted_id})
     
     def all(self):
 
-        return list(self.datatable.find({}))
+        return list(self.collection.find({}))
     
-    def find(self, dict: Dict):
+    def find(self, data: Dict):
 
-        return list(self.datatable.find(dict))
+        return list(self.collection.find(data))
     
     def get(self, id: str):
         
-        return self.datatable.find_one({'_id': id})
+        return self.collection.find_one({'_id': id})
     
     def update(self, id: str, user: Dict):
         
@@ -127,37 +127,37 @@ class User(Base):
         
         user['updated_at'] = datetime.utcnow().isoformat()
         
-        usr = self.datatable.update_one({'_id': id}, {'$set': user})
-        return self.datatable.find_one({'_id': usr.upserted_id})
+        usr = self.collection.update_one({'_id': id}, {'$set': user})
+        return self.collection.find_one({'_id': usr.upserted_id})
     
     def update_password(self, id: str, password: str) -> Dict:
         """Update user password"""
-        user = self.datatable.update_one({'_id': id}, {'$set': {'password': password}})
-        return self.datatable.find_one({'_id': user.upserted_id})
+        user = self.collection.update_one({'_id': id}, {'$set': {'password': password}})
+        return self.collection.find_one({'_id': user.upserted_id})
     
     def update_avatar(self, id: str, avatar: str) -> Dict:
         """Update user avatar"""
-        user = self.datatable.update_one({'_id': id}, {'$set': {'avatar': avatar}})
-        return self.datatable.find_one({'_id': user.upserted_id})
+        user = self.collection.update_one({'_id': id}, {'$set': {'avatar': avatar}})
+        return self.collection.find_one({'_id': user.upserted_id})
     
     def update_role(self, id: str, role: str) -> Dict:
         """Update user role"""
-        user = self.datatable.update_one({'_id': id}, {'$set': {'role': role}})
-        return self.datatable.find_one({'_id': user.upserted_id})
+        user = self.collection.update_one({'_id': id}, {'$set': {'role': role}})
+        return self.collection.find_one({'_id': user.upserted_id})
     
     def update_status(self, id: str, status: str) -> Dict:
         """Update user status"""
-        user = self.datatable.update_one({'_id': id}, {'$set': {'status': status}})
-        return self.datatable.find_one({'_id': user.upserted_id})
+        user = self.collection.update_one({'_id': id}, {'$set': {'status': status}})
+        return self.collection.find_one({'_id': user.upserted_id})
     
     def update_last_login(self, id: str, last_login: str) -> Dict:
         """Update user last login"""
-        user = self.datatable.update_one({'_id': id}, {'$set': {'last_login': last_login}})
-        return self.datatable.find_one({'_id': user.upserted_id})
+        user = self.collection.update_one({'_id': id}, {'$set': {'last_login': last_login}})
+        return self.collection.find_one({'_id': user.upserted_id})
     
     def count(self) -> int:
         """Count all users"""
-        return self.datatable.count_documents({})
+        return self.collection.count_documents({})
 
 
 User = User()

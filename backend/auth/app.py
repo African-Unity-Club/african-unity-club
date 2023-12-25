@@ -7,11 +7,14 @@ from flask_bcrypt import Bcrypt
 
 from ..utils.encrypt.encrypt import MPIEncryptor as Encrypt
 from ..utils.required import required_token
+from ..utils.redis import redis_client
+from ..utils.encrypt.mbauth import MobileGoogleAuth
 
 from ..users.models import User
 from ..users.views import create_user
 
 from datetime import datetime, timedelta
+from typing import Dict
 import os
 
 
@@ -87,6 +90,84 @@ def internal_server_error(error):
 
 
 
+# token
+@auth.route('/rtoken', methods=['POST'], strict_slashes=False)
+def rtoken():
+    """token"""
+    data = request.get_json()
+    if not data:
+        abort(404)
+
+    user = data.get('user')
+    try:
+        User.update_status(user['_id'], status='active')
+        token = Encrypt.jwt.tokenizer({'user_id': user['_id']})
+        User.update_last_login(user['_id'], last_login=datetime.now().isoformat())
+
+        user['token'] = token
+        return jsonify(
+            {
+                'message': 'Success',
+                'data': user
+            }, 200
+        )
+    
+    except Exception as e:
+        return jsonify(
+            {
+                'message': 'Error',
+                'data': {}
+            }, 200
+        )
+
+
+# 2fa verify route
+@auth.route('/2fa-verify', methods=['POST'], strict_slashes=False)
+def two_factor_verify():
+    
+    data = request.get_json()
+    if not data:
+        abort(404)
+    
+    user = data
+
+    try:
+        # if 2fa 
+        _2fa = redis_client.get(user['_id'] + '_2fa')
+        if _2fa:
+            
+            # vérifier le code à usage unique lors de la connexion
+            if MobileGoogleAuth.verify(redis_client.get(user['_id'] + '_2fa'), data.get('code')):
+                return jsonify(
+                    {
+                        'message': 'Success',
+                        'data': {}
+                    }, 200
+                )
+            else:
+                return jsonify(
+                    {
+                        'message': 'Invalid code',
+                        'data': {}
+                    }, 401
+                )
+        else:
+            return jsonify(
+                {
+                    'message': '2fa not enabled',
+                    'data': {}
+                }, 200
+            )
+
+    except Exception as e:
+        return jsonify(
+            {
+                'message': 'Error',
+                'data': str(e)
+            }, 404
+        )
+
+
 # signup route
 @auth.route('/signup', methods=['POST'], strict_slashes=False)
 def signup():
@@ -140,18 +221,26 @@ def signup():
             }
         ), 400
     
-    User.update_status(user['_id'], status='active')
-    token = Encrypt.jwt.tokenizer({'user_id': user['_id']})
-    User.update_last_login(user['_id'], last_login=datetime.now().isoformat())
+    url = '' + '/rtoken'
+    return requests.post(url, data=user, header={'Content-type': 'application/json'})
 
-    user = User.get(user['_id'])
-    user['token'] = token
-    return jsonify(
-        {
-            'message': 'Success',
-            'data': user
-        }, 201
-    )
+
+# signup by google
+@auth.route('/signup/google', methods=['POST'], strict_slashes=False)
+def signup_google():
+    pass
+
+
+# signup by facebook
+@auth.route('/signup/google', methods=['POST'], strict_slashes=False)
+def signup_facebook():
+    pass
+
+
+# signup by linkedin
+@auth.route('/signup/google', methods=['POST'], strict_slashes=False)
+def signup_linkedin():
+    pass
 
 
 # signin route
@@ -186,19 +275,14 @@ def signin():
                 'data': {}
             }
         ), 400
-    
-    token = Encrypt.jwt.tokenizer({'user_id': user[0]['_id']})
-    User.update_last_login(user[0]['_id'], last_login=datetime.now().isoformat())
-    User.update_status(user[0]['_id'], status='active')
-    
-    user = User.get(user[0]['_id'])
-    user['token'] = token
-    
+
+    user = User.get(user[0]['id'])
+
     return jsonify(
         {
-            'message': 'Success',
+            'message': 'token required',
             'data': user
-        }
+        }, 200
     )
 
 

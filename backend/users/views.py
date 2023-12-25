@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """ profile API RESTful endpoints """
-from flask import Blueprint, request, jsonify
-
+from flask import Flask, request, jsonify, abort
+from flask_cors import CORS
+from dotenv import load_dotenv
 
 from .models import User
 
@@ -9,8 +10,20 @@ from ..utils.required import required_token
 from ..utils.encrypt.mbauth import MobileGoogleAuth
 from ..utils.redis import redis_client
 
+from datetime import datetime, timedelta
+from typing import Dict
+import os
 
-profile = Blueprint('profile', __name__, url_prefix='/profile')
+
+load_dotenv()
+
+profile = Flask(__name__)
+
+profile.config['ENV'] = os.environ.get('FLASK_ENV')
+profile.config['FLASK_RUN_PORT'] = os.environ.get('FLASK_RUN_PORT')
+profile.config['FLASK_RUN_HOST'] = os.environ.get('FLASK_RUN_HOST')
+profile.config['SECRET_KEY'] = os.environ.get('FLASK_SECRET_KEY')
+cors = CORS(profile, resources={r"/*": {"origins": "*"}})
 
 
 
@@ -28,41 +41,12 @@ def create_user(username, email, password):
         return None
 
 
-# get all profiles
-@profile.route('/all', methods=['GET'], strict_slashes=False)
-@required_token
-def all(sync):
-    try:
-        user = User.get(sync['user_id'])
-        if user and user['role'] in ('agent', 'controler', 'manager', 'admin', 'superadmin'):
-            return jsonify(
-                {
-                    'message': 'Success',
-                    'data': User.all()
-                }, 200
-            )
-
-        else:
-            return jsonify(
-                {
-                    'message': 'Success',
-                    'data': {}
-                }, 401
-            )
-    except Exception as e:
-        return jsonify(
-            {
-                'message': 'Error',
-                'data': str(e)
-            }, 404
-        )
-
 # find profiles by query
-@profile.route('/search', methods=['GET', 'POST'], strict_slashes=False)
+@profile.route('/users-search', methods=['GET', 'POST'], strict_slashes=False)
 @required_token
 def search(sync):
 
-    data = rquest.get_json()
+    data = request.get_json()
     if not data:
         abort(404)
     
@@ -82,7 +66,7 @@ def search(sync):
         )
 
 # get profile by id
-@profile.route('/me', methods=['GET'], strict_slashes=False)
+@profile.route('/users-me', methods=['GET'], strict_slashes=False)
 @required_token
 def me(sync):
     
@@ -102,7 +86,7 @@ def me(sync):
         )
 
 
-@profile.route('/user/<string:id>', methods=['GET'], strict_slashes=False)
+@profile.route('/user/<id>', methods=['GET'], strict_slashes=False)
 @required_token
 def user(sync, id):
     
@@ -132,7 +116,7 @@ def user(sync, id):
         )
 
 
-@profile.route('/user-profile/<string:id>', methods=['GET'], strict_slashes=False)
+@profile.route('/user-profile/<id>', methods=['GET'], strict_slashes=False)
 @required_token
 def user_profile(sync, id):
 
@@ -166,7 +150,7 @@ def user_profile(sync, id):
 
 
 # update profile by id
-@profile.route('/update-me', methods=['PUT'], strict_slashes=False)
+@profile.route('/users-update-me', methods=['PUT'], strict_slashes=False)
 @required_token
 def update_me(sync):
     
@@ -193,7 +177,7 @@ def update_me(sync):
 
 
 # update profile password by id
-@profile.route('/update-password-me', methods=['PUT'], strict_slashes=False)
+@profile.route('/users-update-password-me', methods=['PUT'], strict_slashes=False)
 @required_token
 def update_password_me(sync):
     
@@ -231,7 +215,7 @@ def update_password_me(sync):
 def traitement_avatar(avatar, user_id):
     pass
 
-@profile.route('/update-avatar-me', methods=['PUT'], strict_slashes=False)
+@profile.route('/users-update-avatar-me', methods=['PUT'], strict_slashes=False)
 @required_token
 def update_avatar_me(sync):
     
@@ -259,7 +243,7 @@ def update_avatar_me(sync):
         )
 
 # update profile status by id
-@profile.route('/update-status-me', methods=['PUT'], strict_slashes=False)
+@profile.route('/users-update-status-me', methods=['PUT'], strict_slashes=False)
 @required_token
 def update_status_me(sync):
     pass
@@ -273,7 +257,7 @@ def two_factor_enable(sync):
         _2fa_key = MobileGoogleAuth.keygen
 
         # enregistrer la clé secrète dans la base de donnée redis
-        redis_client.set(sync['user_id'] + '2fa', _2fa_key)
+        redis_client.set(sync['user_id'] + '_2fa', _2fa_key)
 
         # générer le code QR
         _2fa_qrcode = MobileGoogleAuth.qrcode(_2fa_key)
@@ -311,40 +295,8 @@ def two_factor_disable(sync):
     )
 
 
-@profile.route('/2fa-verify', methods=['PUT'], strict_slashes=False)
-@required_token
-def two_factor_verify(sync):
-    
-    data = request.get_json()
-    if not data:
-        abort(404)
-
-    try:
-        # vérifier le code à usage unique lors de la connexion
-        if MobileGoogleAuth.verify(redis_client.get(sync['user_id'] + '2fa'), data.get('code')):
-            return jsonify(
-                {
-                    'message': 'Success',
-                    'data': {}
-                }, 200
-            )
-        else:
-            return jsonify(
-                {
-                    'message': 'Error',
-                    'data': 'Invalid code'
-                }, 401
-            )
-    except Exception as e:
-        return jsonify(
-            {
-                'message': 'Error',
-                'data': str(e)
-            }, 404
-        )
-
 # number of profiles
-@profile.route('/number-profiles', methods=['GET'], strict_slashes=False)
+@profile.route('/users-number-profiles', methods=['GET'], strict_slashes=False)
 @required_token
 def number_profiles(sync):
     
@@ -362,3 +314,10 @@ def number_profiles(sync):
                 'data': str(e)
             }
         )
+
+
+
+if __name__ == '__main__':
+    profile.run()
+
+# flask --app app run --debug
