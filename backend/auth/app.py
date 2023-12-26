@@ -4,6 +4,7 @@ from flask import Flask, jsonify, request, abort
 from flask_cors import CORS
 from dotenv import load_dotenv
 from flask_bcrypt import Bcrypt
+import requests
 
 from ..utils.encrypt.encrypt import MPIEncryptor as Encrypt
 from ..utils.required import required_token
@@ -16,6 +17,7 @@ from ..users.views import create_user
 from datetime import datetime, timedelta
 from typing import Dict
 import os
+import json
 
 
 
@@ -98,8 +100,17 @@ def rtoken():
     if not data:
         abort(404)
 
-    user = data.get('user')
+    user_id = data.get('user_id')
     try:
+        user = User.get(user_id)
+        if not user:
+            return jsonify(
+                {
+                    'message': 'user not found',
+                    'data': {}
+                }, 404
+            )
+        
         User.update_status(user['_id'], status='active')
         token = Encrypt.jwt.tokenizer({'user_id': user['_id']})
         User.update_last_login(user['_id'], last_login=datetime.now().isoformat())
@@ -129,21 +140,27 @@ def two_factor_verify():
     if not data:
         abort(404)
     
-    user = data
+    user_id = data.get('user_id')
 
     try:
+        user = User.get(user_id)
+        if not user:
+            return jsonify(
+                {
+                    'message': 'user not found',
+                    'data': {}
+                }, 404
+            )
+        
+        url = 'http://127.0.0.1' + ':' + auth.config['FLASK_RUN_PORT'] + '/rtoken'
+        
         # if 2fa 
-        _2fa = redis_client.get(user['_id'] + '_2fa')
+        _2fa = redis_client.get(user_id + '_2fa')
         if _2fa:
             
             # vérifier le code à usage unique lors de la connexion
-            if MobileGoogleAuth.verify(redis_client.get(user['_id'] + '_2fa'), data.get('code')):
-                return jsonify(
-                    {
-                        'message': 'Success',
-                        'data': {}
-                    }, 200
-                )
+            if MobileGoogleAuth.verify(redis_client.get(user_id + '_2fa'), data.get('code')):
+                return requests.post(url, data=json.dumps({'user_id': user_id}), headers={'Content-Type': 'application/json'}).json()
             else:
                 return jsonify(
                     {
@@ -152,12 +169,7 @@ def two_factor_verify():
                     }, 401
                 )
         else:
-            return jsonify(
-                {
-                    'message': '2fa not enabled',
-                    'data': {}
-                }, 200
-            )
+            return requests.post(url, data=json.dumps({'user_id': user_id}), headers={'Content-Type': 'application/json'}).json()
 
     except Exception as e:
         return jsonify(
@@ -221,8 +233,9 @@ def signup():
             }
         ), 400
     
-    url = '' + '/rtoken'
-    return requests.post(url, data=user, header={'Content-type': 'application/json'})
+    url = 'http://127.0.0.1' + ':' + auth.config['FLASK_RUN_PORT'] + '/rtoken'
+    
+    return requests.post(url, data=json.dumps({'user_id': user['_id']}), headers={'Content-Type': 'application/json'}).json()
 
 
 # signup by google
@@ -276,14 +289,18 @@ def signin():
             }
         ), 400
 
-    user = User.get(user[0]['id'])
+    user = User.get(user[0]['_id'])
+    if not user:
+        return jsonify(
+            {
+                'message': 'user not found',
+                'data': {}
+            }
+        ), 400
 
-    return jsonify(
-        {
-            'message': 'token required',
-            'data': user
-        }, 200
-    )
+    url = 'http://127.0.0.1' + ':' + auth.config['FLASK_RUN_PORT'] + '/2fa-verify'
+
+    return requests.post(url, data=json.dumps({'user_id': user['_id']}), headers={'Content-Type': 'application/json'}).json()
 
 
 # signout route

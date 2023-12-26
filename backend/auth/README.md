@@ -1,10 +1,35 @@
 # AUTHENTICATION
 
-- Sign Up
+## Sign Up
 
-- Sign In
+1- *data*
 
-- Sign Out
+- usernane (required)
+- email (required)
+- password (required)
+
+2- *create user*
+
+3- *token*
+
+4- *login*
+
+## Sign In
+
+1- *data*
+
+- username or email (required)
+- password (required)
+
+2- *2 factor check exist and verify*
+
+- code (if 2 factor enable)
+
+3- *token*
+
+4- *login*
+
+## Sign Out
 
 
 1- run authenticate microservice
@@ -26,40 +51,41 @@ endpoint = /signup
 
 /* data */
 {
-    "username": "victor",
-    "email": "victor@gmail.com",
-    "password":"0000000000"
+	"username": "victor",
+	"email": "victor@gmail.com",
+	"password":"0000000000"
 }
-/* response */
 
+/* response */
 [
 	{
 		"data": {
-			"_id": "65843b3fd8ec928eb4aa9fa6",
+			"_id": "658aac4a1ce44e0b3b7a0a52",
 			"about": "",
 			"avatar": "african-unity-club\\uploads\\nouser.png",
 			"birth": "",
 			"city": "",
 			"country": "",
-			"created_at": "2023-12-21T13:18:55.545157",
+			"created_at": "2023-12-26T10:34:50.846299",
 			"email": "victor",
 			"first_name": "",
-			"last_login": "2023-12-21T13:18:55.954475",
+			"last_login": "",
 			"last_name": "",
-			"password": "$2b$12$wqtw7sx1t0ImZNK0I7dAZOSML44IEmB0r4e7.xN1HiIumNK.gRgYO",
+			"password": "$2b$12$7Cc7nXD18SOJpq5Icps5/eaoNY8Buk6NfdKJbpseuiXchgomo3OVC",
 			"phone": "",
 			"role": "user",
 			"state": "",
-			"status": "active",
+			"status": "pending",
 			"street": "",
-			"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjU4NDNiM2ZkOGVjOTI4ZWI0YWE5ZmE2IiwiZXhwIjoxNzA1NzU2NzM1Ljk1MzQ4NX0.c3dn2X6oukSKXjKKkhJK5_eFnWWaBal_K5JwhykJnkM",
-			"updated_at": "2023-12-21T13:18:55.545157",
+			"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjU4YWFjNGExY2U0NGUwYjNiN2EwYTUyIiwiZXhwIjoxNzA2MTc4ODkxLjIxNDQ2MX0.WG5HIIziJcNVVjB1ytAW2RblmUXRCUooKrgnyiS0wic",
+			"updated_at": "2023-12-26T10:34:50.846299",
 			"username": "victor"
 		},
 		"message": "Success"
 	},
-	201
+	200
 ]
+
 ```
 
 3- signout
@@ -69,6 +95,12 @@ endpoint = /signup
 endpoint = /signout
 
 Authorization --AUC-- eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjU4NDNiM2ZkOGVjOTI4ZWI0YWE5ZmE2IiwiZXhwIjoxNzA1NzU2NzM1Ljk1MzQ4NX0.c3dn2X6oukSKXjKKkhJK5_eFnWWaBal_K5JwhykJnkM
+
+/* resposne */
+{
+	"data": {},
+	"message": "Success"
+}
 ```
 
 4- signin
@@ -87,31 +119,34 @@ endpoint = /signin
 Authorization --AUC-- eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjU4NDNiM2ZkOGVjOTI4ZWI0YWE5ZmE2IiwiZXhwIjoxNzA1NzU2NzM1Ljk1MzQ4NX0.c3dn2X6oukSKXjKKkhJK5_eFnWWaBal_K5JwhykJnkM
 
 /*response*/
-{
-	"data": {
-		"_id": "65843b3fd8ec928eb4aa9fa6",
-		"about": "",
-		"avatar": "african-unity-club\\uploads\\nouser.png",
-		"birth": "",
-		"city": "",
-		"country": "",
-		"created_at": "2023-12-21T13:18:55.545157",
-		"email": "victor",
-		"first_name": "",
-		"last_login": "2023-12-21T13:25:21.109596",
-		"last_name": "",
-		"password": "$2b$12$wqtw7sx1t0ImZNK0I7dAZOSML44IEmB0r4e7.xN1HiIumNK.gRgYO",
-		"phone": "",
-		"role": "user",
-		"state": "",
-		"status": "active",
-		"street": "",
-		"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjU4NDNiM2ZkOGVjOTI4ZWI0YWE5ZmE2IiwiZXhwIjoxNzA1NzU3MTIxLjEwODU5Nn0.Cl88RlrGOlenI2s26Mx5LnlUxeP7axn35lakrF8Ayis",
-		"updated_at": "2023-12-21T13:18:55.545157",
-		"username": "victor"
+[
+	{
+		"data": {
+			"_id": "658aac4a1ce44e0b3b7a0a52",
+			"about": "",
+			"avatar": "african-unity-club\\uploads\\nouser.png",
+			"birth": "",
+			"city": "",
+			"country": "",
+			"created_at": "2023-12-26T10:34:50.846299",
+			"email": "victor",
+			"first_name": "",
+			"last_login": "2023-12-26T10:38:24.529209",
+			"last_name": "",
+			"password": "$2b$12$7Cc7nXD18SOJpq5Icps5/eaoNY8Buk6NfdKJbpseuiXchgomo3OVC",
+			"phone": "",
+			"role": "user",
+			"state": "",
+			"status": "inactive",
+			"street": "",
+			"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjU4YWFjNGExY2U0NGUwYjNiN2EwYTUyIiwiZXhwIjoxNzA2MTc5NTEyLjY0NDUxNX0.agNWv1QxmsgSsc9O9oEHXWApCLzxvnwVAPGqyLkgHqw",
+			"updated_at": "2023-12-26T10:34:50.846299",
+			"username": "victor"
+		},
+		"message": "Success"
 	},
-	"message": "Success"
-}
+	200
+]
 ```
 
 =======================
