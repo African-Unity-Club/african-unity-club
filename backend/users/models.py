@@ -76,10 +76,6 @@ class User(Base):
     ```
     """
 
-    def __init__(self):
-        """Initialize User Model"""
-        self.collection: pymongo.collection.Collection = self.database[self.__class__.__name__]
-
     def create(self, user: Dict):
 
         for key, value in user.items():
@@ -95,21 +91,9 @@ class User(Base):
         user = self.collection.insert_one(attrs)
         return self.collection.find_one({'_id': user.inserted_id})
     
-    def all(self):
-
-        return list(self.collection.find({}))
-    
-    def find(self, data: Dict):
-
-        return list(self.collection.find(data))
-    
-    def get(self, id: str):
+    def update(self, id: str, data: Dict):
         
-        return self.collection.find_one({'_id': id})
-    
-    def update(self, id: str, user: Dict):
-        
-        for key, value in user.items():
+        for key, value in data.items():
             if key not in attrs.keys():
                 raise KeyError(f"Invalid key: {key}")
             
@@ -125,9 +109,9 @@ class User(Base):
             ):
                 del user[key]
         
-        user['updated_at'] = datetime.utcnow().isoformat()
+        data['updated_at'] = datetime.utcnow().isoformat()
         
-        usr = self.collection.update_one({'_id': id}, {'$set': user})
+        usr = self.collection.update_one({'_id': id}, {'$set': data})
         return self.collection.find_one({'_id': usr.upserted_id})
     
     def update_password(self, id: str, password: str) -> Dict:
@@ -154,10 +138,6 @@ class User(Base):
         """Update user last login"""
         user = self.collection.update_one({'_id': id}, {'$set': {'last_login': last_login}})
         return self.collection.find_one({'_id': user.upserted_id})
-    
-    def count(self) -> int:
-        """Count all users"""
-        return self.collection.count_documents({})
 
 
 User = User()

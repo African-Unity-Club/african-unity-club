@@ -3,6 +3,8 @@
 from flask import Flask, request, jsonify, abort
 from flask_cors import CORS
 from dotenv import load_dotenv
+import requests
+from flask_bcrypt import Bcrypt
 
 from .models import User
 
@@ -25,6 +27,7 @@ profile.config['FLASK_RUN_HOST'] = os.environ.get('FLASK_RUN_HOST')
 profile.config['SECRET_KEY'] = os.environ.get('FLASK_SECRET_KEY')
 cors = CORS(profile, resources={r"/*": {"origins": "*"}})
 
+bcrypt = Bcrypt(profile)
 
 
 def create_user(username, email, password):
@@ -186,16 +189,24 @@ def update_password_me(sync):
         abort(404)
     
     try:
-        if data.get('old_password') != data.get('new_password'):
+        user = User.get(sync['user_id'])
+
+        verify = bcrypt.check_password_hash(user['password'], data.get('old_password'))
+        if not verify:
             return jsonify(
                 {
                     'message': 'Error',
                     'data': 'Passwords do not match'
                 }, 401
             )
-        
-        User.update_password(sync['user_id'], data.get('new_password'))
 
+        password = bcrypt.generate_password_hash(data.get('new_password')).decode('utf-8')
+        
+        User.update_password(sync['user_id'], password)
+        # deconnecter l'utilisateur
+        url = 'http://127.0.0.1:8000/signout'
+        token = request.headers.get('Authorization').split(' ')[1]
+        requests.post(url, headers={'Authorization': '--AUC-- ' + token, 'Content-type': 'application/json'})
         return jsonify(
             {
                 'message': 'Success',
@@ -252,8 +263,19 @@ def update_status_me(sync):
 @profile.route('/2fa-enable', methods=['PUT'], strict_slashes=False)
 @required_token
 def two_factor_enable(sync):
+
+    data = request.get_json()
+    if not data:
+        abort(404)
     
     try:
+        if data.get('2fa') == False:
+            return jsonify(
+                {
+                    'message': 'Error',
+                    'data': '2FA is disabled'
+                }, 401
+            )
         _2fa_key = MobileGoogleAuth.keygen
 
         # enregistrer la clé secrète dans la base de donnée redis
