@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""skills models"""
+""" awards models """
 from ..utils.mongo import MongoConfig
 from ..utils.base import BaseModel, Base
 
@@ -9,22 +9,22 @@ import pymongo
 from typing import Dict
 
 
-skill = {
+award = {
     'name': '',
-    'user_id': '',
-    'jauge': ''
+    'year': '',
+    'institution': '',
+    'user_id': ''
 } | BaseModel
 
-attrs = skill
+
+attrs = award
 
 
-
-class Skills(Base):
-    """
-    """
+class Awards(Base):
+    """ Award """
 
     def create(self, data: Dict):
-        for key, value in data.items():
+        for key in data.items():
             if key not in attrs.keys():
                 raise KeyError(f"Invalid key: {key}")
             
@@ -34,23 +34,18 @@ class Skills(Base):
         attrs['_id'] = str(ObjectId())
         attrs['created_at'] = attrs['updated_at'] = datetime.utcnow().isoformat()
 
-        skill = self.collection.insert_one(attrs)
-        return self.collection.find_one({'_id': skill.inserted_id})
+        award = self.collection.insert_one(attrs)
+        return self.collection.find_one({'_id': award.inserted_id})
     
-    def update(self, id: str, data: Dict, user: str):
+    def update(self, user: str, id, data: Dict):
 
         for key in data.keys():
-            if key not in ('name', 'jauge'):
+            if key not in ('name', 'year', 'institution'):
                 raise KeyError(f"Invalid key: {key}")
         
         data['updated_at'] = datetime.utcnow().isoformat()
         return self.collection.update_one({'_id': id, 'user_id': user}, {'$set: data'})
 
-    def count(self):
-        return self.collection.count_documents({})
-    
-    def delete(self, user: str, id):
-        return self.collection.delete_one({'_id': id, 'user_id': user})
 
 
-Skills = Skills()
+Awards = Awards()
