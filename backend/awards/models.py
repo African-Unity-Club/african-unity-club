@@ -3,15 +3,19 @@
 from ..utils.mongo import MongoConfig
 from ..utils.base import BaseModel, Base
 
+from institution.models import Institution
+
 from bson import ObjectId
 import pymongo
 
 from typing import Dict
+from datetime import datetime
 
 
 award = {
     'name': '',
     'year': '',
+    'description': '',
     'institution': '',
     'user_id': ''
 } | BaseModel
@@ -31,6 +35,24 @@ class Awards(Base):
             if key not in ('_id', 'created_at', 'updated_at'):
                 attrs[key] = value
         
+        institution = Institution().get(data['institution'])
+        if institution:
+            attrs['institution'] = {
+                '_id': institution.get('_id'),
+                'name': institution.get('name'),
+                'avatar': institution.get('avatar'),
+                'country': institution.get('country')
+            }
+        else:
+            attrs['institution'] = {
+                '_id': attrs['institution'],
+                'name': '',
+                'avatar': '',
+                'country': ''
+            }
+        
+        attrs['year'] = datetime.strptime(attrs['year'], '%Y').strftime('%Y')
+        
         attrs['_id'] = str(ObjectId())
         attrs['created_at'] = attrs['updated_at'] = datetime.utcnow().isoformat()
 
@@ -44,7 +66,7 @@ class Awards(Base):
                 raise KeyError(f"Invalid key: {key}")
         
         data['updated_at'] = datetime.utcnow().isoformat()
-        return self.collection.update_one({'_id': id, 'user_id': user}, {'$set: data'})
+        self.collection.update_one({'_id': id, 'user_id': user}, {'$set: data'})
 
 
 

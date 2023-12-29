@@ -91,6 +91,66 @@ def internal_server_error(error):
     ), 500
 
 
+# forgot password
+@auth.route('/forgot-password', methods=['POST'], strict_slashes=False)
+def forgot_password():
+    """ forgot password """
+    data = request.get_json()
+    if not data:
+        abort(400, 'Not a JSON')
+    
+    email = data.get('email')
+    if not email:
+        abort(400, 'email is required')
+    
+    user = User.find({'email': email})
+    if not len(user):
+        return jsonify(
+            {
+                'message': 'user not found',
+                'data': {}
+            }
+        ), 400
+    
+    user = user[0]
+    # send email personnal code and link for password change
+    # save code in redis with  code : user_id
+    return jsonify(
+        {
+            'message': 'Success',
+            'data': {}
+        }
+    ), 200
+
+
+# change password
+@auth.route('/change-password', methods=['POST'], strict_slashes=False)
+def change_password():
+
+    data = request.get_json()
+    if not data:
+        abort(404)
+    
+    code = data.get('code')
+    user_id = redis_client.set(str(code))
+    if user_id:
+        password = bcrypt.generate_password_hash(data.get('password')).decode('utf-8')
+        User.update_password(user_id, password)
+        return jsonify(
+            {
+                'message': 'Success',
+                'data': {}
+            }
+        ), 200
+    else:
+        return jsonify(
+            {
+                'message': 'Error',
+                'data': {}
+            }
+        ), 400
+    
+
 
 # token
 @auth.route('/rtoken', methods=['POST'], strict_slashes=False)
@@ -108,8 +168,8 @@ def rtoken():
                 {
                     'message': 'user not found',
                     'data': {}
-                }, 404
-            )
+                }
+            ), 404
         
         User.update_status(user['_id'], status='active')
         token = Encrypt.jwt.tokenizer({'user_id': user['_id']})
@@ -120,16 +180,16 @@ def rtoken():
             {
                 'message': 'Success',
                 'data': user
-            }, 200
-        )
+            }
+        ), 200
     
     except Exception as e:
         return jsonify(
             {
                 'message': 'Error',
                 'data': {}
-            }, 200
-        )
+            }
+        ), 200
 
 
 # 2fa verify route
@@ -149,8 +209,8 @@ def two_factor_verify():
                 {
                     'message': 'user not found',
                     'data': {}
-                }, 404
-            )
+                }
+            ), 404
         
         url = 'http://127.0.0.1' + ':' + auth.config['FLASK_RUN_PORT'] + '/rtoken'
         
@@ -166,8 +226,8 @@ def two_factor_verify():
                     {
                         'message': 'Invalid code',
                         'data': {}
-                    }, 401
-                )
+                    }
+                ), 401
         else:
             return requests.post(url, data=json.dumps({'user_id': user_id}), headers={'Content-Type': 'application/json'}).json()
 
@@ -176,8 +236,8 @@ def two_factor_verify():
             {
                 'message': 'Error',
                 'data': str(e)
-            }, 404
-        )
+            }
+        ), 404
 
 
 # signup route
@@ -237,23 +297,6 @@ def signup():
     
     return requests.post(url, data=json.dumps({'user_id': user['_id']}), headers={'Content-Type': 'application/json'}).json()
 
-
-# signup by google
-@auth.route('/signup/google', methods=['POST'], strict_slashes=False)
-def signup_google():
-    pass
-
-
-# signup by facebook
-@auth.route('/signup/google', methods=['POST'], strict_slashes=False)
-def signup_facebook():
-    pass
-
-
-# signup by linkedin
-@auth.route('/signup/google', methods=['POST'], strict_slashes=False)
-def signup_linkedin():
-    pass
 
 
 # signin route
@@ -318,7 +361,7 @@ def signout(sync):
             'message': 'Success',
             'data': {}
         }
-    )
+    ), 200
 
 
 if __name__ == '__main__':

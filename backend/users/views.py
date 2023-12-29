@@ -54,19 +54,22 @@ def search(sync):
         abort(404)
     
     try:
+        users = User.find(data)
+        for user in users:
+            del user['password']
         return jsonify(
             {
                 'message': 'Success',
-                'data': User.find(data)
-            }, 200
-        )
+                'data': users
+            }
+        ), 200
     except Exception as e:
         return jsonify(
             {
                 'message': 'Success',
                 'data': str(e)
             }
-        )
+        ), 404
 
 # get profile by id
 @profile.route('/users-me', methods=['GET'], strict_slashes=False)
@@ -74,19 +77,21 @@ def search(sync):
 def me(sync):
     
     try:
+        user = User.get(sync['user_id'])
+        del user['password']
         return jsonify(
             {
                 'message': 'Success',
-                'data': User.get(sync['user_id'])
-            }, 200
-        )
+                'data': user
+            }
+        ), 200
     except Exception as e:
         return jsonify(
             {
                 'message': 'Success',
                 'data': User.get(sync['user_id'])
-            }, 401
-        )
+            }
+        ), 401
 
 
 @profile.route('/user/<id>', methods=['GET'], strict_slashes=False)
@@ -96,27 +101,28 @@ def user(sync, id):
     try:
         user = User.get(id)
         act = User.get(sync['user_id'])
+        del user['password']
         if user and act['role'] in ('agent', 'controler', 'manager', 'admin', 'superadmin'):
             return jsonify(
                 {
                     'message': 'Success',
                     'data': user
-                }, 200
-            )
+                }
+            ), 200
         else:
             return jsonify(
                 {
                     'message': 'Success',
                     'data': {}
-                }, 401
-            )
+                }
+            ), 401
     except Exception as e:
         return jsonify(
             {
                 'message': 'Error',
                 'data': str(e)
-            }, 404
-        )
+            }
+        ), 404
 
 
 @profile.route('/user-profile/<id>', methods=['GET'], strict_slashes=False)
@@ -139,16 +145,16 @@ def user_profile(sync, id):
             {
                 'message': 'Success',
                 'data': profile
-            }, 200
-        )
+            }
+        ), 200
         
     except Exception as e:
         return jsonify(
             {
                 'message': 'Error',
                 'data': str(e)
-            }, 404
-        )
+            }
+        ), 404
     
 
 
@@ -168,15 +174,15 @@ def update_me(sync):
             {
                 'message': 'Success',
                 'data': {}
-            }, 200
-        )
+            }
+        ), 200
     except Exception as e:
         return jsonify(
             {
                 'message': 'Error',
                 'data': str(e)
-            }, 404
-        )
+            }
+        ), 404
 
 
 # update profile password by id
@@ -197,8 +203,8 @@ def update_password_me(sync):
                 {
                     'message': 'Error',
                     'data': 'Passwords do not match'
-                }, 401
-            )
+                }
+            ), 401
 
         password = bcrypt.generate_password_hash(data.get('new_password')).decode('utf-8')
         
@@ -211,19 +217,21 @@ def update_password_me(sync):
             {
                 'message': 'Success',
                 'data': {}
-            }, 200
-        )
+            }
+        ), 200
     except Exception as e:
         return jsonify(
             {
                 'message': 'Error',
                 'data': str(e)
-            }, 404
-        )
+            }
+        ), 404
 
 
 # update profile avatar by id
 def traitement_avatar(avatar, user_id):
+
+    # condition sur la taille de l'image en fonction de l'abonnement
     pass
 
 @profile.route('/users-update-avatar-me', methods=['PUT'], strict_slashes=False)
@@ -236,28 +244,47 @@ def update_avatar_me(sync):
                 {
                     'message': 'Error',
                     'data': 'Error'
-                }, 401
-            )
+                }
+            ), 401
         User.update_avatar(sync['user_id'], request.get_json().get('avatar'))
         return jsonify(
             {
                 'message': 'Success',
                 'data': {}
-            }, 200
-        )
+            }
+        ), 200
     except Exception as e:
         return jsonify(
             {
                 'message': 'Error',
                 'data': str(e)
-            }, 404
-        )
+            }
+        ), 404
 
 # update profile status by id
 @profile.route('/users-update-status-me', methods=['PUT'], strict_slashes=False)
 @required_token
 def update_status_me(sync):
-    pass
+    
+    data = request.get_json()
+    if not data:
+        abort(404)
+    try:
+        User.update_status(sync['user_id'], data.get('status'))
+        return jsonify(
+            {
+                'message': 'Success',
+                'data': {}
+            }
+        ), 200
+    except Exception as e:
+        return jsonify(
+            {
+                'message': 'Error',
+                'data': str(e)
+            }
+        ), 404
+
 
 # 2FA enable
 @profile.route('/2fa-enable', methods=['PUT'], strict_slashes=False)
@@ -274,8 +301,8 @@ def two_factor_enable(sync):
                 {
                     'message': 'Error',
                     'data': '2FA is disabled'
-                }, 401
-            )
+                }
+            ), 401
         _2fa_key = MobileGoogleAuth.keygen
 
         # enregistrer la clé secrète dans la base de donnée redis
@@ -292,15 +319,15 @@ def two_factor_enable(sync):
                     'key': _2fa_key,
                     'qrcode': _2fa_qrcode
                 }
-            }, 200
-        )
+            }
+        ), 200
     except Exception as e:
         return jsonify(
             {
                 'message': 'Error',
                 'data': str(e)
-            }, 404
-        )
+            }
+        ), 404
 
 
 # 2FA disable
@@ -313,8 +340,8 @@ def two_factor_disable(sync):
         {
             'message': 'Success',
             'data': {}
-        }, 200
-    )
+        }
+    ), 200
 
 
 # number of profiles
@@ -327,15 +354,15 @@ def number_profiles(sync):
             {
                 'message': 'Success',
                 'data': User.count()
-            }, 200
-        )
+            }
+        ), 200
     except Exception as e:
         return jsonify(
             {
                 'message': 'Error',
                 'data': str(e)
             }
-        )
+        ), 400
 
 
 

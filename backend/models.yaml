@@ -171,9 +171,16 @@ softs skills model:
       - required: true
     description: user of the soft skill
     readOnly: false
+  
+  jauge:
+    type: string
+    validation:
+      - required: false
+    description: jauge of the soft skill
+    readOnly: false
 
 
-experiences model:
+experiences, certification, formation, stage model:
 
   name:
     type: string
@@ -212,53 +219,20 @@ experiences model:
     description: end date of the experience
     readOnly: false
   
-  user:
+  level:
     type: string
     validation:
-      - required: true
-    description: user of the soft skill
-    readOnly: false
-
-
-education model:
-
-  name:
-    type: string
-    validation:
-      - required: true
-    description: education
+      - required: false
+    description: level of the experience
     readOnly: false
   
-  description:
+  type:
     type: string
     validation:
       - required: false
-    description: description of the education
+    description: type of the experience
     readOnly: false
   
-  institution:
-    type: string
-    validation:
-      - required: false
-    description: institution of the education
-    readOnly: false
-
-  start_date:
-    type: string
-    format: date
-    validation:
-      - required: false
-    description: start date of the education
-    readOnly: false
-
-  end_date:
-    type: string
-    format: date
-    validation:
-      - required: false
-    description: end date of the education
-    readOnly: false
-
   user:
     type: string
     validation:

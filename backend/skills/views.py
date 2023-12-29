@@ -1,18 +1,88 @@
 #!/usr/bin/env python3
 """ skill views """
-from flask import Blueprint, request, jsonify
+from flask import Flask, jsonify, request, abort
+from flask_cors import CORS
+from dotenv import load_dotenv
 
 from .models import Skills
 
 from ..utils.required import required_token
 
+from typing import Dict
+import os
 
-skill = Blueprint('skills', __name__, url_prefix='/skills')
+
+load_dotenv()
+
+skill = Flask(__name__)
+
+skill.config['ENV'] = os.environ.get('FLASK_ENV')
+skill.config['FLASK_RUN_PORT'] = os.environ.get('FLASK_RUN_PORT')
+skill.config['FLASK_RUN_HOST'] = os.environ.get('FLASK_RUN_HOST')
+skill.config['SECRET_KEY'] = os.environ.get('FLASK_SECRET_KEY')
+cors = CORS(skill, resources={r"/*": {"origins": "*"}})
+
+
+
+# gestion d'erreur
+@skill.errorhandler(400)
+def bad_request(error):
+    """ bad request """
+    return jsonify(
+        {
+            'message': str(error),
+            'data': {}
+        }
+    ), 400
+
+
+@skill.errorhandler(401)
+def unauthorized(error):
+    """ unskillorized """
+    return jsonify(
+        {
+            'message': str(error),
+            'data': {}
+        }
+    ), 401
+
+
+@skill.errorhandler(403)
+def forbidden(error):
+    """ forbidden """
+    return jsonify(
+        {
+            'message': str(error),
+            'data': {}
+        }
+    ), 403
+
+
+@skill.errorhandler(404)
+def not_found(error):
+    """ not found """
+    return jsonify(
+        {
+            'message': str(error),
+            'data': {}
+        }
+    ), 404
+
+
+@skill.errorhandler(Exception)
+def internal_server_error(error):
+    """ internal server error """
+    return jsonify(
+        {
+            'message': str(error),
+            'data': {}
+        }
+    ), 500
 
 
 
 # get all skills of user
-@skill.route('/me', methods=['GET'], strict_slashes=False)
+@skill.route('/me-skills', methods=['GET'], strict_slashes=False)
 @required_token
 def get_user_skills(sync):
 
@@ -35,7 +105,7 @@ def get_user_skills(sync):
 
 
 # get skill of user
-@skill.route('/me/<id>', methods=['GET'], strict_slashes=False)
+@skill.route('/me-skill/<id>', methods=['GET'], strict_slashes=False)
 @required_token
 def get_user_skill(sync, id):
 
@@ -43,7 +113,7 @@ def get_user_skill(sync, id):
         return jsonify(
             {
                 'message': 'Success',
-                'data': Skills.get(sync['user_id'], id)
+                'data': Skills.get(id, user_id=sync['user_id'])
             }, 200
         )
     
@@ -57,7 +127,7 @@ def get_user_skill(sync, id):
 
 
 # create skill of user
-@skill.route('/', methods=['POST'], strict_slashes=False)
+@skill.route('/me-create-skill', methods=['POST'], strict_slashes=False)
 @required_token
 def create_skill(sync):
 
@@ -83,16 +153,16 @@ def create_skill(sync):
 
 
 # update skill of user
-@skill.route('/', methods=['PUT'], strict_slashes=False)
+@skill.route('/me-update-skill/<id>', methods=['PUT'], strict_slashes=False)
 @required_token
-def update_skill(sync):
+def update_skill(sync, id):
     
     data = request.get_json()
     if not data:
         abort(404)
 
     try:
-        Skills.update(sync['user_id'], data)
+        Skills.update(id=id, data=data, user=sync['user_id'])
         return jsonify(
             {
                 'message': 'Success',
@@ -109,16 +179,15 @@ def update_skill(sync):
 
 
 # delete skill of user
-@skill.route('/', methods=['DELETE'], strict_slashes=False)
+@skill.route('/me-delete-skill/<id>', methods=['DELETE'], strict_slashes=False)
 @required_token
-def delete_skill():
+def delete_skill(sync, id):
 
-    data = request.get_json()
     if not data:
         abort(400)
     
     try:
-        Skills.delete(sync['user_id'], data.get('id'))
+        Skills.delete(id=id, user=sync['user_id'])
 
         return jsonify(
             {

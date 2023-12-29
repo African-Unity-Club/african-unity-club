@@ -9,7 +9,6 @@ from .models import Awards
 
 from ..utils.required import required_token
 
-from datetime import datetime, timedelta
 from typing import Dict
 import os
 import json
@@ -39,7 +38,7 @@ def bad_request(error):
 
 
 @award.errorhandler(401)
-def unawardorized(error):
+def unauthorized(error):
     """ unawardorized """
     return jsonify(
         {
@@ -83,11 +82,10 @@ def internal_server_error(error):
 
 
 
-
 # all awards of user
 @award.route('/me-awards', methods=['GET'], stricte_slashes=False)
 @required_token
-def award(sync):
+def me_awards(sync):
 
     try:
         return jsonify(
@@ -106,15 +104,15 @@ def award(sync):
 
 
 # award of user
-@award.route('/', methods=[''], stricte_slashes=False)
+@award.route('/me-award/<id>', methods=['GET'], stricte_slashes=False)
 @required_token
-def award():
+def award(sync, id):
 
     try:
         return jsonify(
             {
                 'message': 'Success',
-                'data': {}
+                'data': Awards.get(id, user_id=sync['user_id'])
             }, 200
         )
     except Exception as e:
@@ -127,15 +125,21 @@ def award():
 
 
 # create award of user
-@award.route('/', methods=[''], stricte_slashes=False)
+@award.route('/me-create-award', methods=['POST'], stricte_slashes=False)
 @required_token
-def award():
+def create_award(sync):
+
+    data = request.get_json()
+    if not data:
+        abort(400, 'Invalid JSON')
+    
+    data['user_id'] = sync['user_id']
 
     try:
         return jsonify(
             {
                 'message': 'Success',
-                'data': {}
+                'data': Awards.create(data)
             }, 200
         )
     except Exception as e:
@@ -148,11 +152,16 @@ def award():
 
 
 # update award of user
-@award.route('/', methods=[''], stricte_slashes=False)
+@award.route('/update-award/<id>', methods=[''], stricte_slashes=False)
 @required_token
-def award():
+def update_award(sync, id):
+
+    data = request.get_json()
+    if not data:
+        abort(400, 'Invalid JSON')
 
     try:
+        Awards.update(user=sync['user_id'], id=id, data=data)
         return jsonify(
             {
                 'message': 'Success',
@@ -169,11 +178,12 @@ def award():
 
 
 # delete award of user
-@award.route('/', methods=[''], stricte_slashes=False)
+@award.route('/delete-award/<id>', methods=[''], stricte_slashes=False)
 @required_token
-def award():
+def delete_award(sync, id):
 
     try:
+        Awards.delete(id, user_id=sync['user_id'])
         return jsonify(
             {
                 'message': 'Success',

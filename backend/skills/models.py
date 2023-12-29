@@ -11,6 +11,8 @@ from typing import Dict
 
 skill = {
     'name': '',
+    'domain': '',
+    'description': '',
     'user_id': '',
     'jauge': ''
 } | BaseModel
@@ -45,12 +47,6 @@ class Skills(Base):
         
         data['updated_at'] = datetime.utcnow().isoformat()
         return self.collection.update_one({'_id': id, 'user_id': user}, {'$set: data'})
-
-    def count(self):
-        return self.collection.count_documents({})
-    
-    def delete(self, user: str, id):
-        return self.collection.delete_one({'_id': id, 'user_id': user})
 
 
 Skills = Skills()
