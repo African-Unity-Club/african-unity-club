@@ -25,7 +25,7 @@ ProfileModel = {
     'birth': '',
     'email': '',
     'phone': '',
-    'avatar': os.path.join(UPLOAD_FOLDER, 'nouser.png'),
+    'avatar': os.path.normpath(os.path.join(UPLOAD_FOLDER, 'nouser.png')),
     'country': '',
     'state': '',
     'city': '',

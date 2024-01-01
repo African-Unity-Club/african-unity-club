@@ -163,6 +163,7 @@ def rtoken():
     user_id = data.get('user_id')
     try:
         user = User.get(user_id)
+        
         if not user:
             return jsonify(
                 {
@@ -173,9 +174,12 @@ def rtoken():
         
         User.update_status(user['_id'], status='active')
         token = Encrypt.jwt.tokenizer({'user_id': user['_id']})
+        print(user)
         User.update_last_login(user['_id'], last_login=datetime.now().isoformat())
 
+        user = User.get(user['_id'])
         user['token'] = token
+        
         return jsonify(
             {
                 'message': 'Success',
@@ -259,7 +263,7 @@ def signup():
             }
         ), 400
     
-    email = data.get('username')
+    email = data.get('email')
     # check if email is already exists
     if len(User.find({'email': email})):
         return jsonify(
