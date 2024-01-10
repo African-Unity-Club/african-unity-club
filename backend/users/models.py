@@ -107,7 +107,7 @@ class User(Base):
                 'password',
                 'avatar'
             ):
-                del user[key]
+                del data[key]
         
         data['updated_at'] = datetime.utcnow().isoformat()
         

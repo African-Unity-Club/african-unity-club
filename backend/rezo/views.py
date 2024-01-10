@@ -81,7 +81,7 @@ def exception_handler(error):
 
 
 # user reseaux
-@rez.route('/me-socials', methods=['GET'], strict_slashes=Fasle)
+@rez.route('/me-socials', methods=['GET'], strict_slashes=False)
 @required_token
 def rez(sync):
     
@@ -100,8 +100,9 @@ def rez(sync):
             }
         ), 500
 
+
 # user reseau
-@rez.route('/me-social/<id>', methods=['GET'], strict_slashes=Fasle)
+@rez.route('/me-social/<id>', methods=['GET'], strict_slashes=False)
 @required_token
 def rez(sync, id):
     try:
@@ -121,7 +122,7 @@ def rez(sync, id):
     
 
 # user reseau create
-@rez.route('/me-social-create', methods=['POST'], strict_slashes=Fasle)
+@rez.route('/me-social-create', methods=['POST'], strict_slashes=False)
 @required_token
 def rez(sync):
     try:
@@ -141,8 +142,9 @@ def rez(sync):
             }
         ), 500
 
+
 # user reseau update
-@rez.route('/me-social-update/<id>', methods=['PUT'], strict_slashes=Fasle)
+@rez.route('/me-social-update/<id>', methods=['PUT'], strict_slashes=False)
 @required_token
 def rez(sync):
 
@@ -165,8 +167,9 @@ def rez(sync):
             }
         ), 500
 
+
 # user reseau delete
-@rez.route('/me-social-delete/<id>', methods=['DELETE'], strict_slashes=Fasle)
+@rez.route('/me-social-delete/<id>', methods=['DELETE'], strict_slashes=False)
 @required_token
 def delete_rez(sync, id):
     
@@ -184,3 +187,7 @@ def delete_rez(sync, id):
                 'data': str(e)
             }
         ), 500
+
+
+if __name__ == '__main__':
+    rez.run()

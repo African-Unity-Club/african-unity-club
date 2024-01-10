@@ -45,7 +45,7 @@ def create_user(username, email, password):
 
 
 # find profiles by query
-@profile.route('/users-search', methods=['GET', 'POST'], strict_slashes=False)
+@profile.route('/users-search', methods=['POST'], strict_slashes=False)
 @required_token
 def search(sync):
 
@@ -94,7 +94,7 @@ def me(sync):
         ), 401
 
 
-@profile.route('/user/<id>', methods=['GET'], strict_slashes=False)
+@profile.route('/users/<id>', methods=['GET'], strict_slashes=False)
 @required_token
 def user(sync, id):
     
@@ -112,7 +112,7 @@ def user(sync, id):
         else:
             return jsonify(
                 {
-                    'message': 'Success',
+                    'message': 'Unauthorized',
                     'data': {}
                 }
             ), 401
@@ -125,7 +125,7 @@ def user(sync, id):
         ), 404
 
 
-@profile.route('/user-profile/<id>', methods=['GET'], strict_slashes=False)
+@profile.route('/users-profile/<id>', methods=['GET'], strict_slashes=False)
 @required_token
 def user_profile(sync, id):
 
@@ -233,6 +233,7 @@ def traitement_avatar(avatar, user_id):
 
     # condition sur la taille de l'image en fonction de l'abonnement
     pass
+
 
 @profile.route('/users-update-avatar-me', methods=['PUT'], strict_slashes=False)
 @required_token

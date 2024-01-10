@@ -183,9 +183,6 @@ def update_skill(sync, id):
 @required_token
 def delete_skill(sync, id):
 
-    if not data:
-        abort(400)
-    
     try:
         Skills.delete(id=id, user=sync['user_id'])
 
@@ -202,3 +199,10 @@ def delete_skill(sync, id):
                 'data': {}
             }, 400
         )
+
+
+
+if __name__ == '__main__':
+    skill.run()
+
+# flask --app app run --debug
