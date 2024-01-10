@@ -1,4 +1,4 @@
-#!/usr/bin/env
+#!/usr/bin/env python3
 """ like, share, repost and comment views """
 from flask import Flask, jsonify, request, abort
 from flask_cors import CORS

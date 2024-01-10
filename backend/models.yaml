@@ -413,7 +413,6 @@ comment model:
       description: comment reference
       readOnly: false
 
-
 job alert model:
     
   domain:
@@ -443,7 +442,6 @@ job alert model:
       - required: true
     description: contract of the job alert
     readOnly: false
-
 
 community model:
       
@@ -551,6 +549,13 @@ community model:
     validation:
       - required: true
     description: visibility of the community (public, private)
+    readOnly: false
+  
+  groups:
+    type: string
+    validation:
+      - required: true
+    description: groups of the community
     readOnly: false
 
 
