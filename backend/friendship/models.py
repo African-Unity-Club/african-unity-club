@@ -137,3 +137,8 @@ class Followings(Base):
                 
         self.collection.update_one({'_id': id}, {'$set': data})
         return self.collection.find_one({'_id': id})
+
+
+Friends = Friends()
+Followers = Followers()
+Followings = Followings()

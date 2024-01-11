@@ -836,7 +836,7 @@ task model:
     readOnly: false
 
   
- timestamp:
+timestamp:
 
     start_time:
       type: string

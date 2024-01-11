@@ -20,6 +20,3 @@ thank you for your contribution, together let's restore africa and africans to t
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Share-blue)](https://www.linkedin.com/in/hydromelvictor/)
 [![Twitter](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/hydromelvictor)
-
-fdebd302-7efa-49dd-add8-6552e3693fc9
-f6e2052e-3406-40c7-a88f-79da12d917f0
