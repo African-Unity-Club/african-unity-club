@@ -61,7 +61,6 @@ html, body {
 .vwh {
   height: 100vh;
   width: 100%;
-  display: flex;
 }
 
 body {
@@ -97,4 +96,17 @@ code {
 
 .row {
   flex-direction: row;
+  gap: 0 1rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+.btn {
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: .5rem 1rem;
+  border-radius: 5px;
+  font-weight: 600;
+  color: #1e1e1e;
 }

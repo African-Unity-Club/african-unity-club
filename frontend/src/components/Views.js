@@ -20,15 +20,17 @@ class Views extends react.Component {
     render() {
         return (
             <main className='vwh'>
-                <div id='logo'></div>
-                <div className='x-larg title'>Dream Africa</div>
-                <div className='container row'>
-                    <LinkButtuon href='/login' attrs='btn btn-primary' text='Sign In' />
-                    <LinkButtuon href='/register' attrs='btn btn-primary' text='Sign Up' />
-                </div>
-                <div className='container row'>
-                    <IconLinkButton href='/facebook link' attrs='link icon' icon='fab fa-facebook-f' />
-                    <IconLinkButton href='/instagram link' attrs='link icon' icon='fab fa-facebook-f' />
+                <div className='body-vwh'>
+                    <div id='logo'></div>
+                    <div className='x-larg title'>Dream Africa</div>
+                    <div className='container row'>
+                        <LinkButtuon href='/login' attrs='btn btn-primary' text='Sign In' />
+                        <LinkButtuon href='/register' attrs='btn btn-primary' text='Sign Up' />
+                    </div>
+                    <div className='container row'>
+                        <IconLinkButton href='/facebook link' attrs='link icon' icon='fab fa-facebook-f' />
+                        <IconLinkButton href='/instagram link' attrs='link icon' icon='fab fa-facebook-f' />
+                    </div>
                 </div>
             </main>
         );
