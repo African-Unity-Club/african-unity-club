@@ -15,5 +15,11 @@
     width: 170px;
 }
 
+.da-link {
+    color: black;
+}
 
+.da-link:hover * {
+    color: crimson;
+}
 

@@ -1,9 +1,12 @@
-import react from 'react';
+import React from 'react';
 import '../style/Views.css'
-import { LinkButtuon, IconLinkButton } from './ui/Button';
+import { LinkButtuon } from './ui/Button';
+import { Facebook, Instagram, Linkedin } from 'react-bootstrap-icons';
 
 
-class Views extends react.Component {
+
+class Views extends React.Component {
+    
     constructor(props) {
         super(props);
         this.state = {
@@ -18,6 +21,7 @@ class Views extends react.Component {
     // }
 
     render() {
+        
         return (
             <main className='vwh'>
                 <div className='body-vwh'>
@@ -28,8 +32,21 @@ class Views extends react.Component {
                         <LinkButtuon href='/register' attrs='btn btn-primary' text='Sign Up' />
                     </div>
                     <div className='container row'>
-                        <IconLinkButton href='/facebook link' attrs='link icon' icon='fab fa-facebook-f' />
-                        <IconLinkButton href='/instagram link' attrs='link icon' icon='fab fa-facebook-f' />
+                        <a href='facebook' className='da-link'>
+                            <Facebook 
+                                size={30}
+                            />
+                        </a>
+                        <a href='instagram' className='da-link'>
+                            <Instagram 
+                                size={30}
+                            />
+                        </a>
+                        <a href='linkedin' className='da-link'>
+                            <Linkedin 
+                                size={30}
+                            />
+                        </a>
                     </div>
                 </div>
             </main>
