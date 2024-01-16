@@ -25,19 +25,27 @@ class SignUp extends React.Component {
 
         if (this.state.username.length < 3) {
             document.getElementById('username').nextSibling.innerHTML = 'Username must be at least 3 characters';
+        } else {
+            document.getElementById('username').nextSibling.innerHTML = '';
         }
 
-        if (!'@'.includes(this.state.email)) {
+        if (!this.state.email.includes('@')) {
             document.getElementById('email').nextSibling.innerHTML = 'Invalid email';
+        } else {
+            document.getElementById('email').nextSibling.innerHTML = '';
         }
 
         if (this.state.password.length < 8) {
             document.getElementById('password').nextSibling.innerHTML = 'Password must be at least 8 characters';
+        } else {
+            document.getElementById('password').nextSibling.innerHTML = '';
         }
 
-        if (this.state.password !== this.state.password2) {
-            document.getElementById('password2').nextSibling.innerHTML = 'Passwords do not match';
+        const password2 = document.getElementById('password2').value;
+        if (this.state.password !== password2) {
+            password2.nextSibling.innerHTML = 'Passwords do not match';
         } else {
+            password2.nextSibling.innerHTML = '';
             this.optUser();
         }
     }
@@ -95,7 +103,7 @@ class SignUp extends React.Component {
                             <input 
                                 type='email'
                                 id='email'
-                                name='eamil'
+                                name='email'
                                 value={this.state.email}
                                 onChange={this.handleChange}
                                 required
