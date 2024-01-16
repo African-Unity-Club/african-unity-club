@@ -105,12 +105,13 @@ a {
 }
 
 .btn {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.3);
   padding: .5rem 1rem;
   border-radius: 5px;
   color: #1e1e1e;
 }
 
 .btn:hover {
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #fff;
 }

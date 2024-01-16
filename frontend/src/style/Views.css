@@ -6,6 +6,12 @@
     flex-flow: column nowrap;
     align-items: center;
     justify-content: center;
+    background-color: rgba(240, 248, 255, 0.7);
+} 
+
+.vwh {
+    background-image: url('../assets/2.jpg');
+    background-size: cover;
 }
 
 #logo {
