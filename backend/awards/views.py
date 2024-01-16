@@ -106,7 +106,7 @@ def me_awards(sync):
 # award of user
 @award.route('/me-award/<id>', methods=['GET'], stricte_slashes=False)
 @required_token
-def award(sync, id):
+def award_by_id(sync, id):
 
     try:
         return jsonify(

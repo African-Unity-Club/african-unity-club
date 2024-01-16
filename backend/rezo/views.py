@@ -88,7 +88,7 @@ def rez(sync):
     try:
         return jsonify(
             {
-                'message': 'success',
+                'message': 'Success',
                 'data': Reseaux.find({'user_id': sync['user_id']})
             }
         ), 200
@@ -108,7 +108,7 @@ def rez(sync, id):
     try:
         return jsonify(
             {
-                'message': 'success',
+                'message': 'Success',
                 'data': Reseaux.get(id, sync['user_id'])
             }
         ), 200
@@ -130,7 +130,7 @@ def rez(sync):
         data['user_id'] = sync['user_id']
         return jsonify(
             {
-                'message': 'success',
+                'message': 'Success',
                 'data': Reseaux.create(data)
             }
         ), 201
@@ -155,7 +155,7 @@ def rez(sync):
     try:
         return jsonify(
             {
-                'message': 'success',
+                'message': 'Success',
                 'data': Reseaux.update(id, sync['user_id'])
             }
         ), 200
@@ -176,7 +176,7 @@ def delete_rez(sync, id):
     try:
         return jsonify(
             {
-                'message': 'success',
+                'message': 'Success',
                 'data': Reseaux.delete(id, sync['user_id'])
             }
         ), 200

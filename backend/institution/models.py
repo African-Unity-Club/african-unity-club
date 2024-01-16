@@ -48,7 +48,7 @@ class Institution(Base):
     ==============="""
 
     def create(self, data: Dict):
-        for key in data.items():
+        for key, value in data.items():
             if key not in attrs.keys():
                 raise KeyError(f"Invalid key: {key}")
             
