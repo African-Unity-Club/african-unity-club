@@ -5,14 +5,6 @@ const LinkButtuon = (props) => {
     )
 }
 
-const IconLinkButton = (props) => {
-    return (
-        <a href={props.href} className={props.attrs}>
-            <i className={props.icon}></i>
-        </a>
-    )
-}
-
 const Button = (props) => {
     return (
         <button 
@@ -27,4 +19,4 @@ const Button = (props) => {
 }
 
 
-export { LinkButtuon, IconLinkButton, Button }
+export { LinkButtuon, Button }

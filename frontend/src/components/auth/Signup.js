@@ -8,15 +8,65 @@ class SignUp extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            views: 0
+            username: '',
+            email: '',
+            password: '',
         }
     }
 
-    // componentDidMount() {
-    //     fetch('/api/views')
-    //         .then(res => res.json())
-    //         .then(views => this.setState({ views }));
-    // }
+    // mets a jour le state a chaque changement dans le formulaire
+    handleChange = (e) => {
+        this.setState({ [e.target.name]: e.target.value });
+    }
+
+    // envoie les donnees du formulaire au serveur
+    handleSubmmit = (e) => {
+        e.preventDefault();
+
+        if (this.state.username.length < 3) {
+            document.getElementById('username').nextSibling.innerHTML = 'Username must be at least 3 characters';
+        }
+
+        if (!'@'.includes(this.state.email)) {
+            document.getElementById('email').nextSibling.innerHTML = 'Invalid email';
+        }
+
+        if (this.state.password.length < 8) {
+            document.getElementById('password').nextSibling.innerHTML = 'Password must be at least 8 characters';
+        }
+
+        if (this.state.password !== this.state.password2) {
+            document.getElementById('password2').nextSibling.innerHTML = 'Passwords do not match';
+        } else {
+            this.optUser();
+        }
+    }
+
+    // envoie un lien de verification par email pour l'inscription
+    handleOtp = () => {
+        fetch('/api/auth/otp', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(
+                { 
+                    username: this.state.username,
+                    email: this.state.email,
+                    password: this.state.password 
+                }
+            )
+        })
+            .then(res => res.json())
+            .then(res => {
+                if (res.success) {
+                    console.log(res.msg);
+                } else {
+                    console.log(res.msg);
+                }
+            })
+            .catch(err => console.log(err));
+    }
 
     render() {
 
@@ -27,25 +77,41 @@ class SignUp extends React.Component {
                 </div>
                 <div className='signup'>
                     <h1 className='order-1 title'>Sign Up</h1>
-                    <form className='form'>
+                    <form className='form' onSubmit={this.handleSubmmit}>
                         <div className='form-group'>
                             <label for='username'>Username</label>
-                            <input type='text' className='form-control' id='username' placeholder='Enter username' required/>
+                            <input 
+                                type='text'
+                                id='username'
+                                name='username'
+                                value={this.state.username}
+                                onChange={this.handleChange}
+                                required
+                            />
                             <span className='error-message'></span>
                         </div>
                         <div className='form-group'>
                             <label for='email'>Email</label>
-                            <input type='email' className='form-control' id='email' placeholder='Enter email' required/>
+                            <input 
+                                type='email'
+                                id='email'
+                                name='eamil'
+                                value={this.state.email}
+                                onChange={this.handleChange}
+                                required
+                            />
                             <span className='error-message'></span>
                         </div>
                         <div className='form-group'>
                             <label for='password'>Password</label>
-                            <input type='password' className='form-control' id='password' placeholder='Enter password' required/>
-                            <span className='error-message'></span>
-                        </div>
-                        <div className='form-group'>
-                            <label for='password2'>Confirm Password</label>
-                            <input type='password' className='form-control' id='password2' placeholder='Confirm password' required/>
+                            <input 
+                                type='password'
+                                id='password'
+                                name='password'
+                                value={this.state.password}
+                                onChange={this.handleChange}
+                                required
+                            />
                             <span className='error-message'></span>
                         </div>
                         <button type='submit' className='btn btn-primary'>Sign Up</button>
@@ -54,4 +120,6 @@ class SignUp extends React.Component {
             </main>
         );
     }
-}   
+}
+
+export default SignUp
