@@ -1,4 +1,6 @@
-import react from 'react'
+import react from 'react';
+import '../style/Views.css'
+import { LinkButtuon, IconLinkButton } from './ui/Button';
 
 
 class Views extends react.Component {
@@ -18,10 +20,16 @@ class Views extends react.Component {
     render() {
         return (
             <main className='vwh'>
-                <div className='logo'></div>
+                <div id='logo'></div>
                 <div className='x-larg title'>Dream Africa</div>
-                <div className='container'></div>
-                <div className='container'></div>
+                <div className='container row'>
+                    <LinkButtuon href='/login' attrs='btn btn-primary' text='Sign In' />
+                    <LinkButtuon href='/register' attrs='btn btn-primary' text='Sign Up' />
+                </div>
+                <div className='container row'>
+                    <IconLinkButton href='/facebook link' attrs='link icon' icon='fab fa-facebook-f' />
+                    <IconLinkButton href='/instagram link' attrs='link icon' icon='fab fa-facebook-f' />
+                </div>
             </main>
         );
     }
