@@ -6,19 +6,6 @@ import { Facebook, Instagram, Linkedin } from 'react-bootstrap-icons';
 
 
 class Views extends React.Component {
-    
-    constructor(props) {
-        super(props);
-        this.state = {
-            views: 0
-        }
-    }
-
-    // componentDidMount() {
-    //     fetch('/api/views')
-    //         .then(res => res.json())
-    //         .then(views => this.setState({ views }));
-    // }
 
     render() {
         

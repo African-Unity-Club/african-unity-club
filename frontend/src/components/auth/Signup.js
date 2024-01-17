@@ -57,18 +57,14 @@ class SignUp extends React.Component {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(
-                { 
-                    username: this.state.username,
-                    email: this.state.email,
-                    password: this.state.password 
-                }
-            )
+            body: JSON.stringify({ email: this.state.email })
         })
             .then(res => res.json())
             .then(res => {
                 if (res.success) {
                     console.log(res.msg);
+                    // enregistre le token dans le local storage
+                    
                 } else {
                     console.log(res.msg);
                 }
