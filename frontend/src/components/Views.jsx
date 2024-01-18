@@ -3,8 +3,6 @@ import { LinkButtuon } from './ui/Button';
 import { Facebook, Instagram, Linkedin } from 'react-bootstrap-icons';
 
 
-
-
 function Views() {
     
     return (
