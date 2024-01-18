@@ -21,7 +21,7 @@ function SignIn() {
         const url = ''
         fetch(url,
             {
-                method: 'POST',
+                method: 'post',
                 header: {
                     'Content-Type': 'application/json'
                 },
@@ -46,13 +46,13 @@ function SignIn() {
     }
 
     return (
-        <main className='vwh'>
-            <div className='picture-1'>
+        <main className='vwh sign'>
+            <div className='picture-2'>
                 <div className='logo'></div>
             </div>
-            <div className='signin'>
+            <div className='signup'>
                 <h1 className='order-1 title'>Sign In</h1>
-                <form className='form' onSubmit={handleSubmit}>
+                <form className='form' onSubmit={handleSubmit} method='post'>
                     <div className='form-group'>
                         <label for='email'>Email</label>
                         <input
@@ -77,11 +77,12 @@ function SignIn() {
                         />
                         <span className='error-message'></span>
                     </div>
-                    <div className='action'>
-                        <Link to="/signup">Sign Up</Link>
-                        <button type='submit' className='btn btn-primary'>Connexion</button>
-                    </div>
+                    <button type='submit' className='btn btn-primary'>Connexion</button>
                 </form>
+                <div className='other'>
+                    <Link to="/forgot" className='foot-other'>forgot password</Link>
+                    <Link to="/signup" className='foot-other'>Sign Up</Link>
+                </div>
             </div>
         </main>
     )

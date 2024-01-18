@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Otp } from './Auth';
-import '../style/Sign.css'
+import '../../style/Sign.css'
 
 import { Link } from 'react-router-dom'
 
@@ -12,55 +12,53 @@ function SignUp() {
         username: '',
         email: '',
         password: '',
+        password2: '',
+    });
+
+    const [errors, setErrors] = useState({
+        username: '',
+        email: '',
+        password: '',
+        password2: '',
     });
 
     const handleChange = (e) => {
         setParams({ ...params, [e.target.name]: e.target.value });
+        setErrors({ ...errors, [e.target.name]: '' });
     }
 
     const handleSubmmit = (e) => {
         e.preventDefault();
 
-        if (params.username.length < 3) {
-            document.getElementById('username').nextSibling.innerHTML = 'Username must be at least 3 characters';
-        } else {
-            document.getElementById('username').nextSibling.innerHTML = '';
-        }
+        const newErrors = {
+            username: params.username.length < 4 ? 'Username must be at least 3 characters' : '',
+            email: !params.email.includes('@') ? 'Invalid email' : '',
+            password: params.password.length < 8 ? 'Password must be at least 8 characters' : '',
+            password2: params.password2 !== params.password ? 'Password must be at least 8 characters' : '',
+        };
 
-        if (!params.email.includes('@')) {
-            document.getElementById('email').nextSibling.innerHTML = 'Invalid email';
-        } else {
-            document.getElementById('email').nextSibling.innerHTML = '';
-        }
+        setErrors(newErrors);
 
-        if (params.password.length < 8) {
-            document.getElementById('password').nextSibling.innerHTML = 'Password must be at least 8 characters';
-        } else {
-            document.getElementById('password').nextSibling.innerHTML = '';
-        }
+        if (Object.values(newErrors).every(error => error === '')) {
 
-        const password2 = document.getElementById('password2').value;
-        if (params.password !== password2) {
-            password2.nextSibling.innerHTML = 'Passwords do not match';
-        } else {
-            password2.nextSibling.innerHTML = '';
+            setErrors((prevErrors) => ({ ...prevErrors, password: '' }));
             const token = Otp(params.email);
-            // token = {'otp': otp, 'expired': expired, 'email': email}
-            // sauvegarder les données dans la base de données redis local
-            // redis.set(params.email, token.otp, token.expired)
+                // token = {'otp': otp, 'expired': expired, 'email': email}
+                // sauvegarder les données dans la base de données redis local
+                // redis.set(params.email, token.otp, token.expired)
         }
-    }
+    };
 
 
     return (
-        <main className='vwh'>
+        <main className='vwh sign'>
             <div className='picture-1'>
                 <div className='logo'></div>
             </div>
             <div className='signup'>
                 <h1 className='order-1 title'>Sign Up</h1>
-                <form className='form' onSubmit={handleSubmmit}>
-                <div className='form-group'>
+                <form className='form' onSubmit={handleSubmmit} method='post'>
+                    <div className='form-group'>
                         <label for='username'>Username</label>
                         <input
                             type='text'
@@ -70,7 +68,7 @@ function SignUp() {
                             onChange={handleChange}
                             required
                         />
-                        <span className='error-message'></span>
+                        <span className='error-message'>{errors.username}</span>
                     </div>
                     <div className='form-group'>
                         <label for='email'>Email</label>
@@ -82,7 +80,7 @@ function SignUp() {
                             onChange={handleChange}
                             required
                         />
-                        <span className='error-message'></span>
+                        <span className='error-message'>{errors.email}</span>
                     </div>
                     <div className='form-group'>
                         <label for='password'>Password</label>
@@ -94,13 +92,25 @@ function SignUp() {
                             onChange={handleChange}
                             required
                         />
-                        <span className='error-message'></span>
+                        <span className='error-message'>{errors.password}</span>
                     </div>
-                    <button type='submit' className='btn btn-primary'>Sign Up</button>
+                    <div className='form-group'>
+                        <label for='password'>Confirm Password</label>
+                        <input 
+                            type='password'
+                            id='password2'
+                            name='password2'
+                            value={params.password2}
+                            onChange={handleChange}
+                            required
+                        />
+                        <span className='error-message'>{errors.password2}</span>
+                    </div>
+                    <button type='submit' className='btn btn-primary'>Register</button>
                 </form>
                 <div className='other'>
-                    <Link to="/forgot">forgot password</Link>
-                    <Link to="/signin">Sign In</Link>
+                    <span className='foot-other'>already have an account</span>
+                    <Link to="/signin" className='foot-other'>click to connect</Link>
                 </div>
             </div>
         </main>

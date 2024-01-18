@@ -1,0 +1,157 @@
+.vwh.sign {
+    background-image: none;
+    display: flex;
+    flex-flow: row nowrap;
+    background-color: aliceblue;
+}
+
+.vwh.sign > div {
+    width: 50%;
+    background-size: cover;
+}
+
+.picture-1 {
+    background-image: url('../assets/s1.jpg');
+}
+
+.picture-2 {
+    background-image: url('../assets/s2.jpg');
+}
+
+.logo{
+    background-image: url('../assets/asc-s1.svg');
+    background-size: cover;
+    height: 100px;
+    width: 100px;
+}
+
+.signup {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+.order-1{
+    font-size: xx-large;
+    font-weight: 800;
+}
+
+.order-1.title {
+    color: #1e1e1e;
+}
+
+.form-group {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: .2rem;
+    width: 100%;
+}
+
+.form-group label {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #1e1e1e;
+    margin-top: .8rem;
+}
+
+.form-group label::after {
+    content: ' *';
+    color: crimson;
+}
+
+.form-group input {
+    padding: .5rem 1rem;
+    border-radius: 5px;
+    border: 1px solid #1e1e1e;
+    outline: none;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #1e1e1e;
+}
+
+.form-group span {
+    font-size: .8rem;
+    color: red;
+    font-weight: 900;
+}
+
+.signup .btn {
+    padding: .5rem 1rem;
+    border-radius: 5px;
+    border: 0;
+    outline: none;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #1e1e1e;
+    background-color: none;
+    margin-top: 1rem;
+    align-self: flex-end;
+}
+
+.signup .btn:hover {
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #fff;
+}
+
+.form {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.other {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    font-size: .8rem;
+}
+
+.foot-other {
+    margin: 0 2rem;
+    color: gray;
+}
+
+.foot-other:hover {
+    color: crimson;
+}
+
+.action {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.verifyotp {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0,0,0,0.7);
+}
+
+.verifyotp .order-1.title {
+    color: #fff;
+}
+
+.vwh.sign.verify {
+    width: 100%;
+    background-image: url('../assets/otp.jpg');
+    background-size: cover;
+}
+
+.vwh.sign .verifyotp {
+    width: 100%;;
+}
+
+.info {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    background-color: rgba(51, 153, 20, 0.681);
+    height: 3rem;
+    margin: 3rem 0;
+}

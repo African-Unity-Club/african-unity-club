@@ -1,6 +1,5 @@
 import '../../style/Sign.css'
-import { useState } from 'react';
-import { Otp } from './Auth';
+import { useState, useEffect } from 'react';
 
 
 
@@ -8,14 +7,16 @@ function VerifyOtp() {
 
     const [otp, setOtp] = useState('');
 
-    const handleSubmmit = (e) => {
-        e.preventDefault();
+    // verification de l'otp une fois la valeur de otp est a 6
+    useEffect(() => {
+        if (otp.length === 6) {
+            handleSubmmit();
+        }
+    }, [otp]);
 
-        if (otp.length < 6) {
-            document.getElementById('otp').nextSibling.innerHTML = 'OTP must be at least 6 characters';
-        } else {
-            document.getElementById('otp').nextSibling.innerHTML = '';
-            // const token = redis.get(params.email)
+    const handleSubmmit = (e) => {
+
+        //const token = redis.get(params.email)
             // if (token.otp === otp) {
             //     if (token.expired > Date.now()) {
             //         // sauvegarder les données dans la base de données mongo
@@ -26,21 +27,17 @@ function VerifyOtp() {
             // } else {
             //     document.getElementById('otp').nextSibling.innerHTML = 'OTP invalid';
             // }
-        }
     }
 
     return (
-        <main className='vwh'>
-            <div className='picture-1'>
-                <div className='logo'></div>
-            </div>
+        <main className='vwh sign verify'>
             <div className='verifyotp'>
-                <h1 className='order-1 title'>Sign Up</h1>
-                <form className='form' onSubmit={handleSubmmit}>
+                <h1 className='order-1 title'>Email verify</h1>
+                <form className='form' method='post'>
                     <div className='info'>
-                        Verifier vos email
+                        Verifier vos emails
                     </div>
-                    <div className=''>
+                    <div className='form-group'>
                         <input 
                             type="text"
                             id='otp'
@@ -51,10 +48,6 @@ function VerifyOtp() {
                         />
                         <span className='error'></span>
                     </div>
-                    {/* <div className='res'>
-                        <a href='/signup' className='btn btn-primary'>Resend OTP</a>
-                        <button type='submit' className='btn btn-primary'>Verify OTP</button>
-                    </div> */}
                 </form>
             </div>
         </main>

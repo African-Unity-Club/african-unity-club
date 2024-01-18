@@ -7,8 +7,9 @@ import Views from './components/Views';
 import Home from './components/Home';
 
 import SignIn from './components/auth/Signin';
-import Otp from './components/auth/Otp';
+import VerifyOtp from './components/auth/Otp';
 import SignUp from './components/auth/Signup';
+import Forgot from './components/auth/Forgot';
 
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
@@ -19,12 +20,13 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<Dash />} />
+        {/* <Route path='/' element={<Dash />} /> */}
         <Route path="/home" element={<Views />} />
 
         <Route path='/signup' element={<SignUp />} />
         <Route path='/signin' element={<SignIn />} />
-        <Route path='/otp' element={<Otp />} />
+        <Route path='/otp' element={<VerifyOtp />} />
+        <Route path='/forgot' element={<Forgot />} />
 
         {/* <Route path='/profile' element={<Profile />} />
         <Route path='/social' element={<Social />} />
