@@ -6,7 +6,12 @@ import '../style/Sign.css'
 class SignUp extends React.Component {
         
     constructor(props) {
-        super(props);
+        super(props)
+
+        /* useState dans les fonction
+        const [attr, UpdateAttr] = useState(attr_init)
+        ou attr_init est la valuer initial que doit prendre attr
+        */
         this.state = {
             username: '',
             email: '',
@@ -46,7 +51,7 @@ class SignUp extends React.Component {
             password2.nextSibling.innerHTML = 'Passwords do not match';
         } else {
             password2.nextSibling.innerHTML = '';
-            this.optUser();
+            this.handleOtp();
         }
     }
 
