@@ -1,6 +1,6 @@
 import '../style/Views.css'
-import { LinkButtuon } from './ui/Button';
-import { Facebook, Instagram, Linkedin } from 'react-bootstrap-icons';
+import { LinkButtuon } from './ui/Button'
+import { Facebook, Instagram, Linkedin } from 'react-bootstrap-icons'
 
 
 function Views() {

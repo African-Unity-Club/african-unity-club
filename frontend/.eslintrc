@@ -1,0 +1,7 @@
+{
+    "extends": ["react-app"],
+    "rules": {
+        "no-console": "off",
+        "no-unused-vars": "off"
+    }
+}

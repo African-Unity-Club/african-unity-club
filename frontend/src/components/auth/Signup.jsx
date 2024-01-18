@@ -42,7 +42,10 @@ function SignUp() {
             password2.nextSibling.innerHTML = 'Passwords do not match';
         } else {
             password2.nextSibling.innerHTML = '';
-            Otp();
+            const token = Otp(params.email);
+            // token = {'otp': otp, 'expired': expired, 'email': email}
+            // sauvegarder les données dans la base de données redis local
+            // redis.set(params.email, token.otp, token.expired)
         }
     }
 
