@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { Otp } from './Auth';
 import '../style/Sign.css'
 
+import { Link } from 'react-router-dom'
+
 
 
 function SignUp() {
@@ -58,9 +60,9 @@ function SignUp() {
             <div className='signup'>
                 <h1 className='order-1 title'>Sign Up</h1>
                 <form className='form' onSubmit={handleSubmmit}>
-                    <div className='form-group'>
+                <div className='form-group'>
                         <label for='username'>Username</label>
-                        <input 
+                        <input
                             type='text'
                             id='username'
                             name='username'
@@ -72,7 +74,7 @@ function SignUp() {
                     </div>
                     <div className='form-group'>
                         <label for='email'>Email</label>
-                        <input 
+                        <input
                             type='email'
                             id='email'
                             name='email'
@@ -96,6 +98,10 @@ function SignUp() {
                     </div>
                     <button type='submit' className='btn btn-primary'>Sign Up</button>
                 </form>
+                <div className='other'>
+                    <Link to="/forgot">forgot password</Link>
+                    <Link to="/signin">Sign In</Link>
+                </div>
             </div>
         </main>
     );

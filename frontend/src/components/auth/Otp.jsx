@@ -51,10 +51,10 @@ function VerifyOtp() {
                         />
                         <span className='error'></span>
                     </div>
-                    <div className='res'>
+                    {/* <div className='res'>
                         <a href='/signup' className='btn btn-primary'>Resend OTP</a>
                         <button type='submit' className='btn btn-primary'>Verify OTP</button>
-                    </div>
+                    </div> */}
                 </form>
             </div>
         </main>
