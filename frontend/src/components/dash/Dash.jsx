@@ -1,6 +1,7 @@
 import Header from '../ui/Header';
 import Footer from '../ui/Footer';
 import SideNav from '../ui/SideNav';
+import '../../style/Dash.css'
 
 
 function Dash() {
@@ -38,7 +39,6 @@ function Dash() {
             }
         ]
     }
-
 
     return (
         <main className="main dash">

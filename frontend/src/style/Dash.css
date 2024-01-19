@@ -1,0 +1,9 @@
+.main.dash {
+    display: flex;
+    justify-content: space-between;
+    gap: 0 1rem;
+}
+
+.section {
+    flex-grow: 4;
+}
