@@ -4,11 +4,12 @@ import { Link } from 'react-router-dom';
 
 const SideNav = ({ props }) => {
 
-
+    const logo = '../assets/noprofile.jpeg'
     return (
         <div className="sidenav">
             <div className="sidenav-header">
                 <div className="userlogo">
+                    <img src={logo} alt='' />
                     <span className="online"></span>
                 </div>
                 <span className="username">{props.username}</span>
