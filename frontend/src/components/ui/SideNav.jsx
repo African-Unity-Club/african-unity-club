@@ -1,3 +1,4 @@
+import { ArrowLeftCircle, BlockquoteLeft, Briefcase, GraphDownArrow, Newspaper, People, PersonGear, Quote, Sliders, Stars, YinYang } from 'react-bootstrap-icons';
 import { Link } from 'react-router-dom';
 
 
@@ -13,19 +14,43 @@ const SideNav = ({ props }) => {
                 <span className="username">{props.username}</span>
             </div>
             <nav className="sidenav-body">
-                <Link to={`/dashboard/${props.username}`} className="sidenav-link">Dashboard</Link>
-                <Link to={`/profile/${props.username}`} className="sidenav-link">Profile</Link>
-                <Link to="/social" className="sidenav-link">Social</Link>
-                <Link to="/cultures" className="sidenav-link">Cultures</Link>
-                <Link to="/talents" className="sidenav-link">Talents</Link>
-                <Link to="/stories" className="sidenav-link">Stories</Link>
-                <Link to="/careers" className="sidenav-link">Careers</Link>
-                <Link to="/communities" className="sidenav-link">Communities</Link>
-                <Link to="/news" className="sidenav-link">News</Link>
-                <Link to={`/settings/${props.username}`} className="sidenav-link">Settings</Link>
+                <Link to={`/dashboard/${props.username}`} className="sidenav-link">
+                    <GraphDownArrow size={20} />
+                    Dashboard
+                </Link>
+                <Link to={`/profile/${props.username}`} className="sidenav-link">
+                    <PersonGear size={20}/>
+                    Profile</Link>
+                <Link to="/social" className="sidenav-link">
+                    <Quote size={20}/>
+                    Social</Link>
+                <Link to="/cultures" className="sidenav-link">
+                    <YinYang size={20}/>
+                    Cultures</Link>
+                <Link to="/talents" className="sidenav-link">
+                    <Stars size={20}/>
+                    Talents</Link>
+                <Link to="/stories" className="sidenav-link">
+                    <BlockquoteLeft size={20}/>
+                    Stories</Link>
+                <Link to="/careers" className="sidenav-link">
+                    <Briefcase size={20}/>
+                    Careers</Link>
+                <Link to="/communities" className="sidenav-link">
+                    <People size={20}/>
+                    Communities</Link>
+                <Link to="/news" className="sidenav-link">
+                    <Newspaper size={20}/>
+                    News</Link>
+                <Link to={`/settings/${props.username}`} className="sidenav-link">
+                    <Sliders size={20}/>
+                    Settings</Link>
             </nav>
             <div className="sidenav-footer">
-                <Link to="/logout" className="sidenav-link">Logout</Link>
+                <Link to="/logout" className="sidenav-link">
+                    <ArrowLeftCircle size={20} />
+                    Logout
+                </Link>
             </div>
         </div>
     )

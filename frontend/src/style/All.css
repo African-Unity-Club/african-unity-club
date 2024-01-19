@@ -1,8 +1,7 @@
 .main {
     width: 100%;
     height: 100vh;
-    background-image: url('');
-    background-size: cover;
+    background-color: aliceblue;
 }
 
 .header {
@@ -10,6 +9,9 @@
     display: flex;
     flex-flow: column nowrap;
     gap: 1.5rem;
+    padding: 1rem;
+    border-bottom-left-radius: 10px;
+    background-color: black;
 }
 
 .header-body, .header-link {
@@ -24,6 +26,7 @@
     justify-content: flex-start;
     width: fit-content;
     font-size: 1.8rem;
+    color: aliceblue;
 }
 
 .header-link .logo {
@@ -36,7 +39,6 @@
 .header-search {
     border: 1px solid #1e1e1e;
     margin-right: .5rem;
-    border-radius: 5px;
     min-width: 380px;
     display: flex;
     flex-flow: row nowrap;
@@ -50,7 +52,7 @@
     border: 0;
     cursor: pointer;
     outline: none;
-    background-color: #1e1e1e;
+    background-color: #0e619c;
 }
 
 
@@ -59,6 +61,8 @@
     border: 0;
     padding: 0 .5rem;
     font-size: 1rem;
+    outline: none;
+    background-color: rgba(240, 248, 255, 0.7);
 }
 
 .header-search-input:focus {
@@ -66,3 +70,47 @@
     outline: none;
 }
 
+.header-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 .5rem;
+}
+
+.header-title {
+    font-weight: 700;
+    color: aliceblue;
+}
+
+.header-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-nav .header-link {
+    margin:  0 1rem;
+    position: relative;
+}
+
+.total {
+    font-size: .6rem;
+    background-color: rgba(128, 128, 128, 0.8);
+    height: 1.2rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: .2rem;
+    position: absolute;
+    bottom: -.5rem;
+    right: -.6rem;
+}
+
+.header-link:hover {
+    color: white;
+}
+
+.header-nav .header-link:hover .total {
+    color: black;
+}

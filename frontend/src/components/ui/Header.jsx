@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import '../../style/All.css';
-import { Search, Calendar,  } from 'react-bootstrap-icons'
+import { Search, Bell, ChatLeft, PersonCircle, Calendar2Date } from 'react-bootstrap-icons'
 
 
 const Header = ({ props }) => {
@@ -24,18 +24,18 @@ const Header = ({ props }) => {
                 <h1 className="header-title">{`Dashboard`}</h1>
                 <nav className="header-nav">
                     <Link to={`/calendar/${props.username}`} className="header-link">
-                        <Calendar size={30}/>
+                        <Calendar2Date size={20} />
                     </Link>
                     <Link to={`/notification/${props.username}`} className="header-link">
-                        < />
+                        <Bell size={20} />
                         <span className='total'>104</span>
                     </Link>
                     <Link to={`/message/${props.username}`} className="header-link">
-                        <i className="far fa-user"></i>
+                        <ChatLeft size={20} />
                         <span className='total'>104</span>
                     </Link>
                     <Link to={`/friendish/${props.username}`} className="header-link">
-                        <i className="far fa-user"></i>
+                        <PersonCircle size={20} />
                         <span className='total'>104</span>
                     </Link>
                 </nav>
