@@ -299,7 +299,11 @@ def signup():
     
     url = 'http://127.0.0.1' + ':' + auth.config['FLASK_RUN_PORT'] + '/rtoken'
     
-    return requests.post(url, data=json.dumps({'user_id': user['_id']}), headers={'Content-Type': 'application/json'}).json()
+    return requests.post(
+        url,
+        data=json.dumps({'user_id': user['_id']}),
+        headers={'Content-Type': 'application/json'}
+    ).json()
 
 
 

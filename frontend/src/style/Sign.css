@@ -18,6 +18,10 @@
     background-image: url('../assets/s2.jpg');
 }
 
+.picture-3 {
+    background-image: url('../assets/s4.jpg');
+}
+
 .logo{
     background-image: url('../assets/asc-s1.svg');
     background-size: cover;

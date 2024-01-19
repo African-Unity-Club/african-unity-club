@@ -35,7 +35,7 @@ function VerifyOtp() {
                 <h1 className='order-1 title'>Email verify</h1>
                 <form className='form' method='post'>
                     <div className='info'>
-                        Verifier vos emails
+                        Verifiez vos emails
                     </div>
                     <div className='form-group'>
                         <input 

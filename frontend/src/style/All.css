@@ -1,0 +1,14 @@
+.header {
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 1.5rem;
+}
+
+.header-body {
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+}
