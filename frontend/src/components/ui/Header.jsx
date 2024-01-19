@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import '../../style/All.css';
+import { Search, Calendar,  } from 'react-bootstrap-icons'
 
 
 const Header = ({ props }) => {
@@ -13,32 +14,20 @@ const Header = ({ props }) => {
                     Dream Africa
                 </Link>
                 <div className="header-search">
-                    <select className="header-search-select">
-                        <option value="all">
-                            <i className="fas fa-globe-africa"></i>
-                            <span className="area-item-name">All</span>
-                        </option>
-                        {
-                            props.seo.map((search, index) => (
-                                <option value={search.name} key={index}>
-                                    <i className={search.icon}></i>
-                                    <span className="area-item-name">{search.name}</span>
-                                </option>
-                            ))
-                        }
-                    </select>
                     <input type="text" className="header-search-input" placeholder="Search Dream Africa" />
-                    <button className="header-search-button">Search</button>
+                    <button className="header-search-button">
+                        <Search size={24} color='aliceblue'/>
+                    </button>
                 </div>
             </div>
             <div className="header-footer">
                 <h1 className="header-title">{`Dashboard`}</h1>
                 <nav className="header-nav">
                     <Link to={`/calendar/${props.username}`} className="header-link">
-                        <i className="far fa-calendar-alt"></i>
+                        <Calendar size={30}/>
                     </Link>
                     <Link to={`/notification/${props.username}`} className="header-link">
-                        <i className="far fa-envelope"></i>
+                        < />
                         <span className='total'>104</span>
                     </Link>
                     <Link to={`/message/${props.username}`} className="header-link">

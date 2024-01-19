@@ -23,7 +23,7 @@
 .header-link {
     justify-content: flex-start;
     width: fit-content;
-    font-size: 1.6rem;
+    font-size: 1.8rem;
 }
 
 .header-link .logo {
@@ -32,3 +32,37 @@
     background-image: url('../assets/asc-s1.svg');
     background-size: cover;
 }
+
+.header-search {
+    border: 1px solid #1e1e1e;
+    margin-right: .5rem;
+    border-radius: 5px;
+    min-width: 380px;
+    display: flex;
+    flex-flow: row nowrap;
+    height: 2.3rem;
+}
+
+.header-search-button {
+    font-weight: 600;
+    padding: .4rem;
+    border-radius: 0;
+    border: 0;
+    cursor: pointer;
+    outline: none;
+    background-color: #1e1e1e;
+}
+
+
+.header-search-input {
+    width: 100%;
+    border: 0;
+    padding: 0 .5rem;
+    font-size: 1rem;
+}
+
+.header-search-input:focus {
+    border: 0;
+    outline: none;
+}
+
