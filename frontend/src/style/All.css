@@ -1,3 +1,10 @@
+.main {
+    width: 100%;
+    height: 100vh;
+    background-image: url('');
+    background-size: cover;
+}
+
 .header {
     width: 100%;
     display: flex;
@@ -5,10 +12,23 @@
     gap: 1.5rem;
 }
 
-.header-body {
+.header-body, .header-link {
     width: 100%;
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
     align-items: center;
+}
+
+.header-link {
+    justify-content: flex-start;
+    width: fit-content;
+    font-size: 1.6rem;
+}
+
+.header-link .logo {
+    width: 3rem;
+    height: 3rem;
+    background-image: url('../assets/asc-s1.svg');
+    background-size: cover;
 }
