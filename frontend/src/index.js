@@ -11,7 +11,8 @@ import SignUp from './components/auth/Signup';
 import Forgot from './components/auth/Forgot';
 import ResetPassword from './components/auth/Reset';
 
-import Dash from './components/dash/Dash';
+import Social from './components/Social';
+import Index from './components/Index';
 
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
@@ -22,7 +23,6 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<Dash />} />
         <Route path="/home" element={<Views />} />
 
         <Route path='/signup' element={<SignUp />} />
@@ -30,6 +30,13 @@ root.render(
         <Route path='/otp' element={<VerifyOtp />} />
         <Route path='/forgot' element={<Forgot />} />
         <Route path='/reset' element={<ResetPassword />} />
+        
+        <Route path='/' element={<Index />} >
+          <Route path='' element={<Social />} />
+        </Route>
+        
+
+        
 
         {/* <Route path='/profile' element={<Profile />} />
         <Route path='/social' element={<Social />} />

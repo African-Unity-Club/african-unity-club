@@ -1,7 +1,7 @@
-import Header from '../ui/Header';
-import Footer from '../ui/Footer';
-import SideNav from '../ui/SideNav';
-import '../../style/Dash.css'
+import Header from './ui/Header';
+import Footer from './ui/Footer';
+import SideNav from './ui/SideNav';
+import '../style/Dash.css'
 
 
 function Dash() {
