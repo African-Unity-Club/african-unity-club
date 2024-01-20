@@ -32,8 +32,10 @@ function Index() {
                 
                 <div className="side-nav-bar-header">
                     <div className="userlogo">
-                        <img src="./noprofile.jpeg" alt="userlogo" className="userlogo-img" />
-                        <span className="online"></span>
+                        <img src="./noprofile.jpeg" alt="" className="userlogo-img" />
+                        <span className="online">
+                            <span className="online-dot"></span>
+                        </span>
                     </div>
                     <span className="username">{username}</span>
                 </div>
@@ -73,7 +75,7 @@ function Index() {
                 </nav>
 
                 <div className="side-footer">
-                    <Link to="/logout" className="sidenav-link">
+                    <Link to="/logout" className="footer-side-link">
                         <ArrowLeftCircle size={20} />
                         Logout
                     </Link>
