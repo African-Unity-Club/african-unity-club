@@ -302,6 +302,8 @@
     height: calc(100% - 9rem);
     border-top-left-radius: 10px;
     overflow-y: auto;
+    gap: 3rem;
+    justify-content: flex-start;
 }
 
 .footer-nav-bar {
@@ -336,7 +338,7 @@
 
 .footer-nav {
     flex-wrap: wrap;
-    width: calc(100% - 10rem);
+    width: calc(100% - 12rem);
     justify-content: center;
     align-items: center;
     gap: .5rem;

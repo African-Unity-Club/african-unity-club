@@ -52,7 +52,7 @@ function Index() {
                     <Link to={`/profile/${username}`} className="body-side-nav-link">
                         <PersonGear size={20}/>
                         Profile</Link>
-                    <Link to="/social" className="body-side-nav-link">
+                    <Link to="/" className="body-side-nav-link">
                         <Quote size={20}/>
                         Social</Link>
                     <Link to="/cultures" className="body-side-nav-link">
@@ -95,11 +95,11 @@ function Index() {
 
                         <Link to="/" className="header-link">
                             <span className='logo'></span>
-                            Alkabulan
+                            Land Of Peace
                         </Link>
 
                         <div className="header-search">
-                            <input type="text" className="header-search-input" placeholder="Search Alkabulan" />
+                            <input type="text" className="header-search-input" placeholder="Search Land Of Peace" />
                             <button className="header-search-button">
                                 <Search size={20} color='aliceblue'/>
                             </button>
@@ -155,7 +155,7 @@ function Index() {
 
                             <div className="footer-header">
                                 <div className="footer-logo"></div>
-                                <span className="footer-title">Alkabulan</span>
+                                <span className="footer-title">Land Of Peace</span>
                             </div>
 
                             <nav className="footer-nav">
@@ -184,7 +184,7 @@ function Index() {
 
                         <div className="footer-footer">
 
-                            <span className="footer-copy">© 2024 Dream Africa</span>
+                            <span className="footer-copy">© 2024 Land Of Peace</span>
 
                             <span className="footer-terms">
                                 <Link to="/terms" className="footer-link">Terms</Link>

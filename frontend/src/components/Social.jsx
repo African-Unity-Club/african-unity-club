@@ -1,5 +1,4 @@
-import { Heart, ReplyAll, Share } from "react-bootstrap-icons";
-import { useParams } from "react-router-dom";
+import { ChatLeftDots, Heart, ReplyAll, Share } from "react-bootstrap-icons";
 
 
 
@@ -72,17 +71,20 @@ function Social() {
                   <div className="comment-content">{username}</div>
                   <div className="comment-action">
                     <Heart className="comment-action-like" />
-                    <MessageChannel className="comment-action-response" />
+                    <ChatLeftDots className="comment-action-response" />
                   </div>
 
                 </div>
 
               </div>
+            </div>
           </div>
+
           <div className="new-post">
             <input type="text" className="new-post-input" placeholder="Write a comment..." />
-            <a href="#" className="new-post-button">+</a>
+            <a href="sjnsdl" className="new-post-button">+</a>
           </div>
+
         </div>
 
       </div>
