@@ -1,5 +1,5 @@
 import { ChatLeftDots, Heart, ReplyAll, Share } from "react-bootstrap-icons";
-
+import '../style/Social.css'
 
 
 function Social() {

@@ -1,0 +1,30 @@
+.Social,
+.post {
+    display: flex;
+}
+
+.body-side-nav-link.social {
+    background-color: aliceblue;
+    color: black;
+}
+
+.Social {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.2rem;
+    width: 100%;
+    padding: 1rem;
+}
+
+.post {
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+    gap: 1rem;
+}
+
+.post > div {
+    width: 40%;
+}
