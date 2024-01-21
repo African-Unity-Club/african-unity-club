@@ -17,8 +17,9 @@ import {
     Calendar2Date 
 } from 'react-bootstrap-icons';
 
-import { Link, Outlet, useParams } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import '../style/All.css'
+import Anonymous from '../assets/nouser.png'
 
 
 function Index() {
@@ -33,7 +34,7 @@ function Index() {
                 
                 <div className="side-nav-bar-header">
                     <div className="userlogo">
-                        <img src="./noprofile.jpeg" alt="" className="userlogo-img" />
+                        <img src={Anonymous} alt="" className="userlogo-img" />
                         <span className="online">
                             <span className="online-dot"></span>
                         </span>

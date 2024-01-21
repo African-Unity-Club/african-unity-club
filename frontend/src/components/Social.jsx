@@ -1,6 +1,7 @@
 import { ChatLeftDots, Heart, ReplyAll, Share } from "react-bootstrap-icons";
 import '../style/Social.css'
 import { Link } from 'react-router-dom'
+import Anonymous from '../assets/nouser.png'
 
 
 function Social() {
@@ -21,9 +22,12 @@ function Social() {
 
               <Link to="ddddd" className="post-header-left">
 
-                <div className="post-header-img">
-                    <img src={username} alt=""  />
-                </div>
+              <div className="userlogo soc-icon">
+                <img src={Anonymous} alt="" className="userlogo-img" />
+                <span className="online">
+                  <span className="online-dot"></span>
+                </span>
+              </div>
 
                 <div className="post-header-name">{username}</div>
 
@@ -53,9 +57,12 @@ function Social() {
           </div>
 
           <div className="post-comment-write">
-            <span className="post-comment-write-img">
-              <img src={username} alt="" />
-            </span>
+            <div className="userlogo soc-icon">
+              <img src={Anonymous} alt="" className="userlogo-img" />
+              <span className="online">
+                <span className="online-dot"></span>
+              </span>
+            </div>
             <textarea name="" id="" cols="30" rows="10" className="post-comment-write-input"></textarea>
           </div>
 
@@ -72,16 +79,31 @@ function Social() {
               <div className="comment">
 
                 <div className="comment-header">
-                  <img src={username} alt="" />
+                  <div className="userlogo soc-icon">
+                    <img src={Anonymous} alt="" className="userlogo-img" />
+                    <span className="online">
+                      <span className="online-dot"></span>
+                    </span>
+                  </div>
                   <span className="comment-left-name">{username}</span>
                 </div>
 
                 <div className="comment-body">
 
-                  <div className="comment-content">{username}</div>
+                  <div className="comment-content">
+                    {`
+                      Ajoutez des annexes pour inclure des informations supplémentaires, telles que des CV d'équipe, des études de marché détaillées, etc. En suivant ces étapes, vous pouvez créer un business plan complet et convaincant. N'oubliez pas de le mettre à jour régulièrement pour refléter les changements dans votre entreprise et dans l'environnement commercial.
+                    `}
+                  </div>
                   <div className="comment-action">
-                    <Heart className="comment-action-like" />
-                    <ChatLeftDots className="comment-action-response" />
+                    <span>
+                      <span>1002</span>
+                      <span>Like</span>
+                    </span>
+                    <span>
+                      <span>1002</span>
+                      <span>reply</span>
+                    </span>
                   </div>
 
                 </div>
