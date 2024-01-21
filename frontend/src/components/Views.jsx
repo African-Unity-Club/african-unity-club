@@ -9,7 +9,7 @@ function Views() {
         <main className='vwh'>
             <div className='body-vwh'>
                 <div id='logo'></div>
-                <div className='x-larg title'>Dream Africa</div>
+                <div className='x-larg title'>Land Of Peace</div>
                 <div className='container row'>
                     <Link to="/signin" className='sign-link'>Sign In</Link>
                     <Link to="/signup" className='sign-link'>Sign Up</Link>
