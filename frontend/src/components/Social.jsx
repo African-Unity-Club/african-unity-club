@@ -20,8 +20,10 @@ function Social() {
 
               <div className="post-header-left">
 
-                <img src={username} alt="" className="post-header-img" />
-
+                <div className="post-header-img">
+                    <img src={username} alt=""  />
+                </div>
+                
                 <div className="post-header-name">{username}</div>
 
               </div>
