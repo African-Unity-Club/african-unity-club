@@ -1,5 +1,6 @@
 import { ChatLeftDots, Heart, ReplyAll, Share } from "react-bootstrap-icons";
 import '../style/Social.css'
+import { Link } from 'react-router-dom'
 
 
 function Social() {
@@ -18,15 +19,15 @@ function Social() {
 
             <div className="post-header">
 
-              <div className="post-header-left">
+              <Link to="ddddd" className="post-header-left">
 
                 <div className="post-header-img">
                     <img src={username} alt=""  />
                 </div>
-                
+
                 <div className="post-header-name">{username}</div>
 
-              </div>
+              </Link>
 
               <small className="post-header-time">{username}</small>
 
@@ -37,9 +38,9 @@ function Social() {
                 <div className="post-content-text">{username}</div>
   
                 <div className="post-content-action">
-                  <Heart className="post-content-action-like" />
-                  <Share className="post-content-action-share" />
-                  <ReplyAll className="post-content-action-repost" />
+                  <Heart className="post-content-action-like" size={20} />
+                  <Share className="post-content-action-share" size={20} />
+                  <ReplyAll className="post-content-action-repost" size={20} />
                 </div>
 
             </div>
