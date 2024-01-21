@@ -35,7 +35,12 @@ function Social() {
 
             <div className="post-content">
                 
-                <div className="post-content-text">{username}</div>
+                <div className="post-content-text">
+                  {`
+                    Ajoutez des annexes pour inclure des informations supplémentaires, telles que des CV d'équipe, des études de marché détaillées, etc.
+                    En suivant ces étapes, vous pouvez créer un business plan complet et convaincant. N'oubliez pas de le mettre à jour régulièrement pour refléter les changements dans votre entreprise et dans l'environnement commercial.
+                  `}
+                </div>
   
                 <div className="post-content-action">
                   <Heart className="post-content-action-like" size={20} />
@@ -48,8 +53,10 @@ function Social() {
           </div>
 
           <div className="post-comment-write">
-            <img src={username} alt="" className="post-comment-write-img" />
-            <input type="text" className="post-comment-write-input" placeholder="Write a comment..." />
+            <span className="post-comment-write-img">
+              <img src={username} alt="" />
+            </span>
+            <textarea name="" id="" cols="30" rows="10" className="post-comment-write-input"></textarea>
           </div>
 
         </div>
@@ -65,7 +72,7 @@ function Social() {
               <div className="comment">
 
                 <div className="comment-header">
-                  <img src={username} alt="" className="comment-left-img" />
+                  <img src={username} alt="" />
                   <span className="comment-left-name">{username}</span>
                 </div>
 
@@ -81,6 +88,7 @@ function Social() {
 
               </div>
             </div>
+
           </div>
 
           <div className="new-post">

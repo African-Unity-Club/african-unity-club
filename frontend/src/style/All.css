@@ -297,6 +297,7 @@
 
 .container {
     flex-direction: column;
+    flex-wrap: nowrap;
     background-color: #1e1e1e;
     width: 100%;
     height: calc(100% - 9rem);
