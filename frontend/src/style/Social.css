@@ -9,11 +9,13 @@
 .comment,
 .comment-header,
 .comment-body,
+.comment-reply ,
 .all-comment-list,
 .post-comment-write,
 .post-content-action,
 .post-comment-write-img,
 .post-header-left,
+.comment-previous,
 .post-header-img {
     display: flex;
 }
@@ -153,7 +155,7 @@
     padding: .2rem;
 }
 
-.post-right, .all-comment, .all-comment-list, .comment, .comment-body {
+.post-right, .all-comment, .all-comment-list, .comment, .comment-body, .comment-reply  {
     justify-content: flex-start;
     align-items: flex-start;
     flex-direction: column;
@@ -168,7 +170,7 @@
     gap: 1rem;
 }
 
-.all-comment-list, .comment {
+.all-comment-list, .comment, .comment-reply  {
     gap: 1rem;
 }
 
@@ -195,3 +197,18 @@
     font-size: .8rem;
 }
 
+.comment-action > span {
+    margin: 0 .5rem;
+    color: crimson;
+    font-weight: 600;
+}
+
+.comment-previous {
+    justify-content: flex-start;
+    align-items: center;
+    gap: .5rem;
+    background-color: wheat;
+    padding: .2rem;
+    width: 100%;
+    border-radius: 5px;
+}

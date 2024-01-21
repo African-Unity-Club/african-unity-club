@@ -109,6 +109,49 @@ function Social() {
                 </div>
 
               </div>
+
+              <div className="comment-reply">
+                <div className="comment-previous">
+                  <div className="userlogo soc-icon">
+                    <img src={Anonymous} alt="" className="userlogo-img" />
+                    <span className="online">
+                      <span className="online-dot"></span>
+                    </span>
+                  </div>
+                  <div className="reply-content">
+                    kjdididzijfdozfdjzlskdmkpskdp...
+                  </div>
+                </div>
+                <div className="comment">
+
+                  <div className="comment-header">
+                    <div className="userlogo soc-icon">
+                      <img src={Anonymous} alt="" className="userlogo-img" />
+                      <span className="online">
+                        <span className="online-dot"></span>
+                      </span>
+                    </div>
+                    <span className="comment-left-name">{username}</span>
+                  </div>
+
+                  <div className="comment-body">
+
+                  <div className="comment-content">
+                    {`
+                      Ajoutez des annexes pour inclure des informations supplémentaires, telles que des CV d'équipe, des études de marché détaillées, etc. En suivant ces étapes, vous pouvez créer un business plan complet et convaincant. N'oubliez pas de le mettre à jour régulièrement pour refléter les changements dans votre entreprise et dans l'environnement commercial.
+                    `}
+                  </div>
+                  <div className="comment-action">
+                    <span>
+                      <span>1002</span>
+                      <span>Like</span>
+                    </span>
+                  </div>
+
+                  </div>
+
+                </div>
+              </div>
             </div>
 
           </div>
