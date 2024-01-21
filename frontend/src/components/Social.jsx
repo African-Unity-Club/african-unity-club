@@ -112,7 +112,7 @@ function Social() {
 
               <div className="comment-reply">
                 <div className="comment-previous">
-                  <div className="userlogo soc-icon">
+                  <div className="userlogo soc-icon small">
                     <img src={Anonymous} alt="" className="userlogo-img" />
                     <span className="online">
                       <span className="online-dot"></span>
@@ -145,6 +145,10 @@ function Social() {
                     <span>
                       <span>1002</span>
                       <span>Like</span>
+                    </span>
+                    <span>
+                      <span>1002</span>
+                      <span>reply</span>
                     </span>
                   </div>
 
