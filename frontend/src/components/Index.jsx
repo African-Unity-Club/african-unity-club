@@ -165,35 +165,41 @@ function Index() {
 
             <aside className='rigth-side-nav-bar'>
                 
-                <span className='toggle-button'>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </span>
-
-                <nav className="rigth-nav">
-
-                    <Link to={`/calendar/${username}`} className="rigth-link calendar">
-                        <Calendar2Date size={20} />
-                    </Link>
-
-                    <Link to={`/notification/${username}`} className="rigth-link notification">
-                        <Bell size={20} />
-                        <span className='total'>104</span>
-                    </Link>
-
-                    <Link to={`/message/${username}`} className="rigth-link message">
-                        <ChatLeft size={20} />
-                        <span className='total'>104</span>
-                    </Link>
-
-                    <Link to={`/friendish/${username}`} className="rigth-link friend">
-                        <PersonCircle size={20} />
-                        <span className='total'>104</span>
-                    </Link>
-
-                </nav>
-
+                <div className='rigth-body'></div>
+                
+                <div className='rigth-side-nav'>
+                    <span className='toggle-button'>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+                    <div className='menu'>
+                        <a href='#calendar' className='menu-link'>
+                            <Calendar2Date size={20}/>
+                            <span className="online">
+                                <span className="online-dot"></span>
+                            </span>
+                        </a>
+                        <a href='#notification' className='menu-link'>
+                            <Bell size={20} />
+                            <span className="online">
+                                <span className="online-dot"></span>
+                            </span>
+                        </a>
+                        <a href='#message' className='menu-link'>
+                            <ChatLeft size={20} />
+                            <span className="online">
+                                <span className="online-dot"></span>
+                            </span>
+                        </a>
+                        <a href='#friend' className='menu-link'>
+                            <PersonCircle size={20} />
+                            <span className="online">
+                                <span className="online-dot"></span>
+                            </span>
+                        </a>
+                    </div>
+                </div>
             </aside>
 
         </main>

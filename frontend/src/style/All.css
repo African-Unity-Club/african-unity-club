@@ -7,11 +7,12 @@
 .footer-side-link,
 .body-side-nav-link,
 .username,
+.menu,
 .body-container,
 .header-link,
 .header-search,
 .toggle-button,
-.rigth-nav
+.rigth-side-nav,
 .container ,
 .footer-body,
 .footer-nav-bar,
@@ -20,6 +21,7 @@
 .footer-footer,
 .footer-terms,
 .userlogo,
+.menu-link,
 .rigth-side-nav-bar,
 .header-search-button,
 .header-content-nav-bar {
@@ -317,12 +319,12 @@
 }
 
 .rigth-side-nav-bar {
-    flex-direction: column;
-    flex-wrap: nowrap;
-    align-items: center;
+    background-color: #f5f5f5;
+    align-items: start;
+    justify-content: start;
     height: 100%;
-    padding: .2rem;
-    gap: 3rem;
+    width: 3.1rem;
+    padding: .5rem .3rem;
 }
 
 .toggle-button {
@@ -345,11 +347,26 @@
     border-radius: 5px;
 }
 
-.rigth-nav {
+.rigth-side-nav {
     flex-direction: column;
     flex-wrap: nowrap;
-    justify-content: center;
     align-items: center;
-    gap: 1rem;
-    
+    gap: 3rem;
+}
+
+.menu {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: .5rem;
+}
+
+.menu-link {
+    height: 2.3rem;
+    width: 2.3rem;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid #1e1e1e;
+    border-radius: 50%;
+    position: relative;
+    color: #1e1e1e;
 }
