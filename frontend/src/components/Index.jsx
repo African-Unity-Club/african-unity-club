@@ -164,9 +164,6 @@ function Index() {
             </section>
 
             <aside className='rigth-side-nav-bar'>
-                
-                <div className='rigth-body'></div>
-                
                 <div className='rigth-side-nav'>
                     <span className='toggle-button'>
                         <span></span>
