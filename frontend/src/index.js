@@ -11,7 +11,7 @@ import SignUp from './components/auth/Signup';
 import Forgot from './components/auth/Forgot';
 import ResetPassword from './components/auth/Reset';
 
-import Social from './components/Social';
+import Social from './components/Home/Social';
 import Index from './components/Index';
 
 import reportWebVitals from './reportWebVitals';

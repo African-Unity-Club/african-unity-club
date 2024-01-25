@@ -77,6 +77,11 @@ code {
     monospace;
 }
 
+small {
+  color: #777;
+  font-size: .8rem;
+}
+
 .x-larg {
   font-size: 3rem;
   font-weight: 800;

@@ -1,7 +1,7 @@
 import { ChatLeftDots, Heart, ReplyAll, Share } from "react-bootstrap-icons";
-import '../style/Social.css'
+import '../../style/Social.css'
 import { Link } from 'react-router-dom'
-import Anonymous from '../assets/nouser.png'
+import Anonymous from '../../assets/nouser.png'
 
 
 function Social() {
@@ -30,6 +30,7 @@ function Social() {
             <small className="post-header-time">{username}</small>
 
           </div>
+          
           <div className="post-content">
             {`
                 Ajoutez des annexes pour inclure des informations supplémentaires, telles que des CV d'équipe, des études de marché détaillées, etc.
