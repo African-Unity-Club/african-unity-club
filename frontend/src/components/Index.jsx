@@ -33,16 +33,19 @@ function Index() {
             <aside className="left-side-nav-bar">
                 
                 <div className="side-nav-bar-header">
+
                     <div className="userlogo">
                         <img src={Anonymous} alt="" className="userlogo-img" />
                         <span className="online">
                             <span className="online-dot"></span>
                         </span>
                     </div>
+
                     <span className="username">
                         {username}
                         <small>{online}</small>
                     </span>
+
                 </div>
 
                 <nav className="side-body">
@@ -92,60 +95,20 @@ function Index() {
 
                 <header className='header-content-nav-bar'>
 
-                    <div className="header-body">
+                    <Link to="/" className="header-link">
+                        <span className='logo'></span>
+                        Land Of Peace
+                    </Link>
 
-                        <Link to="/" className="header-link">
-                            <span className='logo'></span>
-                            Land Of Peace
-                        </Link>
-
-                        <div className="header-search">
-                            <input type="text" className="header-search-input" placeholder="Search Land Of Peace" />
-                            <button className="header-search-button">
-                                <Search size={20} color='aliceblue'/>
-                            </button>
-                        </div>
-
-                    </div>
-
-                    <div className="header-footer">
-                        
-                        <div className='header-footer-head'>
-                            <span className='toggle'>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </span>
-                            <h1 className="header-title">{`Dashboard`}</h1>
-                        </div>
-                        
-
-                        <nav className="header-footer-nav">
-
-                            <Link to={`/calendar/${username}`} className="header-link calendar">
-                                <Calendar2Date size={20} />
-                            </Link>
-
-                            <Link to={`/notification/${username}`} className="header-link notification">
-                                <Bell size={20} />
-                                <span className='total'>104</span>
-                            </Link>
-
-                            <Link to={`/message/${username}`} className="header-link message">
-                                <ChatLeft size={20} />
-                                <span className='total'>104</span>
-                            </Link>
-
-                            <Link to={`/friendish/${username}`} className="header-link friend">
-                                <PersonCircle size={20} />
-                                <span className='total'>104</span>
-                            </Link>
-
-                        </nav>
-
+                    <div className="header-search">
+                        <input type="text" className="header-search-input" placeholder="Search Land Of Peace" />
+                        <button className="header-search-button">
+                            <Search size={20} color='aliceblue'/>
+                        </button>
                     </div>
 
                 </header>
+
                 <div className='container'>
 
                     <Outlet />
@@ -199,6 +162,39 @@ function Index() {
                 </div>
 
             </section>
+
+            <aside className='rigth-side-nav-bar'>
+                
+                <span className='toggle-button'>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+
+                <nav className="rigth-nav">
+
+                    <Link to={`/calendar/${username}`} className="rigth-link calendar">
+                        <Calendar2Date size={20} />
+                    </Link>
+
+                    <Link to={`/notification/${username}`} className="rigth-link notification">
+                        <Bell size={20} />
+                        <span className='total'>104</span>
+                    </Link>
+
+                    <Link to={`/message/${username}`} className="rigth-link message">
+                        <ChatLeft size={20} />
+                        <span className='total'>104</span>
+                    </Link>
+
+                    <Link to={`/friendish/${username}`} className="rigth-link friend">
+                        <PersonCircle size={20} />
+                        <span className='total'>104</span>
+                    </Link>
+
+                </nav>
+
+            </aside>
 
         </main>
     )
