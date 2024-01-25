@@ -30,7 +30,7 @@ function Social() {
             <small className="post-header-time">{username}</small>
 
           </div>
-          
+
           <div className="post-content">
             {`
                 Ajoutez des annexes pour inclure des informations supplémentaires, telles que des CV d'équipe, des études de marché détaillées, etc.
@@ -38,11 +38,26 @@ function Social() {
             `}
           </div>
           <div className="action">
+
             <div className="post-action-left">
-              <Heart className="post-action-like" size={20} />
-              <Share className="post-action-share" size={20} />
-              <ReplyAll className="post-action-repost" size={20} />
+
+              <span className="post-action-body">
+                <Heart className="post-action-like" size={20} />
+                <span className="post-elt-count">4.8k</span>
+              </span>
+
+              <span className="post-action-body">
+                <Share className="post-action-share" size={20} />
+                <span className="post-elt-count">4.8k</span>
+              </span>
+
+              <span className="post-action-body">
+                <ReplyAll className="post-action-repost" size={24} />
+                <span className="post-elt-count">4.8k</span>
+              </span>
+
             </div>
+
             <div className="post-action-rigth">
               <Link to={``} className="post-comment-link">comments</Link>
               <span className="post-count-repost">
@@ -50,6 +65,7 @@ function Social() {
                 repost
               </span>
             </div>
+            
           </div>
           <div className="post-comment-write">
             <div className="userlogo soc-icon">

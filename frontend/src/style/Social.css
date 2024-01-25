@@ -2,7 +2,10 @@
 .post-list,
 .post,
 .post-header,
-.post-header-left {
+.post-header-left,
+.post-action-left,
+.post-action-body,
+.post-action-right {
     display: flex;
 }
 
@@ -30,5 +33,33 @@
     justify-content: space-between;
 }
 
+.post-header-left {
+    color: #1e1e1e;
+}
+
+.post-action-left {
+    align-items: center;
+    gap: 1rem;
+}
+
+.post-action-left > * {
+    cursor: pointer;
+}
+
+.post-action-body {
+    gap: .2rem;
+}
+
+.post-elt-count {
+    color: crimson;
+    font-size: .8rem;
+    font-weight: 600;
+    border-radius: 20px;
+}
+
+.post-action-right {
+    align-items: center;
+    gap: 1rem;
+}
 
 
