@@ -76,10 +76,21 @@
     align-items: center;
 }
 
+.userlogo.mini {
+    height: 2rem;
+    width: 2rem;
+    padding: .3rem;
+}
+
 .userlogo-img {
     height: 2.5rem;
     width: 2.5rem;
     border-radius: 50%;
+}
+
+.mini .userlogo-img {
+    height: 1.5rem;
+    width: 1.5rem;
 }
 
 .username {

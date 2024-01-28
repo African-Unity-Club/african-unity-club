@@ -1,0 +1,175 @@
+.Social,
+.post-list,
+.post,
+.post-header,
+.post-header-left,
+.post-action-left,
+.post-action-body,
+.post-action-right {
+    display: flex;
+}
+
+.post-list {
+    align-items: center;
+}
+
+.Social {
+    flex-wrap: nowrap;
+    padding: 1rem 0;
+    gap: 1rem;
+}
+
+/* SOCIAL LEFT */
+
+.Social .social-left {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 66%;
+    position: relative;
+}
+
+.social-post-writer {
+    display: flex;
+    background-color: rgb(113, 122, 132);
+    border-radius: 5px;
+    padding: .5rem;
+    gap: 1rem;
+    width: 100%;
+    padding: .5rem;
+    position: sticky;
+    top: 1rem;
+    z-index: 2;
+}
+
+.writer {
+    width: 100%;
+    padding: .5rem 1rem;
+    border-radius: 5px;
+    height: 2rem;
+    background-color: gray;
+    color: black;
+    font-size: .8rem;
+    font-weight: 300;
+    cursor: text;
+}
+
+.social-post-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 1rem;
+}
+
+.social-post {
+    display: flex;
+    flex-direction: column;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+    padding: .5rem;
+    width: 100%;
+    gap: 1rem;
+}
+
+.social-post-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.social-post-header-left {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+}
+
+.social-post-header-right {
+    color: gray;
+}
+
+.social-post-action {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.social-post-action-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.social-post-action-body {
+    display: flex;
+    align-items: center;
+    gap: .1rem;
+    cursor: pointer;
+}
+
+.social-post-action-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.social-post-comment-link {
+    cursor: pointer;
+    color: #1e1e1e;
+    font-size: .8rem;
+}
+
+.social-post-count-repost {
+    display: flex;
+    color: gray;
+    font-size: .8rem;
+    font-weight: 300;
+    gap: .1rem;
+}
+
+.social-user-reaction {
+    display: flex;
+    align-items: center;
+    gap: .1rem;
+}
+
+.social-post-comment {
+    display: flex;
+    align-items: center;
+    background-color: rgba(169, 169, 169, 0.594);
+    padding: .5rem;
+    border-radius: 5px;
+    width: 100%;
+    height: 3rem;
+}
+
+.social-post-comment-input {
+    width: 100%;
+    padding: .5rem 1rem;
+    border-radius: 5px;
+    color: black;
+    font-size: .8rem;
+    font-weight: 300;
+    outline: none;
+    background-color: rgba(169, 169, 169, 0);
+    border: none;
+    resize: none;
+    height: 100%;
+}
+
+.social-post-comment-send {
+    font-size: 2rem;
+    cursor: pointer;
+    color: #1e1e1e;
+}
+
+/* SOCIAL RIGHT */
+
+.Social .social-right {
+    width: 33%;
+}
+
+
+
