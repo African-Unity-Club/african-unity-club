@@ -1,0 +1,90 @@
+.online-standard {
+    height: 3rem;
+    width: 3rem;
+    padding: .5rem;
+    border-radius: 50%;
+    border: 3px solid #1e1e1e;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.online-img {
+    height: 2.5rem;
+    width: 2.5rem;
+    border-radius: 50%;
+}
+
+.online-dot {
+    height: 1rem;
+    width: 1rem;
+    padding: .2rem;
+    border-radius: 50%;
+    background-color: aliceblue;
+    position: absolute;
+    bottom: 0;
+    right: -.27rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.online-dot-signal {
+    height: .5rem;
+    width: .5rem;
+    border-radius: 50%;
+}
+
+.online-dot-signal.online {
+    background-color: crimson;
+}
+
+.online-dot-signal.unonline {
+    background-color: #1e1e1e;
+}
+
+
+.online-standard.mini {
+    height: 2rem;
+    width: 2rem;
+    padding: .5rem;
+}
+
+.online-standard.mini .online-img {
+    height: 1.5rem;
+    width: 1.5rem;
+}
+
+.online-standard.mini .online-dot {
+    height: .8rem;
+    width: .8rem;
+}
+
+.online-standard.mini .online-dot-signal {
+    height: .4rem;
+    width: .4rem;
+}
+
+
+.online-standard.x-mini {
+    height: 1.5rem;
+    width: 1.5rem;
+}
+
+.online-standard.x-mini .online-img {
+    height: 1rem;
+    width: 1rem;
+}
+
+.online-standard.x-mini .online-dot {
+    height: .5rem;
+    width: .5rem;
+    padding: 0;
+}
+
+.online-standard.x-mini .online-dot-signal {
+    height: .3rem;
+    width: .3rem;
+}
+

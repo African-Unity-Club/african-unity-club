@@ -20,12 +20,13 @@ import {
 import { Link, Outlet } from 'react-router-dom';
 import '../style/All.css'
 import Anonymous from '../assets/nouser.png'
+import { Online } from '../ui/Online'
 
 
 function Index() {
 
     const username = 'unknown'
-    let online = 'online'
+    let online = true
 
     return (
         <main className="index-main">
@@ -34,16 +35,11 @@ function Index() {
                 
                 <div className="side-nav-bar-header">
 
-                    <div className="userlogo">
-                        <img src={Anonymous} alt="" className="userlogo-img" />
-                        <span className="online">
-                            <span className="online-dot"></span>
-                        </span>
-                    </div>
+                    <Online data={{ status: online }}/>
 
                     <span className="username">
                         {username}
-                        <small>{online}</small>
+                        <small>{online ? 'online' : '2 min'}</small>
                     </span>
 
                 </div>

@@ -55,13 +55,14 @@
     flex-flow: row nowrap;
     align-items: center;
     justify-content: flex-start;
-    padding: .4rem 1rem;
+    padding: .4rem;
     height: 4rem;
     width: 100%;
     background-color: #f5f5f5;
     color: #1e1e1e;
     font-size: 1.5rem;
     font-weight: 600;
+    gap: .5rem;
 }
 
 .userlogo {
@@ -88,6 +89,7 @@
     border-radius: 50%;
 }
 
+
 .mini .userlogo-img {
     height: 1.5rem;
     width: 1.5rem;
@@ -102,7 +104,7 @@
     color: crimson
 }
 
-.online {
+/* .online {
     height: 1rem;
     width: 1rem;
     padding: .2rem;
@@ -113,14 +115,14 @@
     right: -.5rem;
     align-items: center;
     justify-content: center;
-}
+} */
 
-.online-dot {
+/* .online-dot {
     height: .5rem;
     width: .5rem;
     border-radius: 50%;
     background-color: crimson;
-}
+} */
 
 .side-body {
     flex-flow: column nowrap;

@@ -1,8 +1,7 @@
 import { ChatLeftDots, Heart, ReplyAll, Send, Share } from "react-bootstrap-icons";
 import './Social.css'
 import { Link } from 'react-router-dom'
-import Anonymous from '../../assets/nouser.png'
-
+import { Online } from "../../ui/Online";
 
 function Social() {
 
@@ -15,12 +14,7 @@ function Social() {
       <div className="social-left">
 
         <div className="social-post-writer">
-          <div className="userlogo mini">
-            <img src={Anonymous} alt="" className="userlogo-img" />
-            <span className="online">
-              <span className="online-dot"></span>
-            </span>
-          </div>
+          <Online data={{ dim: 'mini', status: true }} />
           <Link to='/' className="writer">write your post</Link>
         </div>
 
@@ -31,12 +25,7 @@ function Social() {
             <div className="social-post-header">
 
               <Link to={``} className="social-post-header-left">
-                <div className="userlogo mini">
-                  <img src={Anonymous} alt="" className="userlogo-img" />
-                  <span className="online">
-                    <span className="online-dot"></span>
-                  </span>
-                </div>
+                <Online data={{ dim: 'mini', status: true }} />
                 <div className="post-header-name">{username}</div>
               </Link>
               <div className="social-post-header-right">
@@ -80,36 +69,23 @@ function Social() {
             </div>
 
             <div className="social-user-reaction">
-
-              <Link to={``} className="userlogo mini">
-                <img src={Anonymous} alt="" className="userlogo-img" />
-                <span className="online">
-                  <span className="online-dot"></span>
-                </span>
+              <Link to={``}>
+                <Online data={{ dim: 'x-mini', status: true}} />
               </Link>
-              <Link to={``} className="userlogo mini">
-                <img src={Anonymous} alt="" className="userlogo-img" />
-                <span className="online">
-                  <span className="online-dot"></span>
-                </span>
+              <Link to={``}>
+                <Online data={{ dim: 'x-mini', status: true}} />
               </Link>
-              <Link to={``} className="userlogo mini">
-                <img src={Anonymous} alt="" className="userlogo-img" />
-                <span className="online">
-                  <span className="online-dot"></span>
-                </span>
+              <Link to={``}>
+                <Online data={{ dim: 'x-mini', status: true}} />
               </Link>
-              <Link to={``} className="userlogo mini">
+              <Link to={``}>
                 <span className="userlogo-img">...</span>
               </Link>
             </div>
 
             <div className="social-post-comment">
-              <div className="userlogo mini">
-                <img src={Anonymous} alt="" className="userlogo-img" />
-                <span className="online">
-                  <span className="online-dot"></span>
-                </span>
+              <div >
+                <Online data={{ dim: 'mini', status: true}} />
               </div>
               <textarea className="social-post-comment-input" placeholder="write your comment"></textarea>
               <Send className="social-post-comment-send" onClick={``} />
@@ -122,12 +98,7 @@ function Social() {
             <div className="social-post-header">
 
               <Link to={``} className="social-post-header-left">
-                <div className="userlogo mini">
-                  <img src={Anonymous} alt="" className="userlogo-img" />
-                  <span className="online">
-                    <span className="online-dot"></span>
-                  </span>
-                </div>
+                <Online data={{ dim: 'mini', status: true }} />
                 <div className="post-header-name">{username}</div>
               </Link>
               <div className="social-post-header-right">
@@ -172,35 +143,23 @@ function Social() {
 
             <div className="social-user-reaction">
 
-              <Link to={``} className="userlogo mini">
-                <img src={Anonymous} alt="" className="userlogo-img" />
-                <span className="online">
-                  <span className="online-dot"></span>
-                </span>
+              <Link to={``}>
+                <Online data={{ dim: 'x-mini', status: true}} />
               </Link>
-              <Link to={``} className="userlogo mini">
-                <img src={Anonymous} alt="" className="userlogo-img" />
-                <span className="online">
-                  <span className="online-dot"></span>
-                </span>
+              <Link to={``}>
+                <Online data={{ dim: 'x-mini', status: true}} />
               </Link>
-              <Link to={``} className="userlogo mini">
-                <img src={Anonymous} alt="" className="userlogo-img" />
-                <span className="online">
-                  <span className="online-dot"></span>
-                </span>
+              <Link to={``}>
+                <Online data={{ dim: 'x-mini', status: true}} />
               </Link>
-              <Link to={``} className="userlogo mini">
+              <Link to={``}>
                 <span className="userlogo-img">...</span>
               </Link>
             </div>
 
             <div className="social-post-comment">
-              <div className="userlogo mini">
-                <img src={Anonymous} alt="" className="userlogo-img" />
-                <span className="online">
-                  <span className="online-dot"></span>
-                </span>
+              <div>
+                <Online data={{ dim: 'mini', status: true}} />
               </div>
               <textarea className="social-post-comment-input" placeholder="write your comment"></textarea>
               <Send className="social-post-comment-send" onClick={``} />
@@ -213,12 +172,7 @@ function Social() {
             <div className="social-post-header">
 
               <Link to={``} className="social-post-header-left">
-                <div className="userlogo mini">
-                  <img src={Anonymous} alt="" className="userlogo-img" />
-                  <span className="online">
-                    <span className="online-dot"></span>
-                  </span>
-                </div>
+                <Online data={{ dim: 'mini', status: true }} />
                 <div className="post-header-name">{username}</div>
               </Link>
               <div className="social-post-header-right">
@@ -263,35 +217,23 @@ function Social() {
 
             <div className="social-user-reaction">
 
-              <Link to={``} className="userlogo mini">
-                <img src={Anonymous} alt="" className="userlogo-img" />
-                <span className="online">
-                  <span className="online-dot"></span>
-                </span>
+              <Link to={``}>
+                <Online data={{ dim: 'x-mini', status: true}} />
               </Link>
-              <Link to={``} className="userlogo mini">
-                <img src={Anonymous} alt="" className="userlogo-img" />
-                <span className="online">
-                  <span className="online-dot"></span>
-                </span>
+              <Link to={``}>
+                <Online data={{ dim: 'x-mini', status: true}} />
               </Link>
-              <Link to={``} className="userlogo mini">
-                <img src={Anonymous} alt="" className="userlogo-img" />
-                <span className="online">
-                  <span className="online-dot"></span>
-                </span>
+              <Link to={``}>
+                <Online data={{ dim: 'x-mini', status: true}} />
               </Link>
-              <Link to={``} className="userlogo mini">
+              <Link to={``}>
                 <span className="userlogo-img">...</span>
               </Link>
             </div>
 
             <div className="social-post-comment">
-              <div className="userlogo mini">
-                <img src={Anonymous} alt="" className="userlogo-img" />
-                <span className="online">
-                  <span className="online-dot"></span>
-                </span>
+              <div>
+                <Online data={{ dim: 'mini', status: true}} />
               </div>
               <textarea className="social-post-comment-input" placeholder="write your comment"></textarea>
               <Send className="social-post-comment-send" onClick={``} />
@@ -304,12 +246,7 @@ function Social() {
             <div className="social-post-header">
 
               <Link to={``} className="social-post-header-left">
-                <div className="userlogo mini">
-                  <img src={Anonymous} alt="" className="userlogo-img" />
-                  <span className="online">
-                    <span className="online-dot"></span>
-                  </span>
-                </div>
+                <Online data={{ dim: 'mini', status: true }} />
                 <div className="post-header-name">{username}</div>
               </Link>
               <div className="social-post-header-right">
@@ -354,35 +291,23 @@ function Social() {
 
             <div className="social-user-reaction">
 
-              <Link to={``} className="userlogo mini">
-                <img src={Anonymous} alt="" className="userlogo-img" />
-                <span className="online">
-                  <span className="online-dot"></span>
-                </span>
+              <Link to={``}>
+                <Online data={{ dim: 'x-mini', status: true}} />
               </Link>
-              <Link to={``} className="userlogo mini">
-                <img src={Anonymous} alt="" className="userlogo-img" />
-                <span className="online">
-                  <span className="online-dot"></span>
-                </span>
+              <Link to={``}>
+                <Online data={{ dim: 'x-mini', status: true}} />
               </Link>
-              <Link to={``} className="userlogo mini">
-                <img src={Anonymous} alt="" className="userlogo-img" />
-                <span className="online">
-                  <span className="online-dot"></span>
-                </span>
+              <Link to={``}>
+                <Online data={{ dim: 'x-mini', status: true}} />
               </Link>
-              <Link to={``} className="userlogo mini">
+              <Link to={``}>
                 <span className="userlogo-img">...</span>
               </Link>
             </div>
 
             <div className="social-post-comment">
-              <div className="userlogo mini">
-                <img src={Anonymous} alt="" className="userlogo-img" />
-                <span className="online">
-                  <span className="online-dot"></span>
-                </span>
+              <div>
+                <Online data={{ dim: 'mini', status: true}} />
               </div>
               <textarea className="social-post-comment-input" placeholder="write your comment"></textarea>
               <Send className="social-post-comment-send" onClick={``} />

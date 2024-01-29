@@ -33,10 +33,9 @@
     display: flex;
     background-color: rgb(113, 122, 132);
     border-radius: 5px;
-    padding: .5rem;
+    padding: .3rem;
     gap: 1rem;
     width: 100%;
-    padding: .5rem;
     position: sticky;
     top: 1rem;
     z-index: 2;
@@ -83,6 +82,7 @@
     display: flex;
     align-items: center;
     font-weight: 600;
+    gap: .5rem;
 }
 
 .social-post-header-right {
@@ -132,7 +132,7 @@
 .social-user-reaction {
     display: flex;
     align-items: center;
-    gap: .1rem;
+    gap: .5rem;
 }
 
 .social-post-comment {
