@@ -1,0 +1,90 @@
+.Profil {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.profil-personal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Profil h1 {
+    font-size: 1.5rem;
+    padding: .5rem;
+    color: dodgerblue;
+}
+
+.profil-personal .top {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 1rem;
+}
+
+.profil-personal .top .left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 1rem;
+    width: 50%;
+}
+
+.profil-personal .top .right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1rem;
+    width: 50%;
+}
+
+.profil-personal .right img {
+    width: 10rem;
+    height: 10rem;
+    border: 3px solid dodgerblue;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.Profil .btn {
+    width: 8rem;
+    height: 2rem;
+    border-radius: 1rem;
+    font-weight: 600;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.profil-personal .bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 1rem;
+    width: 100%;
+    padding: 1rem 0;
+}
+
+.profil-personal .bottom textarea {
+    width: 100%;
+    height: 10rem;
+    border-radius: 1rem;
+    padding: 1rem;
+    resize: none;
+    outline: none;
+    border: 0;
+    color: #1e1e1e;
+    font-weight: 600;
+}
+
+.profil-personal .bottom .btn {
+    align-self: flex-end;
+}

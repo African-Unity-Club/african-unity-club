@@ -64,15 +64,27 @@ function Index() {
                     <Link to="/stories" className="body-side-nav-link storie">
                         <BlockquoteLeft size={20}/>
                         Stories</Link>
-                    <Link to="/careers" className="body-side-nav-link careers">
-                        <Briefcase size={20}/>
-                        Careers</Link>
                     <Link to="/communities" className="body-side-nav-link communities">
                         <People size={20}/>
                         Communities</Link>
                     <Link to="/news" className="body-side-nav-link news">
                         <Newspaper size={20}/>
                         News</Link>
+                    <Link to={`/message`} className='body-side-nav-link sms'>
+                        <ChatLeft size={20} />
+                        Messages
+                    </Link>
+                    <Link to={`/friendship`} className='body-side-nav-link freindship'>
+                        <PersonCircle size={20} />
+                        friendship
+                    </Link>
+                    <Link to={`/agenda`} className='body-side-nav-link agenda'>
+                        <Calendar2Date size={20}/>
+                        agenda
+                    </Link>
+                    <Link to="/careers" className="body-side-nav-link careers">
+                        <Briefcase size={20}/>
+                        Careers</Link>
                     <Link to={`/settings/${username}`} className="body-side-nav-link settings">
                         <Sliders size={20}/>
                         Settings</Link>
@@ -107,15 +119,23 @@ function Index() {
 
                 <div className='container'>
 
-                    <Outlet />
+                    <div className='container-body'>
+                        <Outlet />
+                    </div>
 
                     <footer className='footer-nav-bar'>
+
+                        <div className="index-right">
+                          <div className="index-post-writer">
+                            <Online data={{ dim: 'mini', status: true }} />
+                            <Link to='/' className="writer">write your post</Link>
+                          </div>
+                        </div>
 
                         <div className="footer-body">
 
                             <div className="footer-header">
                                 <div className="footer-logo"></div>
-                                <span className="footer-title">Land Of Peace</span>
                             </div>
 
                             <nav className="footer-nav">
@@ -167,26 +187,8 @@ function Index() {
                         <span></span>
                     </span>
                     <div className='menu'>
-                        <a href='#calendar' className='menu-link'>
-                            <Calendar2Date size={20}/>
-                            <span className="online">
-                                <span className="online-dot"></span>
-                            </span>
-                        </a>
                         <a href='#notification' className='menu-link'>
                             <Bell size={20} />
-                            <span className="online">
-                                <span className="online-dot"></span>
-                            </span>
-                        </a>
-                        <a href='#message' className='menu-link'>
-                            <ChatLeft size={20} />
-                            <span className="online">
-                                <span className="online-dot"></span>
-                            </span>
-                        </a>
-                        <a href='#friend' className='menu-link'>
-                            <PersonCircle size={20} />
                             <span className="online">
                                 <span className="online-dot"></span>
                             </span>

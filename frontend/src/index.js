@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom/client';
 import './style/index.css';
 
 import Views from './components/Views';
+import Profile from './components/Profile';
 
 import SignIn from './components/auth/Signin';
 import VerifyOtp from './components/auth/Otp';
@@ -11,7 +12,7 @@ import SignUp from './components/auth/Signup';
 import Forgot from './components/auth/Forgot';
 import ResetPassword from './components/auth/Reset';
 
-import Social from './components/Social/Social';
+import Social from './components/Social';
 import Index from './components/Index';
 
 import reportWebVitals from './reportWebVitals';
@@ -32,6 +33,7 @@ root.render(
         <Route path='/reset' element={<ResetPassword />} />
         
         <Route path='/' element={<Index />} >
+          <Route path='profile/:username' element={<Profile />} />
           <Route path='' element={<Social />} />
         </Route>
         

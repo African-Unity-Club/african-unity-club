@@ -1,0 +1,102 @@
+.post-container {
+    display: flex;
+    flex-direction: column;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+    padding: .5rem;
+    width: 100%;
+    gap: 1rem;
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.post-header-link {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    color: #1e1e1e;
+    gap: .5rem;
+}
+
+.post-header-date {
+    color: gray;
+}
+
+.post-action {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.post-action-click {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.post-action-icon {
+    display: flex;
+    align-items: center;
+    gap: .3rem;
+    cursor: pointer;
+}
+
+.post-action-number {
+    color: gray;
+}
+
+.post-action-comments {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.post-action-comments-link {
+    cursor: pointer;
+    color: #1e1e1e;
+    font-size: .8rem;
+    display: flex;
+    gap: .3rem;
+}
+
+.post-users-react {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+.post-comment-writer {
+    display: flex;
+    align-items: center;
+    background-color: rgba(169, 169, 169, 0.594);
+    padding: .5rem;
+    border-radius: 5px;
+    width: 100%;
+    height: 3rem;
+}
+
+.post-comment-input {
+    width: 100%;
+    padding: .5rem 1rem;
+    border-radius: 5px;
+    color: black;
+    font-size: .8rem;
+    font-weight: 300;
+    outline: none;
+    background-color: rgba(169, 169, 169, 0);
+    border: none;
+    resize: none;
+    height: 100%;
+}
+
+.post-comment-send {
+    font-size: 2rem;
+    cursor: pointer;
+    color: #1e1e1e;
+}
