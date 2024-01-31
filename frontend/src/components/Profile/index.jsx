@@ -3,6 +3,8 @@ import { InputSimpleStyled } from "../../ui/Input";
 import './index.css';
 import { useParams } from "react-router-dom";
 import nouser from '../../assets/nouser.png';
+import { Skill } from '../../ui/Skill'
+import { Exp } from '../../ui/Exp'
 
 
 export default function Profil() {
@@ -120,28 +122,120 @@ export default function Profil() {
                 </div>
                 
                 <div className="skills-list">
-                    <div className="corps">
-                        <div className="top">
-                            <span>
-                                <span>skill</span>
-                                <small>domain</small>
-                            </span>
-                            <p>description</p>
-                        </div>
-                        <div className="bottom">
-                            <button className="btn" type="button">edit</button>
-                            <button className="btn" type="button">delete</button>
-                        </div>
-                    </div>
+                    <Skill 
+                        skill={
+                            {
+                                name: 'title', 
+                                domain: 'technology',
+                                description: "Si vous avez plusieurs fichiers et composants, la vérification de ces points peut nécessiter une analyse plus approfondie de votre code. Si vous le souhaitez, vous pouvez partager le code du composant Social ainsi que les importations et utilisations associées, et je pourrai vous aider à identifier le problème spécifique."
+                            }
+                        }
+                    />
+
+                    <Skill 
+                        skill={
+                            {
+                                name: 'title', 
+                                domain: 'technology',
+                                description: "Si vous avez plusieurs fichiers et composants, la vérification de ces points peut nécessiter une analyse plus approfondie de votre code. Si vous le souhaitez, vous pouvez partager le code du composant Social ainsi que les importations et utilisations associées, et je pourrai vous aider à identifier le problème spécifique."
+                            }
+                        }
+                    />
+
+                    <Skill 
+                        skill={
+                            {
+                                name: 'title', 
+                                domain: 'technology',
+                                description: "Si vous avez plusieurs fichiers et composants, la vérification de ces points peut nécessiter une analyse plus approfondie de votre code. Si vous le souhaitez, vous pouvez partager le code du composant Social ainsi que les importations et utilisations associées, et je pourrai vous aider à identifier le problème spécifique."
+                            }
+                        }
+                    />
                 </div>
             </form>
 
-            <div className="experiences"></div>
-            <div className="certifs"></div>
-            <div className="awards"></div>
-            <div className="social"></div>
-            <div className="password"></div>
-            <div className="dbfactor"></div>
+            <form method="post" onSubmit={`|`} className="experiences">
+                <h1>Experiences</h1>
+                <div className="top">
+                    <div className="left">
+                        <InputComposeStyled>
+                            <label>Title</label>
+                            <InputSimpleStyled  type="text"/>
+                        </InputComposeStyled>
+                        <textarea placeholder="description"></textarea>
+                    </div>
+                    <div className="right">
+                        <InputComposeStyled>
+                            <label>Institution</label>
+                            <InputSimpleStyled  type="text"/>
+                        </InputComposeStyled>
+                        <InputComposeStyled>
+                            <label>Start Year</label>
+                            <InputSimpleStyled  type="year"/>
+                        </InputComposeStyled>
+                        <InputComposeStyled>
+                            <label>End Year</label>
+                            <InputSimpleStyled  type="year"/>
+                        </InputComposeStyled>
+                    </div>
+                </div>
+                <div className="bottom">
+                    <button className="btn" type="submit">add</button>
+                </div>
+
+                <div className="experiences-list">
+                    <Exp exp={
+                        {
+                            title: 'title',
+                            description: "Si vous avez plusieurs fichiers et composants, la vérification de ces points peut nécessiter une analyse plus approfondie de votre code. Si vous le souhaitez, vous pouvez partager le code du composant Social ainsi que les importations et utilisations associées, et je pourrai vous aider à identifier le problème spécifique.",
+                            institution: 'institution',
+                            startYear: '2023-04-12',
+                            endYear: 'today'
+                        }} 
+                    />
+
+                    <Exp exp={
+                        {
+                            title: 'title',
+                            description: "Si vous avez plusieurs fichiers et composants, la vérification de ces points peut nécessiter une analyse plus approfondie de votre code. Si vous le souhaitez, vous pouvez partager le code du composant Social ainsi que les importations et utilisations associées, et je pourrai vous aider à identifier le problème spécifique.",
+                            institution: 'institution',
+                            startYear: '2023-04-12',
+                            endYear: 'today'
+                        }} 
+                    />
+
+                    <Exp exp={
+                        {
+                            title: 'title',
+                            description: "Si vous avez plusieurs fichiers et composants, la vérification de ces points peut nécessiter une analyse plus approfondie de votre code. Si vous le souhaitez, vous pouvez partager le code du composant Social ainsi que les importations et utilisations associées, et je pourrai vous aider à identifier le problème spécifique.",
+                            institution: 'institution',
+                            startYear: '2023-04-12',
+                            endYear: 'today'
+                        }} 
+                    />
+                </div>
+            </form>
+
+            <form method="post" onSubmit={`|`} className="certifs">
+                
+            </form>
+
+            <form method="post" onSubmit={`|`} className="awards">
+                
+            </form>
+
+            <form method="post" onSubmit={`|`} className="social">
+                
+            </form>
+
+            <form method="post" onSubmit={`|`} className="password">
+                
+            </form>
+
+            <form method="post" onSubmit={`|`} className="dbfactor">
+                
+            </form>
+
         </div>
     )
 }

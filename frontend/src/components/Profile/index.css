@@ -2,19 +2,30 @@
     display: flex;
     flex-direction: column;
     overflow-y: auto;
+    gap: 3rem;
 }
 
 .profil-personal,
 .profil-location,
 .skills,
-.skills-list {
+.experiences {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.skills-list {
-    gap: 1rem;
+.skills-list, .experiences-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.5rem;
+    width: 100%;
+    padding: 1rem 0;
+}
+
+.skills-list > div, .experiences-list > div {
+    width: 48%;
 }
 
 .Profil h1 {
@@ -25,7 +36,8 @@
 
 .profil-personal .top,
 .profil-location .top,
-.skills .top {
+.skills .top,
+.experiences .top {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -37,7 +49,9 @@
 
 .profil-personal .top .left,
 .profil-location .top .left,
-.profil-location .top .right {
+.profil-location .top .right,
+.experiences .top .left,
+.experiences .top .right {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -46,7 +60,8 @@
     width: 50%;
 }
 
-.profil-location .top .right {
+.profil-location .top .right,
+.experiences .top .right {
     align-items: flex-end;
 }
 
@@ -67,22 +82,10 @@
     overflow: hidden;
 }
 
-.Profil .btn {
-    width: 8rem;
-    height: 2rem;
-    border-radius: 1rem;
-    font-weight: 600;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    cursor: pointer;
-}
-
 .profil-personal .bottom,
 .profil-location .bottom,
-.skills .bottom{
+.skills .bottom,
+.experiences .bottom {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -93,6 +96,7 @@
 }
 
 .profil-personal .bottom textarea,
+.experiences .top textarea,
 .skills .bottom textarea {
     width: 100%;
     height: 10rem;
@@ -107,6 +111,9 @@
 
 .profil-personal .bottom .btn,
 .profil-location .bottom .btn,
+.experiences .bottom .btn,
 .skills .bottom .btn {
     align-self: flex-end;
 }
+
+

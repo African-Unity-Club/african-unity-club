@@ -1,0 +1,53 @@
+.exp {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 1rem;
+    border: 1px solid gainsboro;
+    padding: 1rem;
+    border-radius: 5px;
+}
+
+.exp .body {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+    gap: 1rem;
+}
+
+.exp .left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.exp .top {
+    font-weight: 600;
+    justify-content: flex-start;
+}
+
+.exp .top span {
+    color: rgb(159, 11, 41);
+    font-size: 1.3rem;
+}
+
+.exp .description {
+    font-size: .9rem;
+    color: gainsboro;
+}
+
+.exp .right {
+    background-color: aliceblue;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+}
+
+.exp .right .institution {
+    font-size: 1rem;
+    color: #1e1e1e;
+    font-weight: 600;
+}
