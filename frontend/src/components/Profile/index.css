@@ -116,4 +116,8 @@
     align-self: flex-end;
 }
 
-
+.network-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}

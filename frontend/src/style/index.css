@@ -156,3 +156,15 @@ a {
   justify-content: center;
   cursor: pointer;
 }
+
+select {
+  height: 2rem;
+  border-radius: 5px;
+  border: 0;
+  font-weight: 600;
+  padding: .5rem 1rem;
+  cursor: pointer;
+  outline: none;
+}
+
+

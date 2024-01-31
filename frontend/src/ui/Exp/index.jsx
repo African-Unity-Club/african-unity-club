@@ -11,7 +11,7 @@ export const Exp = ({ exp }) => {
                 <div className="left">
                     <div className="top">
                         <span className="title">{exp.title}</span>
-                        <small className="years">{exp.startYear} - {exp.endYear}</small>
+                        <small className="years">{`${exp.startYear} ${exp.endYear ? '- ' + exp.endYear : ''}`}</small>
                     </div>
                     <p className="description">{exp.description}</p>
                 </div>
@@ -31,3 +31,4 @@ export const Exp = ({ exp }) => {
         </div>
     );
 }
+
