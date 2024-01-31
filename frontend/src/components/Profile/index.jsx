@@ -102,7 +102,40 @@ export default function Profil() {
                 </div>
             </form>
             
-            <div className="skills"></div>
+            <form className="skills" method="post" onSubmit={``}>
+                <h1>Skills</h1>
+                <div className="top">
+                    <InputComposeStyled>
+                        <label>Skill</label>
+                        <InputSimpleStyled  type="text"/>
+                    </InputComposeStyled>
+                    <InputComposeStyled>
+                        <label>Domain</label>
+                        <InputSimpleStyled  type="text"/>
+                    </InputComposeStyled>
+                </div>
+                <div className="bottom">
+                    <textarea placeholder="description"></textarea>
+                    <button className="btn" type="submit">add</button>
+                </div>
+                
+                <div className="skills-list">
+                    <div className="corps">
+                        <div className="top">
+                            <span>
+                                <span>skill</span>
+                                <small>domain</small>
+                            </span>
+                            <p>description</p>
+                        </div>
+                        <div className="bottom">
+                            <button className="btn" type="button">edit</button>
+                            <button className="btn" type="button">delete</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
             <div className="experiences"></div>
             <div className="certifs"></div>
             <div className="awards"></div>
