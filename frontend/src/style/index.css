@@ -167,4 +167,7 @@ select {
   outline: none;
 }
 
+.networks select {
+ background-color: #dae9f7;
+}
 
