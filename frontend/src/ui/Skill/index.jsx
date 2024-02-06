@@ -2,6 +2,7 @@ import { PencilSquare, Trash } from 'react-bootstrap-icons';
 import './index.css';
 
 
+
 export const Skill = ({ skill }) => {
 
     return (

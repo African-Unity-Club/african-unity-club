@@ -8,7 +8,21 @@ export const InputSimpleStyled = styled.input`
     font-size: 1rem;
     font-weight: 600;
     color: #1e1e1e;
-    background-color: #f5f5f5;
+    background-color: ${({ theme }) => theme};
     width: 100%;
     height: 2rem;
+`
+
+export const TextareaStyled = styled.textarea`
+    border: none;
+    border-radius: .3rem;
+    outline: none;
+    padding: .5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #1e1e1e;
+    background-color: ${({ theme }) => theme};
+    width: 100%;
+    height: 6rem;
+    resize: none;
 `

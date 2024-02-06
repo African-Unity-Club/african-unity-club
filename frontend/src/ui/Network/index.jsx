@@ -19,11 +19,10 @@ export const NetworkLinkStyled = styled(Link)`
     align-items: center;
     gap: .5rem;
     padding: .2rem .5rem .2rem .2rem;
-    color: black;
+    color: aliceblue;
     width: auto;
     border-radius: 1rem;
-    border: 1px solid black;
-    background-color: rgba(255, 0, 0, .2);
+    border: 1px solid aliceblue;
     cursor: pointer;
     transition: all .3s ease-in-out;
     &:hover {

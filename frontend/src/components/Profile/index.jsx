@@ -1,16 +1,69 @@
 import { InputComposeStyled } from "../../ui/InputCompose"
-import { InputSimpleStyled } from "../../ui/Input";
+import { InputSimpleStyled, TextareaStyled } from "../../ui/Input";
 import './index.css';
 import { useParams } from "react-router-dom";
 import nouser from '../../assets/nouser.png';
 import { Skill } from '../../ui/Skill'
 import { Exp } from '../../ui/Exp'
 import { Network } from "../../ui/Network";
+import { PencilSquare, Trash } from 'react-bootstrap-icons';
+import { PopupForm } from "../../ui/Popup";
 
 
 export default function Profil() {
 
     const { username } = useParams();
+
+    const OpenPopup = () => {
+        document.querySelector('.overlay').style.display = 'flex'
+    }
+
+    const ClosePopup = () => {
+        document.querySelector('.overlay').style.display = 'none'
+    }
+
+    const skillForm = (
+        <>
+            <InputComposeStyled>
+                <label>Skill</label>
+                <InputSimpleStyled  type="text" theme={"#dae9f7"}/>
+            </InputComposeStyled>
+
+            <InputComposeStyled>
+                <label>Domain</label>
+                <InputSimpleStyled  type="text" theme={"#dae9f7"}/>
+            </InputComposeStyled>
+            
+            <TextareaStyled placeholder="description" theme={"#dae9f7"} />
+        </>
+    )
+
+    const expForm = (
+        <>
+            <InputComposeStyled>
+                <label>Title</label>
+                <InputSimpleStyled  type="text" theme={"#dae9f7"}/>
+            </InputComposeStyled>
+
+            <TextareaStyled placeholder="description" theme={"#dae9f7"} />
+
+            <InputComposeStyled>
+                <label>Institution</label>
+                <InputSimpleStyled  type="text" theme={"#dae9f7"}/>
+            </InputComposeStyled>
+
+            <InputComposeStyled>
+                <label>Start Year</label>
+                <InputSimpleStyled  type="year" theme={"#dae9f7"}/>
+            </InputComposeStyled>
+
+            <InputComposeStyled>
+                <label>End Year</label>
+                <InputSimpleStyled  type="year" theme={"#dae9f7"}/>
+            </InputComposeStyled>
+        </>
+    )
+
 
     return (
         <div className="Profil">
@@ -104,56 +157,97 @@ export default function Profil() {
                     <button className="btn" type="submit">Save</button>
                 </div>
             </form>
-            
-            <form className="skills" method="post" onSubmit={``}>
-                <h1>Skills</h1>
-                <div className="top">
-                    <InputComposeStyled>
-                        <label>Skill</label>
-                        <InputSimpleStyled  type="text"/>
-                    </InputComposeStyled>
-                    <InputComposeStyled>
-                        <label>Domain</label>
-                        <InputSimpleStyled  type="text"/>
-                    </InputComposeStyled>
-                </div>
-                <div className="bottom">
-                    <textarea placeholder="description"></textarea>
-                    <button className="btn" type="submit">add</button>
-                </div>
-                
-                <div className="skills-list">
-                    <Skill 
-                        skill={
-                            {
-                                name: 'title', 
-                                domain: 'technology',
-                                description: "Si vous avez plusieurs fichiers et composants, la vérification de ces points peut nécessiter une analyse plus approfondie de votre code. Si vous le souhaitez, vous pouvez partager le code du composant Social ainsi que les importations et utilisations associées, et je pourrai vous aider à identifier le problème spécifique."
-                            }
-                        }
-                    />
 
-                    <Skill 
-                        skill={
-                            {
-                                name: 'title', 
-                                domain: 'technology',
-                                description: "Si vous avez plusieurs fichiers et composants, la vérification de ces points peut nécessiter une analyse plus approfondie de votre code. Si vous le souhaitez, vous pouvez partager le code du composant Social ainsi que les importations et utilisations associées, et je pourrai vous aider à identifier le problème spécifique."
+            <div className="profil-activity">
+                <PopupForm title="New Skill" body={ skillForm } />
+                <PopupForm title="New Experience" body={ expForm } />
+                <div className="skills">
+                    <div className="head">
+                        <h1>Skills</h1>
+                        <div className="bt">
+                            <button className="btn" type="button" onClick={OpenPopup}>
+                                <PencilSquare size={16}/>
+                            </button>
+                            <button className="btn" type="button">
+                                <Trash size={16}/>
+                            </button>
+                        </div>
+                    </div>
+                    <div className="body">
+                        <Skill 
+                            skill={
+                                {
+                                    name: 'title', 
+                                    domain: 'technology',
+                                    description: "Si vous avez plusieurs fichiers et composants, la vérification de ces points peut nécessiter une analyse plus approfondie de votre code. Si vous le souhaitez, vous pouvez partager le code du composant Social ainsi que les importations et utilisations associées, et je pourrai vous aider à identifier le problème spécifique."
+                                }
                             }
-                        }
-                    />
-
-                    <Skill 
-                        skill={
-                            {
-                                name: 'title', 
-                                domain: 'technology',
-                                description: "Si vous avez plusieurs fichiers et composants, la vérification de ces points peut nécessiter une analyse plus approfondie de votre code. Si vous le souhaitez, vous pouvez partager le code du composant Social ainsi que les importations et utilisations associées, et je pourrai vous aider à identifier le problème spécifique."
+                        />
+                        <Skill 
+                            skill={
+                                {
+                                    name: 'title', 
+                                    domain: 'technology',
+                                    description: "Si vous avez plusieurs fichiers et composants, la vérification de ces points peut nécessiter une analyse plus approfondie de votre code. Si vous le souhaitez, vous pouvez partager le code du composant Social ainsi que les importations et utilisations associées, et je pourrai vous aider à identifier le problème spécifique."
+                                }
                             }
-                        }
-                    />
+                        />
+                        <Skill 
+                            skill={
+                                {
+                                    name: 'title', 
+                                    domain: 'technology',
+                                    description: "Si vous avez plusieurs fichiers et composants, la vérification de ces points peut nécessiter une analyse plus approfondie de votre code. Si vous le souhaitez, vous pouvez partager le code du composant Social ainsi que les importations et utilisations associées, et je pourrai vous aider à identifier le problème spécifique."
+                                }
+                            }
+                        />
+                    </div>
                 </div>
-            </form>
+                <div className="experiences">
+                    <div className="head">
+                        <h1>Experiences</h1>
+                        <div className="bt">
+                            <button className="btn" type="button" onClick={OpenPopup}>
+                                <PencilSquare size={16}/>
+                            </button>
+                            <button className="btn" type="button">
+                                <Trash size={16}/>
+                            </button>
+                        </div>
+                    </div>
+                    <div className="body">
+                        <Exp exp={
+                            {
+                                title: 'title',
+                                description: "Si vous avez plusieurs fichiers et composants, la vérification de ces points peut nécessiter une analyse plus approfondie de votre code. Si vous le souhaitez, vous pouvez partager le code du composant Social ainsi que les importations et utilisations associées, et je pourrai vous aider à identifier le problème spécifique.",
+                                institution: 'institution',
+                                startYear: '2023-04-12',
+                                endYear: 'today'
+                            }} 
+                        />
+
+                        <Exp exp={
+                            {
+                                title: 'title',
+                                description: "Si vous avez plusieurs fichiers et composants, la vérification de ces points peut nécessiter une analyse plus approfondie de votre code. Si vous le souhaitez, vous pouvez partager le code du composant Social ainsi que les importations et utilisations associées, et je pourrai vous aider à identifier le problème spécifique.",
+                                institution: 'institution',
+                                startYear: '2023-04-12',
+                                endYear: 'today'
+                            }} 
+                        />
+
+                        <Exp exp={
+                            {
+                                title: 'title',
+                                description: "Si vous avez plusieurs fichiers et composants, la vérification de ces points peut nécessiter une analyse plus approfondie de votre code. Si vous le souhaitez, vous pouvez partager le code du composant Social ainsi que les importations et utilisations associées, et je pourrai vous aider à identifier le problème spécifique.",
+                                institution: 'institution',
+                                startYear: '2023-04-12',
+                                endYear: 'today'
+                            }} 
+                        />
+                    </div>
+                </div>
+            </div>
 
             <form method="post" onSubmit={`|`} className="experiences">
                 <h1>Experiences</h1>
@@ -398,16 +492,42 @@ export default function Profil() {
                 </div>
             </form>
 
-            <form method="post" onSubmit={`|`} className="social">
-                
-            </form>
-
-            <form method="post" onSubmit={`|`} className="password">
-                
+            <form method="post" onSubmit={`|`} className="experiences">
+                <h1>Update Password</h1>
+                <div className="top">
+                    <div className="left">
+                        <InputComposeStyled>
+                            <label>Old password</label>
+                            <InputSimpleStyled  type="password"/>
+                        </InputComposeStyled>
+                    </div>
+                    <div className="right">
+                        <InputComposeStyled>
+                            <label>New password</label>
+                            <InputSimpleStyled  type="password"/>
+                        </InputComposeStyled>
+                        <InputComposeStyled>
+                            <label>confirm</label>
+                            <InputSimpleStyled  type="password"/>
+                        </InputComposeStyled>
+                    </div>
+                </div>
+                <div className="bottom">
+                    <button className="btn" type="submit">add</button>
+                </div>
             </form>
 
             <form method="post" onSubmit={`|`} className="dbfactor">
-                
+                <h1>Double authentication factor</h1>
+                <div className="left">
+                    <span className="f-enable">
+                        
+                        <small>enable or disable</small>
+                    </span>
+                </div>
+                <div className="rigth">
+                    <img src="" alt="" />
+                </div>
             </form>
 
         </div>

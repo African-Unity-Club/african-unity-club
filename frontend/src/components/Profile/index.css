@@ -5,6 +5,16 @@
     gap: 3rem;
 }
 
+.profil-activity
+{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    color: #dae9f7;
+}
+
+
+
 .profil-personal,
 .profil-location,
 .skills,
